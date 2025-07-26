@@ -6,7 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Input } from "./ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
-import { MainNav } from "./main-nav"
+
+// ✅ Import named export
+
 import { Sidebar } from "./sidebar"
 import { UserNav } from "./user-nav"
 import { Overview } from "./overview"
@@ -53,7 +55,7 @@ export default function DashboardPage() {
               </svg>
               <span className="sr-only">Toggle Menu</span>
             </button>
-            <MainNav />
+            {/* <MainNavv /> */}
             <div className="ml-auto flex items-center space-x-4">
               <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
