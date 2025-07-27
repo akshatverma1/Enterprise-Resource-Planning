@@ -1,1002 +1,2402 @@
 [
     {
-        "partnumber": "br20wtr",
-        "partname": "Mahindra top mirror",
-        "cost": "1890"
-    },
-    {
-        "partnumber": "hndzh2p",
-        "partname": "Bajaj rear gear",
-        "cost": "4259"
-    },
-    {
-        "partnumber": "h88h3gw",
-        "partname": "TVS rear brake",
-        "cost": "776"
-    },
-    {
-        "partnumber": "de08bbj",
-        "partname": "Ford rear tire",
-        "cost": "4582"
-    },
-    {
-        "partnumber": "4gk7g9c",
-        "partname": "Tata rear clutch",
-        "cost": "1998"
-    },
-    {
-        "partnumber": "3oefxhm",
-        "partname": "Ford rear brake",
-        "cost": "4462"
-    },
-    {
-        "partnumber": "6cvzgeb",
-        "partname": "Hero front brake",
-        "cost": "1092"
-    },
-    {
-        "partnumber": "2x85o42",
-        "partname": "Suzuki bottom brake",
-        "cost": "3581"
-    },
-    {
-        "partnumber": "e61mbxg",
-        "partname": "JCB right mirror",
-        "cost": "4551"
-    },
-    {
-        "partnumber": "qgpuve1",
-        "partname": "Ford left pump",
-        "cost": "1295"
-    },
-    {
-        "partnumber": "d99vp9p",
-        "partname": "Suzuki top light",
-        "cost": "4048"
-    },
-    {
-        "partnumber": "ruceb2t",
-        "partname": "Honda left gear",
-        "cost": "4428"
-    },
-    {
-        "partnumber": "n6op3kg",
-        "partname": "Suzuki bottom gear",
-        "cost": "1174"
-    },
-    {
-        "partnumber": "39yrgsw",
-        "partname": "Honda front pump",
-        "cost": "242"
-    },
-    {
-        "partnumber": "f2e59f6",
-        "partname": "Honda right light",
-        "cost": "2167"
-    },
-    {
-        "partnumber": "9hytkcs",
-        "partname": "Ford top gear",
-        "cost": "486"
-    },
-    {
-        "partnumber": "jgjv1bp",
-        "partname": "Suzuki top brake",
-        "cost": "367"
-    },
-    {
-        "partnumber": "qtv3mnq",
-        "partname": "Honda top mirror",
-        "cost": "1069"
-    },
-    {
-        "partnumber": "vpprql1",
-        "partname": "Mahindra top light",
-        "cost": "4374"
-    },
-    {
-        "partnumber": "tainqyw",
-        "partname": "Yamaha front brake",
-        "cost": "2185"
-    },
-    {
-        "partnumber": "bbw989z",
-        "partname": "Honda rear engine",
-        "cost": "2244"
-    },
-    {
-        "partnumber": "03a3l94",
-        "partname": "Mahindra right brake",
-        "cost": "2335"
-    },
-    {
-        "partnumber": "ww71c81",
-        "partname": "JCB bottom pump",
-        "cost": "2061"
-    },
-    {
-        "partnumber": "wl8khlk",
-        "partname": "Ford left filter",
-        "cost": "2767"
-    },
-    {
-        "partnumber": "qte7fs2",
-        "partname": "Bajaj top filter",
-        "cost": "4122"
-    },
-    {
-        "partnumber": "f8sdo93",
-        "partname": "JCB rear engine",
-        "cost": "1951"
-    },
-    {
-        "partnumber": "i1wvu79",
-        "partname": "Hero right tire",
-        "cost": "3515"
-    },
-    {
-        "partnumber": "5jz4wj9",
-        "partname": "Ford rear brake",
-        "cost": "2846"
-    },
-    {
-        "partnumber": "l7dn5yc",
-        "partname": "Ford rear gear",
-        "cost": "2041"
-    },
-    {
-        "partnumber": "9ljh0br",
-        "partname": "Ford right radiator",
-        "cost": "4432"
-    },
-    {
-        "partnumber": "6qb6ec7",
-        "partname": "Honda top tire",
-        "cost": "427"
-    },
-    {
-        "partnumber": "f83voaj",
-        "partname": "Yamaha left tire",
-        "cost": "4123"
-    },
-    {
-        "partnumber": "f4txrri",
-        "partname": "Mahindra front brake",
-        "cost": "3727"
-    },
-    {
-        "partnumber": "cgno2an",
-        "partname": "Hero bottom light",
-        "cost": "1034"
-    },
-    {
-        "partnumber": "nfjspd5",
-        "partname": "Honda right tire",
-        "cost": "3542"
-    },
-    {
-        "partnumber": "hhpqire",
-        "partname": "Suzuki bottom engine",
-        "cost": "4451"
-    },
-    {
-        "partnumber": "azc3185",
-        "partname": "Tata bottom brake",
-        "cost": "2689"
-    },
-    {
-        "partnumber": "okg6iur",
-        "partname": "Ford front gear",
-        "cost": "2621"
-    },
-    {
-        "partnumber": "vebaoa2",
-        "partname": "Ford top gear",
-        "cost": "2066"
-    },
-    {
-        "partnumber": "7fsafbi",
-        "partname": "Honda right gear",
-        "cost": "2213"
-    },
-    {
-        "partnumber": "m13wlis",
-        "partname": "Suzuki right tire",
-        "cost": "424"
-    },
-    {
-        "partnumber": "wesxcbe",
-        "partname": "Bajaj top pump",
-        "cost": "1535"
-    },
-    {
-        "partnumber": "djz9788",
-        "partname": "TVS right engine",
-        "cost": "3282"
-    },
-    {
-        "partnumber": "0f8z1tl",
-        "partname": "Bajaj rear radiator",
-        "cost": "4848"
-    },
-    {
-        "partnumber": "it65652",
-        "partname": "Suzuki top engine",
-        "cost": "4931"
-    },
-    {
-        "partnumber": "rwkjson",
-        "partname": "JCB bottom clutch",
-        "cost": "2496"
-    },
-    {
-        "partnumber": "niehmg5",
-        "partname": "JCB top filter",
-        "cost": "4389"
-    },
-    {
-        "partnumber": "nbettdp",
-        "partname": "Yamaha right filter",
-        "cost": "2970"
-    },
-    {
-        "partnumber": "5wbkdir",
-        "partname": "JCB right engine",
-        "cost": "3743"
-    },
-    {
-        "partnumber": "c9cgke6",
-        "partname": "TVS front radiator",
-        "cost": "4461"
-    },
-    {
-        "partnumber": "92258g4",
-        "partname": "Ford bottom filter",
-        "cost": "991"
-    },
-    {
-        "partnumber": "roygflj",
-        "partname": "Ford rear tire",
-        "cost": "1920"
-    },
-    {
-        "partnumber": "h6qjou1",
-        "partname": "Honda right tire",
-        "cost": "4083"
-    },
-    {
-        "partnumber": "2k2qxjd",
-        "partname": "Honda bottom engine",
-        "cost": "3011"
-    },
-    {
-        "partnumber": "wnen98w",
-        "partname": "TVS right brake",
-        "cost": "2323"
-    },
-    {
-        "partnumber": "r8upocb",
-        "partname": "Yamaha rear radiator",
-        "cost": "3486"
-    },
-    {
-        "partnumber": "jg9ng74",
-        "partname": "Hero front light",
-        "cost": "1748"
-    },
-    {
-        "partnumber": "chjch3s",
-        "partname": "TVS left radiator",
-        "cost": "3856"
-    },
-    {
-        "partnumber": "6dq6a05",
-        "partname": "JCB rear pump",
-        "cost": "1545"
-    },
-    {
-        "partnumber": "taeiecm",
-        "partname": "TVS bottom filter",
-        "cost": "542"
-    },
-    {
-        "partnumber": "ga611mu",
-        "partname": "Hero left clutch",
-        "cost": "2275"
-    },
-    {
-        "partnumber": "ca1sqh9",
-        "partname": "TVS right brake",
-        "cost": "3271"
-    },
-    {
-        "partnumber": "hjw1p0g",
-        "partname": "TVS bottom clutch",
-        "cost": "4775"
-    },
-    {
-        "partnumber": "irwopao",
-        "partname": "Tata top radiator",
-        "cost": "2263"
-    },
-    {
-        "partnumber": "vzk68iu",
-        "partname": "Honda left clutch",
-        "cost": "3164"
-    },
-    {
-        "partnumber": "xin3p26",
-        "partname": "JCB rear pump",
-        "cost": "4703"
-    },
-    {
-        "partnumber": "cp9kmwa",
-        "partname": "Bajaj bottom gear",
-        "cost": "4152"
-    },
-    {
-        "partnumber": "cswuc6s",
-        "partname": "Tata bottom mirror",
-        "cost": "1744"
-    },
-    {
-        "partnumber": "aw3fon8",
-        "partname": "TVS right filter",
-        "cost": "1965"
-    },
-    {
-        "partnumber": "64hm4mj",
-        "partname": "JCB rear clutch",
-        "cost": "4570"
-    },
-    {
-        "partnumber": "qm0qwi1",
-        "partname": "Suzuki rear brake",
-        "cost": "4249"
-    },
-    {
-        "partnumber": "eb9ievz",
-        "partname": "Bajaj top clutch",
-        "cost": "1477"
-    },
-    {
-        "partnumber": "60tmfas",
-        "partname": "Mahindra bottom pump",
-        "cost": "4763"
-    },
-    {
-        "partnumber": "1gnusro",
-        "partname": "Yamaha front clutch",
-        "cost": "4609"
-    },
-    {
-        "partnumber": "p1p804f",
-        "partname": "JCB left engine",
-        "cost": "369"
-    },
-    {
-        "partnumber": "dp3bt5o",
-        "partname": "Yamaha right radiator",
-        "cost": "366"
-    },
-    {
-        "partnumber": "wbv3yhp",
-        "partname": "JCB rear mirror",
-        "cost": "171"
-    },
-    {
-        "partnumber": "9w74pe8",
-        "partname": "Hero bottom pump",
-        "cost": "1271"
-    },
-    {
-        "partnumber": "7r58z79",
-        "partname": "Mahindra front tire",
-        "cost": "714"
-    },
-    {
-        "partnumber": "73b4h1h",
-        "partname": "Honda right tire",
-        "cost": "3372"
-    },
-    {
-        "partnumber": "lu3gy4v",
-        "partname": "Bajaj top clutch",
-        "cost": "4891"
-    },
-    {
-        "partnumber": "2dsnd6g",
-        "partname": "Hero top light",
-        "cost": "861"
-    },
-    {
-        "partnumber": "rwgbyok",
-        "partname": "Tata left light",
-        "cost": "3484"
-    },
-    {
-        "partnumber": "xhxlylj",
-        "partname": "JCB bottom clutch",
-        "cost": "4972"
-    },
-    {
-        "partnumber": "xx0p6u8",
-        "partname": "TVS rear mirror",
-        "cost": "1805"
-    },
-    {
-        "partnumber": "a0jry7z",
-        "partname": "JCB left pump",
-        "cost": "2297"
-    },
-    {
-        "partnumber": "acltnka",
-        "partname": "Mahindra front radiator",
-        "cost": "4697"
-    },
-    {
-        "partnumber": "bg33gtu",
-        "partname": "Hero rear tire",
-        "cost": "3782"
-    },
-    {
-        "partnumber": "9cp29f2",
-        "partname": "Yamaha front clutch",
-        "cost": "1499"
-    },
-    {
-        "partnumber": "nvua1jz",
-        "partname": "Yamaha front engine",
-        "cost": "2254"
-    },
-    {
-        "partnumber": "km9vs1z",
-        "partname": "Hero top tire",
-        "cost": "3283"
-    },
-    {
-        "partnumber": "dogrpor",
-        "partname": "Yamaha front filter",
-        "cost": "4361"
-    },
-    {
-        "partnumber": "jhj4o1t",
-        "partname": "JCB bottom engine",
-        "cost": "3982"
-    },
-    {
-        "partnumber": "ay63u8t",
-        "partname": "Ford right mirror",
-        "cost": "3345"
-    },
-    {
-        "partnumber": "y7wdcru",
-        "partname": "Tata front engine",
-        "cost": "742"
-    },
-    {
-        "partnumber": "3w9zlfr",
-        "partname": "Yamaha right radiator",
-        "cost": "463"
-    },
-    {
-        "partnumber": "rm5x7gk",
-        "partname": "Suzuki top tire",
-        "cost": "409"
-    },
-    {
-        "partnumber": "n2pwgy2",
-        "partname": "Ford bottom radiator",
-        "cost": "4363"
-    },
-    {
-        "partnumber": "w13vk0q",
-        "partname": "Bajaj left tire",
-        "cost": "2537"
-    },
-    {
-        "partnumber": "1ctodh9",
-        "partname": "Ford top radiator",
-        "cost": "3333"
-    },
-    {
-        "partnumber": "rhkvoa3",
-        "partname": "Bajaj top pump",
-        "cost": "1904"
-    },
-    {
-        "partnumber": "ah64op4",
-        "partname": "Ford front tire",
-        "cost": "243"
-    },
-    {
-        "partnumber": "r17abz0",
-        "partname": "Suzuki front filter",
-        "cost": "1578"
-    },
-    {
-        "partnumber": "r5hwdvb",
-        "partname": "JCB front mirror",
-        "cost": "4721"
-    },
-    {
-        "partnumber": "95fb7sw",
-        "partname": "Mahindra top filter",
-        "cost": "3386"
-    },
-    {
-        "partnumber": "rufnjxl",
-        "partname": "Ford right gear",
-        "cost": "439"
-    },
-    {
-        "partnumber": "uvgvjv3",
-        "partname": "Yamaha bottom filter",
-        "cost": "968"
-    },
-    {
-        "partnumber": "icg0yql",
-        "partname": "Ford front filter",
-        "cost": "4701"
-    },
-    {
-        "partnumber": "97htkd1",
-        "partname": "TVS right brake",
-        "cost": "2267"
-    },
-    {
-        "partnumber": "8yul9id",
-        "partname": "Yamaha right engine",
-        "cost": "1765"
-    },
-    {
-        "partnumber": "mu4lkyj",
-        "partname": "Honda bottom tire",
-        "cost": "1197"
-    },
-    {
-        "partnumber": "xpqzprc",
-        "partname": "Ford rear clutch",
-        "cost": "2392"
-    },
-    {
-        "partnumber": "t4ckp5e",
-        "partname": "JCB top filter",
-        "cost": "3391"
-    },
-    {
-        "partnumber": "upaxm1z",
-        "partname": "Tata left filter",
-        "cost": "2741"
-    },
-    {
-        "partnumber": "h3740de",
-        "partname": "Yamaha right mirror",
-        "cost": "3489"
-    },
-    {
-        "partnumber": "ww09kia",
-        "partname": "JCB left radiator",
-        "cost": "784"
-    },
-    {
-        "partnumber": "riqcxms",
-        "partname": "Hero front gear",
-        "cost": "166"
-    },
-    {
-        "partnumber": "21blmn6",
-        "partname": "Bajaj top light",
-        "cost": "1461"
-    },
-    {
-        "partnumber": "sru66je",
-        "partname": "Mahindra left mirror",
-        "cost": "4397"
-    },
-    {
-        "partnumber": "uaj5on2",
-        "partname": "Suzuki rear mirror",
-        "cost": "4045"
-    },
-    {
-        "partnumber": "d3qi941",
-        "partname": "Tata top tire",
-        "cost": "2160"
-    },
-    {
-        "partnumber": "mnqrhhq",
-        "partname": "Honda right radiator",
-        "cost": "2791"
-    },
-    {
-        "partnumber": "fn9xjte",
-        "partname": "TVS bottom tire",
-        "cost": "1761"
-    },
-    {
-        "partnumber": "pvnsbov",
-        "partname": "Suzuki front pump",
-        "cost": "173"
-    },
-    {
-        "partnumber": "69kehzc",
-        "partname": "Bajaj bottom pump",
-        "cost": "2193"
-    },
-    {
-        "partnumber": "j7hob3s",
-        "partname": "Honda right radiator",
-        "cost": "2926"
-    },
-    {
-        "partnumber": "fr2gqv5",
-        "partname": "Honda right mirror",
-        "cost": "4417"
-    },
-    {
-        "partnumber": "2wqmb2t",
-        "partname": "Bajaj rear mirror",
-        "cost": "1312"
-    },
-    {
-        "partnumber": "ku0ui8a",
-        "partname": "Bajaj rear tire",
-        "cost": "1353"
-    },
-    {
-        "partnumber": "4dgb4sm",
-        "partname": "TVS bottom engine",
-        "cost": "2386"
-    },
-    {
-        "partnumber": "lxyluh1",
-        "partname": "Suzuki rear light",
-        "cost": "2946"
-    },
-    {
-        "partnumber": "76ugvqr",
-        "partname": "JCB front brake",
-        "cost": "2526"
-    },
-    {
-        "partnumber": "y2vpkz2",
-        "partname": "Yamaha left mirror",
-        "cost": "1635"
-    },
-    {
-        "partnumber": "p7wicm3",
-        "partname": "Honda rear pump",
-        "cost": "4237"
-    },
-    {
-        "partnumber": "r2kubir",
-        "partname": "JCB front clutch",
-        "cost": "308"
-    },
-    {
-        "partnumber": "pnyy2qu",
-        "partname": "Tata top radiator",
-        "cost": "563"
-    },
-    {
-        "partnumber": "p12en42",
-        "partname": "Suzuki right pump",
-        "cost": "1346"
-    },
-    {
-        "partnumber": "atypmqn",
-        "partname": "Yamaha front brake",
-        "cost": "3739"
-    },
-    {
-        "partnumber": "rkblpyi",
-        "partname": "Mahindra top filter",
-        "cost": "4262"
-    },
-    {
-        "partnumber": "3ci31bb",
-        "partname": "JCB right filter",
-        "cost": "2775"
-    },
-    {
-        "partnumber": "xbmbwqj",
-        "partname": "Honda top gear",
-        "cost": "2078"
-    },
-    {
-        "partnumber": "yj26bs5",
-        "partname": "Bajaj left filter",
-        "cost": "1496"
-    },
-    {
-        "partnumber": "9yv56d6",
-        "partname": "Tata bottom light",
-        "cost": "3002"
-    },
-    {
-        "partnumber": "v17fktt",
-        "partname": "Honda right pump",
-        "cost": "2729"
-    },
-    {
-        "partnumber": "he3uido",
-        "partname": "Tata bottom clutch",
-        "cost": "2859"
-    },
-    {
-        "partnumber": "0ssmc1f",
-        "partname": "Tata bottom engine",
-        "cost": "222"
-    },
-    {
-        "partnumber": "42607j2",
-        "partname": "Tata rear brake",
-        "cost": "4389"
-    },
-    {
-        "partnumber": "nam2tk5",
-        "partname": "Hero rear filter",
-        "cost": "3990"
-    },
-    {
-        "partnumber": "r8ka72g",
-        "partname": "TVS right pump",
-        "cost": "673"
-    },
-    {
-        "partnumber": "f3nnkhy",
-        "partname": "JCB front filter",
-        "cost": "2455"
-    },
-    {
-        "partnumber": "nxvvsx0",
-        "partname": "JCB left brake",
-        "cost": "4554"
-    },
-    {
-        "partnumber": "86c4lmj",
-        "partname": "TVS right pump",
-        "cost": "1883"
-    },
-    {
-        "partnumber": "9gi2qdt",
-        "partname": "Suzuki front light",
-        "cost": "608"
-    },
-    {
-        "partnumber": "w5suc15",
-        "partname": "Yamaha rear filter",
-        "cost": "4664"
-    },
-    {
-        "partnumber": "mcltkdh",
-        "partname": "Hero front pump",
-        "cost": "1543"
-    },
-    {
-        "partnumber": "8famagp",
-        "partname": "Suzuki left clutch",
-        "cost": "114"
-    },
-    {
-        "partnumber": "x74on78",
-        "partname": "Mahindra front filter",
-        "cost": "1173"
-    },
-    {
-        "partnumber": "1o4wkaw",
-        "partname": "Hero rear pump",
-        "cost": "3553"
-    },
-    {
-        "partnumber": "v5zymo2",
-        "partname": "Bajaj rear pump",
-        "cost": "3976"
-    },
-    {
-        "partnumber": "5px53tz",
-        "partname": "Tata bottom engine",
-        "cost": "709"
-    },
-    {
-        "partnumber": "uqpoora",
-        "partname": "Suzuki bottom mirror",
-        "cost": "2330"
-    },
-    {
-        "partnumber": "cjfh3kb",
-        "partname": "Ford right brake",
-        "cost": "1521"
-    },
-    {
-        "partnumber": "9zudl5r",
-        "partname": "Ford bottom filter",
-        "cost": "344"
-    },
-    {
-        "partnumber": "cskpgyz",
-        "partname": "Suzuki bottom light",
-        "cost": "1205"
-    },
-    {
-        "partnumber": "45gfhhs",
-        "partname": "TVS top engine",
-        "cost": "4910"
-    },
-    {
-        "partnumber": "uahrqq7",
-        "partname": "Honda top brake",
-        "cost": "4865"
-    },
-    {
-        "partnumber": "wvvc1fr",
-        "partname": "Hero front filter",
-        "cost": "3839"
-    },
-    {
-        "partnumber": "kf99sls",
-        "partname": "TVS left pump",
-        "cost": "2865"
-    },
-    {
-        "partnumber": "ra7ey94",
-        "partname": "JCB bottom radiator",
-        "cost": "113"
-    },
-    {
-        "partnumber": "xmaeia8",
-        "partname": "Yamaha right pump",
-        "cost": "2244"
-    },
-    {
-        "partnumber": "0cldm84",
-        "partname": "Yamaha front filter",
-        "cost": "4860"
-    },
-    {
-        "partnumber": "wx8u8dv",
-        "partname": "Tata rear clutch",
-        "cost": "266"
-    },
-    {
-        "partnumber": "zulualv",
-        "partname": "Mahindra rear pump",
-        "cost": "4917"
-    },
-    {
-        "partnumber": "fxu62rk",
-        "partname": "TVS bottom pump",
-        "cost": "4411"
-    },
-    {
-        "partnumber": "jsevj5u",
-        "partname": "Honda left pump",
-        "cost": "1068"
-    },
-    {
-        "partnumber": "hpqw17o",
-        "partname": "Bajaj left mirror",
-        "cost": "4457"
-    },
-    {
-        "partnumber": "734zh56",
-        "partname": "Tata left clutch",
-        "cost": "2380"
-    },
-    {
-        "partnumber": "hpvk5dm",
-        "partname": "Suzuki right filter",
-        "cost": "4645"
-    },
-    {
-        "partnumber": "7njeo4h",
-        "partname": "Tata right tire",
-        "cost": "2316"
-    },
-    {
-        "partnumber": "02dknum",
-        "partname": "Bajaj left engine",
-        "cost": "1089"
-    },
-    {
-        "partnumber": "f1jjm7e",
-        "partname": "Tata bottom filter",
-        "cost": "4698"
-    },
-    {
-        "partnumber": "lfufo15",
-        "partname": "Mahindra left mirror",
-        "cost": "4620"
-    },
-    {
-        "partnumber": "qs0rwt7",
-        "partname": "Mahindra right radiator",
-        "cost": "1014"
-    },
-    {
-        "partnumber": "9ul657z",
-        "partname": "TVS front radiator",
-        "cost": "1707"
-    },
-    {
-        "partnumber": "6p9pexd",
-        "partname": "JCB front mirror",
-        "cost": "958"
-    },
-    {
-        "partnumber": "vaddvgp",
-        "partname": "Honda left pump",
-        "cost": "4391"
-    },
-    {
-        "partnumber": "hd9latq",
-        "partname": "Bajaj front engine",
-        "cost": "3476"
-    },
-    {
-        "partnumber": "xbhhawi",
-        "partname": "Hero rear pump",
-        "cost": "2652"
-    },
-    {
-        "partnumber": "974c15t",
-        "partname": "Honda left filter",
-        "cost": "1223"
-    },
-    {
-        "partnumber": "ziebkof",
-        "partname": "TVS left engine",
-        "cost": "4318"
-    },
-    {
-        "partnumber": "1ng6ev8",
-        "partname": "Mahindra rear mirror",
-        "cost": "3886"
-    },
-    {
-        "partnumber": "sd44z71",
-        "partname": "Yamaha left engine",
-        "cost": "2568"
-    },
-    {
-        "partnumber": "o44qvtp",
-        "partname": "JCB top mirror",
-        "cost": "4448"
-    },
-    {
-        "partnumber": "apwfayv",
-        "partname": "Hero front gear",
-        "cost": "2065"
-    },
-    {
-        "partnumber": "768vnh9",
-        "partname": "Suzuki front engine",
-        "cost": "2682"
-    },
-    {
-        "partnumber": "bkbunua",
-        "partname": "Honda right mirror",
-        "cost": "4592"
-    },
-    {
-        "partnumber": "sy43tx4",
-        "partname": "Yamaha left engine",
-        "cost": "2940"
-    },
-    {
-        "partnumber": "opjnv65",
-        "partname": "TVS left brake",
-        "cost": "2384"
-    },
-    {
-        "partnumber": "02ze9xz",
-        "partname": "Yamaha front pump",
-        "cost": "460"
-    },
-    {
-        "partnumber": "xpqzf0l",
-        "partname": "Suzuki bottom mirror",
-        "cost": "4231"
+        "id": "PRD001",
+        "name": "Mahindra front brake",
+        "category": "Automobile",
+        "price": 328.0,
+        "stock": 40,
+        "status": "In Stock",
+        "sales": 433,
+        "revenue": 45537,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "2r62sc3"
+    },
+    {
+        "id": "PRD002",
+        "name": "Ford top engine",
+        "category": "Automobile",
+        "price": 1005.0,
+        "stock": 45,
+        "status": "In Stock",
+        "sales": 30,
+        "revenue": 8129,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ffhg9va"
+    },
+    {
+        "id": "PRD003",
+        "name": "Suzuki right light",
+        "category": "Automobile",
+        "price": 4702.0,
+        "stock": 99,
+        "status": "In Stock",
+        "sales": 306,
+        "revenue": 44242,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "n7ra4rl"
+    },
+    {
+        "id": "PRD004",
+        "name": "JCB bottom mirror",
+        "category": "Automobile",
+        "price": 2798.0,
+        "stock": 43,
+        "status": "In Stock",
+        "sales": 341,
+        "revenue": 19747,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "jnolswd"
+    },
+    {
+        "id": "PRD005",
+        "name": "Tata front light",
+        "category": "Automobile",
+        "price": 4788.0,
+        "stock": 41,
+        "status": "In Stock",
+        "sales": 473,
+        "revenue": 17513,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "sv3m380"
+    },
+    {
+        "id": "PRD006",
+        "name": "Hero top tire",
+        "category": "Automobile",
+        "price": 2249.0,
+        "stock": 96,
+        "status": "In Stock",
+        "sales": 465,
+        "revenue": 2115,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "fjh2qrh"
+    },
+    {
+        "id": "PRD007",
+        "name": "Honda top mirror",
+        "category": "Automobile",
+        "price": 4287.0,
+        "stock": 66,
+        "status": "In Stock",
+        "sales": 429,
+        "revenue": 22803,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "3u23qsq"
+    },
+    {
+        "id": "PRD008",
+        "name": "Suzuki bottom filter",
+        "category": "Automobile",
+        "price": 621.0,
+        "stock": 53,
+        "status": "In Stock",
+        "sales": 245,
+        "revenue": 45342,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "5lzzmho"
+    },
+    {
+        "id": "PRD009",
+        "name": "Mahindra right light",
+        "category": "Automobile",
+        "price": 1847.0,
+        "stock": 67,
+        "status": "In Stock",
+        "sales": 363,
+        "revenue": 48385,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "blcmpgj"
+    },
+    {
+        "id": "PRD010",
+        "name": "Bajaj rear tire",
+        "category": "Automobile",
+        "price": 931.0,
+        "stock": 100,
+        "status": "In Stock",
+        "sales": 47,
+        "revenue": 21066,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "czhp63q"
+    },
+    {
+        "id": "PRD011",
+        "name": "Mahindra left engine",
+        "category": "Automobile",
+        "price": 2715.0,
+        "stock": 71,
+        "status": "Low Stock",
+        "sales": 284,
+        "revenue": 3243,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "fg8a748"
+    },
+    {
+        "id": "PRD012",
+        "name": "Yamaha left tire",
+        "category": "Automobile",
+        "price": 4663.0,
+        "stock": 78,
+        "status": "In Stock",
+        "sales": 45,
+        "revenue": 24477,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "1ujw48q"
+    },
+    {
+        "id": "PRD013",
+        "name": "Honda rear light",
+        "category": "Automobile",
+        "price": 1314.0,
+        "stock": 70,
+        "status": "In Stock",
+        "sales": 145,
+        "revenue": 22879,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ct708dg"
+    },
+    {
+        "id": "PRD014",
+        "name": "Hero right tire",
+        "category": "Automobile",
+        "price": 1374.0,
+        "stock": 81,
+        "status": "In Stock",
+        "sales": 301,
+        "revenue": 33473,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "4b3qkvi"
+    },
+    {
+        "id": "PRD015",
+        "name": "Tata rear gear",
+        "category": "Automobile",
+        "price": 4707.0,
+        "stock": 42,
+        "status": "Low Stock",
+        "sales": 163,
+        "revenue": 33700,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "vy54rmc"
+    },
+    {
+        "id": "PRD016",
+        "name": "Ford right mirror",
+        "category": "Automobile",
+        "price": 2755.0,
+        "stock": 90,
+        "status": "In Stock",
+        "sales": 98,
+        "revenue": 44357,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "h56tykd"
+    },
+    {
+        "id": "PRD017",
+        "name": "TVS top gear",
+        "category": "Automobile",
+        "price": 4376.0,
+        "stock": 17,
+        "status": "In Stock",
+        "sales": 212,
+        "revenue": 6983,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "wdno1lk"
+    },
+    {
+        "id": "PRD018",
+        "name": "Bajaj bottom brake",
+        "category": "Automobile",
+        "price": 592.0,
+        "stock": 78,
+        "status": "In Stock",
+        "sales": 93,
+        "revenue": 12696,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "yly8k0z"
+    },
+    {
+        "id": "PRD019",
+        "name": "Bajaj rear mirror",
+        "category": "Automobile",
+        "price": 4274.0,
+        "stock": 47,
+        "status": "In Stock",
+        "sales": 62,
+        "revenue": 33008,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "qajwkod"
+    },
+    {
+        "id": "PRD020",
+        "name": "JCB top brake",
+        "category": "Automobile",
+        "price": 348.0,
+        "stock": 27,
+        "status": "In Stock",
+        "sales": 429,
+        "revenue": 28094,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "k2pj1lt"
+    },
+    {
+        "id": "PRD021",
+        "name": "Yamaha front light",
+        "category": "Automobile",
+        "price": 293.0,
+        "stock": 39,
+        "status": "In Stock",
+        "sales": 145,
+        "revenue": 12476,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "rq848uf"
+    },
+    {
+        "id": "PRD022",
+        "name": "Hero rear filter",
+        "category": "Automobile",
+        "price": 2605.0,
+        "stock": 55,
+        "status": "In Stock",
+        "sales": 438,
+        "revenue": 18924,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "895gvoe"
+    },
+    {
+        "id": "PRD023",
+        "name": "Hero bottom brake",
+        "category": "Automobile",
+        "price": 2361.0,
+        "stock": 28,
+        "status": "In Stock",
+        "sales": 214,
+        "revenue": 13994,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "j1metcq"
+    },
+    {
+        "id": "PRD024",
+        "name": "Suzuki rear filter",
+        "category": "Automobile",
+        "price": 1627.0,
+        "stock": 29,
+        "status": "In Stock",
+        "sales": 394,
+        "revenue": 7615,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "b669uzc"
+    },
+    {
+        "id": "PRD025",
+        "name": "Mahindra bottom tire",
+        "category": "Automobile",
+        "price": 145.0,
+        "stock": 23,
+        "status": "In Stock",
+        "sales": 49,
+        "revenue": 47248,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "qhh9pac"
+    },
+    {
+        "id": "PRD026",
+        "name": "JCB front tire",
+        "category": "Automobile",
+        "price": 2640.0,
+        "stock": 68,
+        "status": "Low Stock",
+        "sales": 323,
+        "revenue": 28372,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "l3o4pqn"
+    },
+    {
+        "id": "PRD027",
+        "name": "Honda front clutch",
+        "category": "Automobile",
+        "price": 1065.0,
+        "stock": 91,
+        "status": "In Stock",
+        "sales": 452,
+        "revenue": 36443,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "a4r89hj"
+    },
+    {
+        "id": "PRD028",
+        "name": "Suzuki bottom gear",
+        "category": "Automobile",
+        "price": 453.0,
+        "stock": 63,
+        "status": "In Stock",
+        "sales": 399,
+        "revenue": 9929,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "1a56dfz"
+    },
+    {
+        "id": "PRD029",
+        "name": "Tata bottom filter",
+        "category": "Automobile",
+        "price": 2322.0,
+        "stock": 35,
+        "status": "In Stock",
+        "sales": 247,
+        "revenue": 47833,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "davbg07"
+    },
+    {
+        "id": "PRD030",
+        "name": "Honda left pump",
+        "category": "Automobile",
+        "price": 4955.0,
+        "stock": 44,
+        "status": "In Stock",
+        "sales": 205,
+        "revenue": 9872,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "i6gssqh"
+    },
+    {
+        "id": "PRD031",
+        "name": "Honda left engine",
+        "category": "Automobile",
+        "price": 1512.0,
+        "stock": 54,
+        "status": "In Stock",
+        "sales": 127,
+        "revenue": 26208,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "645eqbg"
+    },
+    {
+        "id": "PRD032",
+        "name": "JCB right engine",
+        "category": "Automobile",
+        "price": 1633.0,
+        "stock": 98,
+        "status": "In Stock",
+        "sales": 11,
+        "revenue": 20333,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "pn8pl46"
+    },
+    {
+        "id": "PRD033",
+        "name": "Tata front pump",
+        "category": "Automobile",
+        "price": 1974.0,
+        "stock": 58,
+        "status": "In Stock",
+        "sales": 53,
+        "revenue": 21113,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "j76pqw0"
+    },
+    {
+        "id": "PRD034",
+        "name": "TVS bottom pump",
+        "category": "Automobile",
+        "price": 4518.0,
+        "stock": 10,
+        "status": "In Stock",
+        "sales": 237,
+        "revenue": 44747,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "rduox06"
+    },
+    {
+        "id": "PRD035",
+        "name": "Yamaha rear clutch",
+        "category": "Automobile",
+        "price": 1572.0,
+        "stock": 28,
+        "status": "In Stock",
+        "sales": 183,
+        "revenue": 13480,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "3ilsezy"
+    },
+    {
+        "id": "PRD036",
+        "name": "Suzuki left filter",
+        "category": "Automobile",
+        "price": 4432.0,
+        "stock": 54,
+        "status": "In Stock",
+        "sales": 228,
+        "revenue": 4546,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "qe8fagx"
+    },
+    {
+        "id": "PRD037",
+        "name": "TVS left tire",
+        "category": "Automobile",
+        "price": 3494.0,
+        "stock": 88,
+        "status": "In Stock",
+        "sales": 484,
+        "revenue": 12625,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ntuan5z"
+    },
+    {
+        "id": "PRD038",
+        "name": "Tata rear filter",
+        "category": "Automobile",
+        "price": 4460.0,
+        "stock": 34,
+        "status": "In Stock",
+        "sales": 106,
+        "revenue": 15082,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "vv9wg5q"
+    },
+    {
+        "id": "PRD039",
+        "name": "TVS right light",
+        "category": "Automobile",
+        "price": 793.0,
+        "stock": 41,
+        "status": "In Stock",
+        "sales": 98,
+        "revenue": 36085,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "cygsz9w"
+    },
+    {
+        "id": "PRD040",
+        "name": "Honda left gear",
+        "category": "Automobile",
+        "price": 1227.0,
+        "stock": 11,
+        "status": "In Stock",
+        "sales": 198,
+        "revenue": 44805,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "3aap71u"
+    },
+    {
+        "id": "PRD041",
+        "name": "TVS bottom clutch",
+        "category": "Automobile",
+        "price": 370.0,
+        "stock": 44,
+        "status": "In Stock",
+        "sales": 114,
+        "revenue": 38267,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "qne5eze"
+    },
+    {
+        "id": "PRD042",
+        "name": "Mahindra left light",
+        "category": "Automobile",
+        "price": 4453.0,
+        "stock": 27,
+        "status": "In Stock",
+        "sales": 156,
+        "revenue": 17431,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "od4tea2"
+    },
+    {
+        "id": "PRD043",
+        "name": "Honda right filter",
+        "category": "Automobile",
+        "price": 834.0,
+        "stock": 31,
+        "status": "In Stock",
+        "sales": 158,
+        "revenue": 38679,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "pj3iy11"
+    },
+    {
+        "id": "PRD044",
+        "name": "Hero rear engine",
+        "category": "Automobile",
+        "price": 1748.0,
+        "stock": 96,
+        "status": "In Stock",
+        "sales": 473,
+        "revenue": 46749,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "qhwlddz"
+    },
+    {
+        "id": "PRD045",
+        "name": "Yamaha bottom pump",
+        "category": "Automobile",
+        "price": 848.0,
+        "stock": 51,
+        "status": "In Stock",
+        "sales": 19,
+        "revenue": 28193,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "gf5tzc2"
+    },
+    {
+        "id": "PRD046",
+        "name": "Ford right tire",
+        "category": "Automobile",
+        "price": 2108.0,
+        "stock": 46,
+        "status": "In Stock",
+        "sales": 103,
+        "revenue": 13557,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "m8byvuf"
+    },
+    {
+        "id": "PRD047",
+        "name": "Tata right filter",
+        "category": "Automobile",
+        "price": 1896.0,
+        "stock": 35,
+        "status": "In Stock",
+        "sales": 71,
+        "revenue": 9965,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "2h3y1lv"
+    },
+    {
+        "id": "PRD048",
+        "name": "Bajaj bottom gear",
+        "category": "Automobile",
+        "price": 1031.0,
+        "stock": 8,
+        "status": "In Stock",
+        "sales": 207,
+        "revenue": 18665,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ulj0tsx"
+    },
+    {
+        "id": "PRD049",
+        "name": "TVS right gear",
+        "category": "Automobile",
+        "price": 1974.0,
+        "stock": 77,
+        "status": "In Stock",
+        "sales": 114,
+        "revenue": 43185,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "bjcbzo2"
+    },
+    {
+        "id": "PRD050",
+        "name": "Mahindra top gear",
+        "category": "Automobile",
+        "price": 2668.0,
+        "stock": 7,
+        "status": "In Stock",
+        "sales": 398,
+        "revenue": 46202,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "fic545x"
+    },
+    {
+        "id": "PRD051",
+        "name": "Ford front pump",
+        "category": "Automobile",
+        "price": 1990.0,
+        "stock": 40,
+        "status": "In Stock",
+        "sales": 474,
+        "revenue": 44901,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "4h2vytl"
+    },
+    {
+        "id": "PRD052",
+        "name": "Ford right clutch",
+        "category": "Automobile",
+        "price": 2262.0,
+        "stock": 3,
+        "status": "In Stock",
+        "sales": 177,
+        "revenue": 5670,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "7rcwstr"
+    },
+    {
+        "id": "PRD053",
+        "name": "Mahindra front filter",
+        "category": "Automobile",
+        "price": 1354.0,
+        "stock": 46,
+        "status": "In Stock",
+        "sales": 228,
+        "revenue": 32446,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "hodsson"
+    },
+    {
+        "id": "PRD054",
+        "name": "JCB left tire",
+        "category": "Automobile",
+        "price": 4803.0,
+        "stock": 82,
+        "status": "In Stock",
+        "sales": 438,
+        "revenue": 14518,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "pexp65l"
+    },
+    {
+        "id": "PRD055",
+        "name": "Ford rear filter",
+        "category": "Automobile",
+        "price": 2796.0,
+        "stock": 40,
+        "status": "In Stock",
+        "sales": 262,
+        "revenue": 24810,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "26wttm9"
+    },
+    {
+        "id": "PRD056",
+        "name": "Hero left filter",
+        "category": "Automobile",
+        "price": 3902.0,
+        "stock": 68,
+        "status": "In Stock",
+        "sales": 474,
+        "revenue": 30530,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "qpeczzn"
+    },
+    {
+        "id": "PRD057",
+        "name": "Bajaj left filter",
+        "category": "Automobile",
+        "price": 4620.0,
+        "stock": 69,
+        "status": "Low Stock",
+        "sales": 487,
+        "revenue": 33730,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "16kk3fh"
+    },
+    {
+        "id": "PRD058",
+        "name": "TVS right engine",
+        "category": "Automobile",
+        "price": 1031.0,
+        "stock": 40,
+        "status": "In Stock",
+        "sales": 56,
+        "revenue": 22790,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "bm5yyp5"
+    },
+    {
+        "id": "PRD059",
+        "name": "TVS rear radiator",
+        "category": "Automobile",
+        "price": 224.0,
+        "stock": 11,
+        "status": "In Stock",
+        "sales": 330,
+        "revenue": 17788,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "esyleeg"
+    },
+    {
+        "id": "PRD060",
+        "name": "Mahindra top clutch",
+        "category": "Automobile",
+        "price": 821.0,
+        "stock": 60,
+        "status": "In Stock",
+        "sales": 164,
+        "revenue": 7805,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "mh3j4hx"
+    },
+    {
+        "id": "PRD061",
+        "name": "Suzuki front mirror",
+        "category": "Automobile",
+        "price": 1226.0,
+        "stock": 70,
+        "status": "In Stock",
+        "sales": 13,
+        "revenue": 2684,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "sqlm4z6"
+    },
+    {
+        "id": "PRD062",
+        "name": "Honda front light",
+        "category": "Automobile",
+        "price": 2181.0,
+        "stock": 66,
+        "status": "In Stock",
+        "sales": 373,
+        "revenue": 48172,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "jkggo0r"
+    },
+    {
+        "id": "PRD063",
+        "name": "Yamaha top brake",
+        "category": "Automobile",
+        "price": 1413.0,
+        "stock": 6,
+        "status": "In Stock",
+        "sales": 252,
+        "revenue": 38340,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ri4ck1b"
+    },
+    {
+        "id": "PRD064",
+        "name": "Mahindra bottom tire",
+        "category": "Automobile",
+        "price": 1837.0,
+        "stock": 14,
+        "status": "In Stock",
+        "sales": 496,
+        "revenue": 28541,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ska5vl2"
+    },
+    {
+        "id": "PRD065",
+        "name": "Ford front light",
+        "category": "Automobile",
+        "price": 195.0,
+        "stock": 18,
+        "status": "In Stock",
+        "sales": 159,
+        "revenue": 40009,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "0qaxr25"
+    },
+    {
+        "id": "PRD066",
+        "name": "JCB rear tire",
+        "category": "Automobile",
+        "price": 2419.0,
+        "stock": 29,
+        "status": "Low Stock",
+        "sales": 170,
+        "revenue": 29141,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "9mkrddf"
+    },
+    {
+        "id": "PRD067",
+        "name": "Yamaha front gear",
+        "category": "Automobile",
+        "price": 1520.0,
+        "stock": 75,
+        "status": "In Stock",
+        "sales": 55,
+        "revenue": 27254,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "1p0l8gk"
+    },
+    {
+        "id": "PRD068",
+        "name": "Honda bottom tire",
+        "category": "Automobile",
+        "price": 3207.0,
+        "stock": 48,
+        "status": "In Stock",
+        "sales": 327,
+        "revenue": 12183,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "436gi6a"
+    },
+    {
+        "id": "PRD069",
+        "name": "Suzuki bottom clutch",
+        "category": "Automobile",
+        "price": 323.0,
+        "stock": 25,
+        "status": "In Stock",
+        "sales": 326,
+        "revenue": 42681,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "dcyslr0"
+    },
+    {
+        "id": "PRD070",
+        "name": "Yamaha bottom mirror",
+        "category": "Automobile",
+        "price": 3833.0,
+        "stock": 29,
+        "status": "In Stock",
+        "sales": 228,
+        "revenue": 45568,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "61h7pq7"
+    },
+    {
+        "id": "PRD071",
+        "name": "Tata right brake",
+        "category": "Automobile",
+        "price": 1262.0,
+        "stock": 100,
+        "status": "In Stock",
+        "sales": 229,
+        "revenue": 27517,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "mdi1slx"
+    },
+    {
+        "id": "PRD072",
+        "name": "Yamaha rear mirror",
+        "category": "Automobile",
+        "price": 718.0,
+        "stock": 69,
+        "status": "In Stock",
+        "sales": 26,
+        "revenue": 23057,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "e2fyb3f"
+    },
+    {
+        "id": "PRD073",
+        "name": "Bajaj left brake",
+        "category": "Automobile",
+        "price": 1779.0,
+        "stock": 30,
+        "status": "Low Stock",
+        "sales": 53,
+        "revenue": 40618,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "efgxzuf"
+    },
+    {
+        "id": "PRD074",
+        "name": "TVS bottom mirror",
+        "category": "Automobile",
+        "price": 4402.0,
+        "stock": 60,
+        "status": "Low Stock",
+        "sales": 50,
+        "revenue": 32948,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "zno6970"
+    },
+    {
+        "id": "PRD075",
+        "name": "Yamaha left gear",
+        "category": "Automobile",
+        "price": 3751.0,
+        "stock": 48,
+        "status": "In Stock",
+        "sales": 79,
+        "revenue": 21270,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "1e4xp1c"
+    },
+    {
+        "id": "PRD076",
+        "name": "Yamaha left tire",
+        "category": "Automobile",
+        "price": 4270.0,
+        "stock": 75,
+        "status": "In Stock",
+        "sales": 459,
+        "revenue": 36768,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "yq9pmel"
+    },
+    {
+        "id": "PRD077",
+        "name": "Ford right radiator",
+        "category": "Automobile",
+        "price": 4216.0,
+        "stock": 66,
+        "status": "In Stock",
+        "sales": 190,
+        "revenue": 2685,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ars10da"
+    },
+    {
+        "id": "PRD078",
+        "name": "JCB right light",
+        "category": "Automobile",
+        "price": 2388.0,
+        "stock": 38,
+        "status": "In Stock",
+        "sales": 201,
+        "revenue": 26424,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "2ehfzed"
+    },
+    {
+        "id": "PRD079",
+        "name": "Suzuki bottom engine",
+        "category": "Automobile",
+        "price": 4352.0,
+        "stock": 81,
+        "status": "In Stock",
+        "sales": 31,
+        "revenue": 45503,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ig2ld8d"
+    },
+    {
+        "id": "PRD080",
+        "name": "Mahindra bottom mirror",
+        "category": "Automobile",
+        "price": 870.0,
+        "stock": 20,
+        "status": "In Stock",
+        "sales": 375,
+        "revenue": 27733,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "br1cdjx"
+    },
+    {
+        "id": "PRD081",
+        "name": "Yamaha right light",
+        "category": "Automobile",
+        "price": 4280.0,
+        "stock": 45,
+        "status": "In Stock",
+        "sales": 418,
+        "revenue": 42143,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "vnnz31f"
+    },
+    {
+        "id": "PRD082",
+        "name": "Bajaj right filter",
+        "category": "Automobile",
+        "price": 978.0,
+        "stock": 32,
+        "status": "In Stock",
+        "sales": 74,
+        "revenue": 29949,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "mhzsj64"
+    },
+    {
+        "id": "PRD083",
+        "name": "Ford bottom tire",
+        "category": "Automobile",
+        "price": 2056.0,
+        "stock": 23,
+        "status": "In Stock",
+        "sales": 63,
+        "revenue": 16256,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "m5ycwvu"
+    },
+    {
+        "id": "PRD084",
+        "name": "Bajaj bottom pump",
+        "category": "Automobile",
+        "price": 116.0,
+        "stock": 62,
+        "status": "In Stock",
+        "sales": 367,
+        "revenue": 23920,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "cay7gcd"
+    },
+    {
+        "id": "PRD085",
+        "name": "TVS right mirror",
+        "category": "Automobile",
+        "price": 224.0,
+        "stock": 52,
+        "status": "In Stock",
+        "sales": 248,
+        "revenue": 43632,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "1n180fh"
+    },
+    {
+        "id": "PRD086",
+        "name": "Tata rear tire",
+        "category": "Automobile",
+        "price": 128.0,
+        "stock": 79,
+        "status": "In Stock",
+        "sales": 456,
+        "revenue": 39802,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "hargyf2"
+    },
+    {
+        "id": "PRD087",
+        "name": "JCB rear engine",
+        "category": "Automobile",
+        "price": 4082.0,
+        "stock": 88,
+        "status": "In Stock",
+        "sales": 22,
+        "revenue": 49900,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "vgieoox"
+    },
+    {
+        "id": "PRD088",
+        "name": "Yamaha top clutch",
+        "category": "Automobile",
+        "price": 2340.0,
+        "stock": 73,
+        "status": "In Stock",
+        "sales": 469,
+        "revenue": 41619,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "kbqjd9n"
+    },
+    {
+        "id": "PRD089",
+        "name": "Bajaj left engine",
+        "category": "Automobile",
+        "price": 3779.0,
+        "stock": 41,
+        "status": "In Stock",
+        "sales": 342,
+        "revenue": 28436,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "g1x0013"
+    },
+    {
+        "id": "PRD090",
+        "name": "Suzuki top brake",
+        "category": "Automobile",
+        "price": 3127.0,
+        "stock": 4,
+        "status": "In Stock",
+        "sales": 241,
+        "revenue": 46675,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "frrs7p5"
+    },
+    {
+        "id": "PRD091",
+        "name": "Suzuki right brake",
+        "category": "Automobile",
+        "price": 1845.0,
+        "stock": 53,
+        "status": "In Stock",
+        "sales": 134,
+        "revenue": 24577,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ylzxk5r"
+    },
+    {
+        "id": "PRD092",
+        "name": "Yamaha rear radiator",
+        "category": "Automobile",
+        "price": 106.0,
+        "stock": 31,
+        "status": "In Stock",
+        "sales": 50,
+        "revenue": 18002,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ck1ehfq"
+    },
+    {
+        "id": "PRD093",
+        "name": "Yamaha front gear",
+        "category": "Automobile",
+        "price": 4196.0,
+        "stock": 81,
+        "status": "In Stock",
+        "sales": 21,
+        "revenue": 12050,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "wklezl9"
+    },
+    {
+        "id": "PRD094",
+        "name": "Hero right gear",
+        "category": "Automobile",
+        "price": 1994.0,
+        "stock": 30,
+        "status": "In Stock",
+        "sales": 470,
+        "revenue": 47059,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "uj01bof"
+    },
+    {
+        "id": "PRD095",
+        "name": "Hero front filter",
+        "category": "Automobile",
+        "price": 1671.0,
+        "stock": 13,
+        "status": "In Stock",
+        "sales": 185,
+        "revenue": 10114,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "g2onaju"
+    },
+    {
+        "id": "PRD096",
+        "name": "Mahindra right clutch",
+        "category": "Automobile",
+        "price": 3096.0,
+        "stock": 5,
+        "status": "In Stock",
+        "sales": 224,
+        "revenue": 15382,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "1tjtakr"
+    },
+    {
+        "id": "PRD097",
+        "name": "Hero right filter",
+        "category": "Automobile",
+        "price": 1247.0,
+        "stock": 67,
+        "status": "In Stock",
+        "sales": 81,
+        "revenue": 7963,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "mbt41bb"
+    },
+    {
+        "id": "PRD098",
+        "name": "Bajaj right tire",
+        "category": "Automobile",
+        "price": 2652.0,
+        "stock": 74,
+        "status": "In Stock",
+        "sales": 70,
+        "revenue": 45539,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "k6h41n2"
+    },
+    {
+        "id": "PRD099",
+        "name": "Bajaj bottom clutch",
+        "category": "Automobile",
+        "price": 742.0,
+        "stock": 12,
+        "status": "In Stock",
+        "sales": 218,
+        "revenue": 3923,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "axpkjs9"
+    },
+    {
+        "id": "PRD100",
+        "name": "Yamaha bottom radiator",
+        "category": "Automobile",
+        "price": 4710.0,
+        "stock": 5,
+        "status": "In Stock",
+        "sales": 341,
+        "revenue": 39043,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "w5uuv3b"
+    },
+    {
+        "id": "PRD101",
+        "name": "JCB front pump",
+        "category": "Automobile",
+        "price": 2271.0,
+        "stock": 33,
+        "status": "In Stock",
+        "sales": 101,
+        "revenue": 44855,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ooa6hyf"
+    },
+    {
+        "id": "PRD102",
+        "name": "Honda bottom light",
+        "category": "Automobile",
+        "price": 359.0,
+        "stock": 25,
+        "status": "In Stock",
+        "sales": 440,
+        "revenue": 29059,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "7qh8k25"
+    },
+    {
+        "id": "PRD103",
+        "name": "Honda front brake",
+        "category": "Automobile",
+        "price": 135.0,
+        "stock": 97,
+        "status": "Low Stock",
+        "sales": 456,
+        "revenue": 8755,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "j3b1034"
+    },
+    {
+        "id": "PRD104",
+        "name": "Yamaha bottom tire",
+        "category": "Automobile",
+        "price": 3986.0,
+        "stock": 20,
+        "status": "Low Stock",
+        "sales": 224,
+        "revenue": 5015,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "r8ext38"
+    },
+    {
+        "id": "PRD105",
+        "name": "Yamaha top tire",
+        "category": "Automobile",
+        "price": 4219.0,
+        "stock": 12,
+        "status": "In Stock",
+        "sales": 242,
+        "revenue": 8112,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "0rama6w"
+    },
+    {
+        "id": "PRD106",
+        "name": "JCB bottom tire",
+        "category": "Automobile",
+        "price": 1755.0,
+        "stock": 17,
+        "status": "In Stock",
+        "sales": 222,
+        "revenue": 14520,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "jzxrt1i"
+    },
+    {
+        "id": "PRD107",
+        "name": "Honda top tire",
+        "category": "Automobile",
+        "price": 1754.0,
+        "stock": 13,
+        "status": "In Stock",
+        "sales": 119,
+        "revenue": 38809,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "v5gfqyg"
+    },
+    {
+        "id": "PRD108",
+        "name": "Suzuki top engine",
+        "category": "Automobile",
+        "price": 525.0,
+        "stock": 66,
+        "status": "In Stock",
+        "sales": 431,
+        "revenue": 28635,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "8gxmq0v"
+    },
+    {
+        "id": "PRD109",
+        "name": "TVS rear filter",
+        "category": "Automobile",
+        "price": 3692.0,
+        "stock": 67,
+        "status": "In Stock",
+        "sales": 315,
+        "revenue": 19499,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "y8rb5zw"
+    },
+    {
+        "id": "PRD110",
+        "name": "Hero front clutch",
+        "category": "Automobile",
+        "price": 4239.0,
+        "stock": 82,
+        "status": "In Stock",
+        "sales": 239,
+        "revenue": 3990,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "vbjbe41"
+    },
+    {
+        "id": "PRD111",
+        "name": "Suzuki top engine",
+        "category": "Automobile",
+        "price": 4060.0,
+        "stock": 34,
+        "status": "In Stock",
+        "sales": 185,
+        "revenue": 22321,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "v10aozv"
+    },
+    {
+        "id": "PRD112",
+        "name": "Hero front mirror",
+        "category": "Automobile",
+        "price": 777.0,
+        "stock": 52,
+        "status": "In Stock",
+        "sales": 459,
+        "revenue": 37971,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "uzy4xb3"
+    },
+    {
+        "id": "PRD113",
+        "name": "Hero top radiator",
+        "category": "Automobile",
+        "price": 892.0,
+        "stock": 70,
+        "status": "In Stock",
+        "sales": 190,
+        "revenue": 4411,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "vjv8s7d"
+    },
+    {
+        "id": "PRD114",
+        "name": "Honda top radiator",
+        "category": "Automobile",
+        "price": 4579.0,
+        "stock": 79,
+        "status": "In Stock",
+        "sales": 198,
+        "revenue": 14504,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "6l5rlq4"
+    },
+    {
+        "id": "PRD115",
+        "name": "Mahindra bottom brake",
+        "category": "Automobile",
+        "price": 4972.0,
+        "stock": 57,
+        "status": "In Stock",
+        "sales": 210,
+        "revenue": 39985,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "g3ykn2j"
+    },
+    {
+        "id": "PRD116",
+        "name": "Bajaj bottom mirror",
+        "category": "Automobile",
+        "price": 727.0,
+        "stock": 44,
+        "status": "In Stock",
+        "sales": 15,
+        "revenue": 39931,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "teeskdh"
+    },
+    {
+        "id": "PRD117",
+        "name": "Suzuki left clutch",
+        "category": "Automobile",
+        "price": 4629.0,
+        "stock": 89,
+        "status": "In Stock",
+        "sales": 296,
+        "revenue": 41094,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "2qhiof9"
+    },
+    {
+        "id": "PRD118",
+        "name": "Honda front clutch",
+        "category": "Automobile",
+        "price": 4902.0,
+        "stock": 7,
+        "status": "In Stock",
+        "sales": 181,
+        "revenue": 7942,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "9x5pn7f"
+    },
+    {
+        "id": "PRD119",
+        "name": "Hero left pump",
+        "category": "Automobile",
+        "price": 1689.0,
+        "stock": 4,
+        "status": "In Stock",
+        "sales": 24,
+        "revenue": 7256,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "mwe9n82"
+    },
+    {
+        "id": "PRD120",
+        "name": "Yamaha top filter",
+        "category": "Automobile",
+        "price": 4448.0,
+        "stock": 99,
+        "status": "In Stock",
+        "sales": 120,
+        "revenue": 10780,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "p9bcabf"
+    },
+    {
+        "id": "PRD121",
+        "name": "Tata right mirror",
+        "category": "Automobile",
+        "price": 2749.0,
+        "stock": 97,
+        "status": "In Stock",
+        "sales": 425,
+        "revenue": 40439,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "6a0cpto"
+    },
+    {
+        "id": "PRD122",
+        "name": "Hero top filter",
+        "category": "Automobile",
+        "price": 4483.0,
+        "stock": 17,
+        "status": "In Stock",
+        "sales": 143,
+        "revenue": 22024,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "nxrym2d"
+    },
+    {
+        "id": "PRD123",
+        "name": "TVS front filter",
+        "category": "Automobile",
+        "price": 4150.0,
+        "stock": 12,
+        "status": "In Stock",
+        "sales": 184,
+        "revenue": 11231,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "w8jl1k3"
+    },
+    {
+        "id": "PRD124",
+        "name": "Yamaha top gear",
+        "category": "Automobile",
+        "price": 1330.0,
+        "stock": 60,
+        "status": "In Stock",
+        "sales": 227,
+        "revenue": 40611,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ttxu1vp"
+    },
+    {
+        "id": "PRD125",
+        "name": "Hero left mirror",
+        "category": "Automobile",
+        "price": 2947.0,
+        "stock": 81,
+        "status": "In Stock",
+        "sales": 88,
+        "revenue": 11640,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "jwhuwi6"
+    },
+    {
+        "id": "PRD126",
+        "name": "Mahindra top engine",
+        "category": "Automobile",
+        "price": 1007.0,
+        "stock": 32,
+        "status": "In Stock",
+        "sales": 230,
+        "revenue": 15352,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "stnwdqn"
+    },
+    {
+        "id": "PRD127",
+        "name": "Tata top clutch",
+        "category": "Automobile",
+        "price": 516.0,
+        "stock": 24,
+        "status": "In Stock",
+        "sales": 85,
+        "revenue": 41751,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "3zl5wa6"
+    },
+    {
+        "id": "PRD128",
+        "name": "Honda right brake",
+        "category": "Automobile",
+        "price": 4934.0,
+        "stock": 62,
+        "status": "In Stock",
+        "sales": 405,
+        "revenue": 1410,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "pz7nqh8"
+    },
+    {
+        "id": "PRD129",
+        "name": "Suzuki left filter",
+        "category": "Automobile",
+        "price": 3015.0,
+        "stock": 3,
+        "status": "In Stock",
+        "sales": 461,
+        "revenue": 2031,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "y8kk4i7"
+    },
+    {
+        "id": "PRD130",
+        "name": "JCB right tire",
+        "category": "Automobile",
+        "price": 1985.0,
+        "stock": 87,
+        "status": "In Stock",
+        "sales": 69,
+        "revenue": 48856,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "6hmpyw4"
+    },
+    {
+        "id": "PRD131",
+        "name": "TVS right mirror",
+        "category": "Automobile",
+        "price": 3554.0,
+        "stock": 54,
+        "status": "In Stock",
+        "sales": 288,
+        "revenue": 30415,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "wocbjtk"
+    },
+    {
+        "id": "PRD132",
+        "name": "TVS bottom pump",
+        "category": "Automobile",
+        "price": 1629.0,
+        "stock": 37,
+        "status": "In Stock",
+        "sales": 248,
+        "revenue": 21072,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "34uix1p"
+    },
+    {
+        "id": "PRD133",
+        "name": "Tata bottom filter",
+        "category": "Automobile",
+        "price": 2700.0,
+        "stock": 24,
+        "status": "In Stock",
+        "sales": 258,
+        "revenue": 15276,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "u673uy5"
+    },
+    {
+        "id": "PRD134",
+        "name": "Ford left light",
+        "category": "Automobile",
+        "price": 2455.0,
+        "stock": 71,
+        "status": "Low Stock",
+        "sales": 229,
+        "revenue": 49613,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "g3asxie"
+    },
+    {
+        "id": "PRD135",
+        "name": "Hero left mirror",
+        "category": "Automobile",
+        "price": 4114.0,
+        "stock": 65,
+        "status": "In Stock",
+        "sales": 292,
+        "revenue": 10854,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "dq3kwu4"
+    },
+    {
+        "id": "PRD136",
+        "name": "TVS bottom radiator",
+        "category": "Automobile",
+        "price": 2387.0,
+        "stock": 88,
+        "status": "In Stock",
+        "sales": 86,
+        "revenue": 27407,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ygi0pj9"
+    },
+    {
+        "id": "PRD137",
+        "name": "TVS top brake",
+        "category": "Automobile",
+        "price": 2592.0,
+        "stock": 41,
+        "status": "In Stock",
+        "sales": 436,
+        "revenue": 35219,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "wm8qts0"
+    },
+    {
+        "id": "PRD138",
+        "name": "Hero rear engine",
+        "category": "Automobile",
+        "price": 3753.0,
+        "stock": 17,
+        "status": "In Stock",
+        "sales": 333,
+        "revenue": 5192,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "bju9tid"
+    },
+    {
+        "id": "PRD139",
+        "name": "Honda top gear",
+        "category": "Automobile",
+        "price": 1433.0,
+        "stock": 38,
+        "status": "In Stock",
+        "sales": 188,
+        "revenue": 7597,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "a1q5cku"
+    },
+    {
+        "id": "PRD140",
+        "name": "Hero right clutch",
+        "category": "Automobile",
+        "price": 4724.0,
+        "stock": 88,
+        "status": "Low Stock",
+        "sales": 344,
+        "revenue": 44298,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "unx8zy7"
+    },
+    {
+        "id": "PRD141",
+        "name": "Bajaj top gear",
+        "category": "Automobile",
+        "price": 4165.0,
+        "stock": 72,
+        "status": "In Stock",
+        "sales": 46,
+        "revenue": 17032,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "tac7nez"
+    },
+    {
+        "id": "PRD142",
+        "name": "JCB bottom tire",
+        "category": "Automobile",
+        "price": 3057.0,
+        "stock": 55,
+        "status": "Low Stock",
+        "sales": 197,
+        "revenue": 14942,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "mh0d14z"
+    },
+    {
+        "id": "PRD143",
+        "name": "Hero rear radiator",
+        "category": "Automobile",
+        "price": 1637.0,
+        "stock": 14,
+        "status": "In Stock",
+        "sales": 493,
+        "revenue": 31336,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "qm4wxm0"
+    },
+    {
+        "id": "PRD144",
+        "name": "Ford rear gear",
+        "category": "Automobile",
+        "price": 2639.0,
+        "stock": 85,
+        "status": "In Stock",
+        "sales": 220,
+        "revenue": 34171,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ajdvpgl"
+    },
+    {
+        "id": "PRD145",
+        "name": "Honda left gear",
+        "category": "Automobile",
+        "price": 3001.0,
+        "stock": 82,
+        "status": "Low Stock",
+        "sales": 425,
+        "revenue": 42090,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "eokyvgq"
+    },
+    {
+        "id": "PRD146",
+        "name": "Yamaha top mirror",
+        "category": "Automobile",
+        "price": 3518.0,
+        "stock": 12,
+        "status": "In Stock",
+        "sales": 240,
+        "revenue": 20039,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "nz08dzl"
+    },
+    {
+        "id": "PRD147",
+        "name": "Suzuki top mirror",
+        "category": "Automobile",
+        "price": 3144.0,
+        "stock": 43,
+        "status": "In Stock",
+        "sales": 19,
+        "revenue": 14113,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "xy1wxnm"
+    },
+    {
+        "id": "PRD148",
+        "name": "Hero right engine",
+        "category": "Automobile",
+        "price": 3542.0,
+        "stock": 92,
+        "status": "In Stock",
+        "sales": 338,
+        "revenue": 25094,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "3whdrkj"
+    },
+    {
+        "id": "PRD149",
+        "name": "Ford bottom gear",
+        "category": "Automobile",
+        "price": 4172.0,
+        "stock": 82,
+        "status": "In Stock",
+        "sales": 182,
+        "revenue": 45876,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ku0m6sf"
+    },
+    {
+        "id": "PRD150",
+        "name": "JCB top clutch",
+        "category": "Automobile",
+        "price": 2142.0,
+        "stock": 41,
+        "status": "In Stock",
+        "sales": 494,
+        "revenue": 17642,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "aapxatp"
+    },
+    {
+        "id": "PRD151",
+        "name": "Mahindra right gear",
+        "category": "Automobile",
+        "price": 4366.0,
+        "stock": 69,
+        "status": "In Stock",
+        "sales": 317,
+        "revenue": 40656,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "aasek7a"
+    },
+    {
+        "id": "PRD152",
+        "name": "Tata right gear",
+        "category": "Automobile",
+        "price": 569.0,
+        "stock": 82,
+        "status": "In Stock",
+        "sales": 108,
+        "revenue": 19352,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "hb2q7ta"
+    },
+    {
+        "id": "PRD153",
+        "name": "Mahindra rear engine",
+        "category": "Automobile",
+        "price": 3253.0,
+        "stock": 91,
+        "status": "In Stock",
+        "sales": 382,
+        "revenue": 26999,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "co49yyr"
+    },
+    {
+        "id": "PRD154",
+        "name": "Suzuki front brake",
+        "category": "Automobile",
+        "price": 3086.0,
+        "stock": 60,
+        "status": "In Stock",
+        "sales": 65,
+        "revenue": 4623,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "f5cffss"
+    },
+    {
+        "id": "PRD155",
+        "name": "Mahindra right engine",
+        "category": "Automobile",
+        "price": 4604.0,
+        "stock": 97,
+        "status": "In Stock",
+        "sales": 259,
+        "revenue": 18470,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "pubufye"
+    },
+    {
+        "id": "PRD156",
+        "name": "TVS right light",
+        "category": "Automobile",
+        "price": 1267.0,
+        "stock": 22,
+        "status": "Low Stock",
+        "sales": 404,
+        "revenue": 43045,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "069r95l"
+    },
+    {
+        "id": "PRD157",
+        "name": "Bajaj right light",
+        "category": "Automobile",
+        "price": 2285.0,
+        "stock": 79,
+        "status": "In Stock",
+        "sales": 141,
+        "revenue": 25802,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "f22ve0o"
+    },
+    {
+        "id": "PRD158",
+        "name": "Yamaha bottom engine",
+        "category": "Automobile",
+        "price": 2430.0,
+        "stock": 59,
+        "status": "In Stock",
+        "sales": 429,
+        "revenue": 29606,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "wv8ku8d"
+    },
+    {
+        "id": "PRD159",
+        "name": "Bajaj rear engine",
+        "category": "Automobile",
+        "price": 807.0,
+        "stock": 72,
+        "status": "In Stock",
+        "sales": 303,
+        "revenue": 37916,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "32ceywd"
+    },
+    {
+        "id": "PRD160",
+        "name": "Tata rear mirror",
+        "category": "Automobile",
+        "price": 1332.0,
+        "stock": 39,
+        "status": "In Stock",
+        "sales": 461,
+        "revenue": 10579,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "bki5p92"
+    },
+    {
+        "id": "PRD161",
+        "name": "Hero left gear",
+        "category": "Automobile",
+        "price": 855.0,
+        "stock": 19,
+        "status": "In Stock",
+        "sales": 209,
+        "revenue": 39745,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "p0adhka"
+    },
+    {
+        "id": "PRD162",
+        "name": "Bajaj right radiator",
+        "category": "Automobile",
+        "price": 3047.0,
+        "stock": 30,
+        "status": "In Stock",
+        "sales": 243,
+        "revenue": 35946,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ghdom0r"
+    },
+    {
+        "id": "PRD163",
+        "name": "Yamaha top light",
+        "category": "Automobile",
+        "price": 4029.0,
+        "stock": 3,
+        "status": "Low Stock",
+        "sales": 202,
+        "revenue": 36857,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "63q4483"
+    },
+    {
+        "id": "PRD164",
+        "name": "Yamaha bottom light",
+        "category": "Automobile",
+        "price": 482.0,
+        "stock": 43,
+        "status": "In Stock",
+        "sales": 182,
+        "revenue": 43278,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "p1l3xx3"
+    },
+    {
+        "id": "PRD165",
+        "name": "Honda bottom pump",
+        "category": "Automobile",
+        "price": 2458.0,
+        "stock": 42,
+        "status": "In Stock",
+        "sales": 403,
+        "revenue": 4066,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "1qkxtl5"
+    },
+    {
+        "id": "PRD166",
+        "name": "Yamaha bottom clutch",
+        "category": "Automobile",
+        "price": 4509.0,
+        "stock": 75,
+        "status": "In Stock",
+        "sales": 47,
+        "revenue": 29944,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "stn2ufs"
+    },
+    {
+        "id": "PRD167",
+        "name": "Honda front tire",
+        "category": "Automobile",
+        "price": 1720.0,
+        "stock": 45,
+        "status": "In Stock",
+        "sales": 357,
+        "revenue": 44368,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ivdt0da"
+    },
+    {
+        "id": "PRD168",
+        "name": "JCB right clutch",
+        "category": "Automobile",
+        "price": 2417.0,
+        "stock": 49,
+        "status": "In Stock",
+        "sales": 409,
+        "revenue": 41027,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "vh2xvaj"
+    },
+    {
+        "id": "PRD169",
+        "name": "Yamaha bottom brake",
+        "category": "Automobile",
+        "price": 3080.0,
+        "stock": 48,
+        "status": "In Stock",
+        "sales": 385,
+        "revenue": 28526,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "m9g4msu"
+    },
+    {
+        "id": "PRD170",
+        "name": "Bajaj bottom light",
+        "category": "Automobile",
+        "price": 454.0,
+        "stock": 65,
+        "status": "In Stock",
+        "sales": 344,
+        "revenue": 15726,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "wcd72uf"
+    },
+    {
+        "id": "PRD171",
+        "name": "Tata left clutch",
+        "category": "Automobile",
+        "price": 4487.0,
+        "stock": 51,
+        "status": "In Stock",
+        "sales": 489,
+        "revenue": 34517,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "cf1skpn"
+    },
+    {
+        "id": "PRD172",
+        "name": "Mahindra right gear",
+        "category": "Automobile",
+        "price": 2790.0,
+        "stock": 58,
+        "status": "In Stock",
+        "sales": 447,
+        "revenue": 3905,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "o4yx447"
+    },
+    {
+        "id": "PRD173",
+        "name": "Ford left light",
+        "category": "Automobile",
+        "price": 4816.0,
+        "stock": 22,
+        "status": "In Stock",
+        "sales": 497,
+        "revenue": 18032,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "32nnukp"
+    },
+    {
+        "id": "PRD174",
+        "name": "Tata front filter",
+        "category": "Automobile",
+        "price": 197.0,
+        "stock": 0,
+        "status": "In Stock",
+        "sales": 405,
+        "revenue": 47645,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "sgq85gy"
+    },
+    {
+        "id": "PRD175",
+        "name": "Bajaj bottom brake",
+        "category": "Automobile",
+        "price": 2856.0,
+        "stock": 17,
+        "status": "In Stock",
+        "sales": 298,
+        "revenue": 46919,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "rdnp396"
+    },
+    {
+        "id": "PRD176",
+        "name": "Hero front filter",
+        "category": "Automobile",
+        "price": 3743.0,
+        "stock": 69,
+        "status": "In Stock",
+        "sales": 201,
+        "revenue": 5636,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "zqrm49t"
+    },
+    {
+        "id": "PRD177",
+        "name": "Hero left clutch",
+        "category": "Automobile",
+        "price": 681.0,
+        "stock": 65,
+        "status": "In Stock",
+        "sales": 386,
+        "revenue": 30708,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "brda06e"
+    },
+    {
+        "id": "PRD178",
+        "name": "TVS right mirror",
+        "category": "Automobile",
+        "price": 3851.0,
+        "stock": 86,
+        "status": "In Stock",
+        "sales": 131,
+        "revenue": 29990,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "fo10dit"
+    },
+    {
+        "id": "PRD179",
+        "name": "Yamaha front clutch",
+        "category": "Automobile",
+        "price": 2698.0,
+        "stock": 69,
+        "status": "In Stock",
+        "sales": 289,
+        "revenue": 4139,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "90ct8kf"
+    },
+    {
+        "id": "PRD180",
+        "name": "Ford rear pump",
+        "category": "Automobile",
+        "price": 2063.0,
+        "stock": 4,
+        "status": "In Stock",
+        "sales": 35,
+        "revenue": 3356,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "1d1l644"
+    },
+    {
+        "id": "PRD181",
+        "name": "Hero front radiator",
+        "category": "Automobile",
+        "price": 2101.0,
+        "stock": 70,
+        "status": "In Stock",
+        "sales": 46,
+        "revenue": 42106,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "5lommgk"
+    },
+    {
+        "id": "PRD182",
+        "name": "Honda top mirror",
+        "category": "Automobile",
+        "price": 3819.0,
+        "stock": 82,
+        "status": "In Stock",
+        "sales": 122,
+        "revenue": 16223,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "he5xy9p"
+    },
+    {
+        "id": "PRD183",
+        "name": "Yamaha top mirror",
+        "category": "Automobile",
+        "price": 4086.0,
+        "stock": 41,
+        "status": "In Stock",
+        "sales": 168,
+        "revenue": 38049,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "b9gezyd"
+    },
+    {
+        "id": "PRD184",
+        "name": "Mahindra top mirror",
+        "category": "Automobile",
+        "price": 3380.0,
+        "stock": 64,
+        "status": "In Stock",
+        "sales": 22,
+        "revenue": 45309,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "nkaosm2"
+    },
+    {
+        "id": "PRD185",
+        "name": "JCB left tire",
+        "category": "Automobile",
+        "price": 2859.0,
+        "stock": 26,
+        "status": "In Stock",
+        "sales": 387,
+        "revenue": 17681,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "mshn2hl"
+    },
+    {
+        "id": "PRD186",
+        "name": "TVS rear brake",
+        "category": "Automobile",
+        "price": 1902.0,
+        "stock": 55,
+        "status": "In Stock",
+        "sales": 298,
+        "revenue": 35174,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "4etbnai"
+    },
+    {
+        "id": "PRD187",
+        "name": "Yamaha bottom engine",
+        "category": "Automobile",
+        "price": 1944.0,
+        "stock": 16,
+        "status": "In Stock",
+        "sales": 269,
+        "revenue": 14557,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "48x8cqy"
+    },
+    {
+        "id": "PRD188",
+        "name": "JCB top radiator",
+        "category": "Automobile",
+        "price": 3187.0,
+        "stock": 92,
+        "status": "In Stock",
+        "sales": 310,
+        "revenue": 42688,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "6n3bx9n"
+    },
+    {
+        "id": "PRD189",
+        "name": "Suzuki top radiator",
+        "category": "Automobile",
+        "price": 4980.0,
+        "stock": 77,
+        "status": "In Stock",
+        "sales": 122,
+        "revenue": 6671,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "43m3hqq"
+    },
+    {
+        "id": "PRD190",
+        "name": "Bajaj left light",
+        "category": "Automobile",
+        "price": 3519.0,
+        "stock": 17,
+        "status": "In Stock",
+        "sales": 459,
+        "revenue": 41619,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "na33q6e"
+    },
+    {
+        "id": "PRD191",
+        "name": "Tata right brake",
+        "category": "Automobile",
+        "price": 1011.0,
+        "stock": 13,
+        "status": "In Stock",
+        "sales": 268,
+        "revenue": 3262,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "dfv5we6"
+    },
+    {
+        "id": "PRD192",
+        "name": "Suzuki right gear",
+        "category": "Automobile",
+        "price": 2924.0,
+        "stock": 80,
+        "status": "In Stock",
+        "sales": 368,
+        "revenue": 39660,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "7lg03b7"
+    },
+    {
+        "id": "PRD193",
+        "name": "Tata left radiator",
+        "category": "Automobile",
+        "price": 3133.0,
+        "stock": 95,
+        "status": "In Stock",
+        "sales": 389,
+        "revenue": 30132,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "nmqdu92"
+    },
+    {
+        "id": "PRD194",
+        "name": "Yamaha left pump",
+        "category": "Automobile",
+        "price": 201.0,
+        "stock": 97,
+        "status": "In Stock",
+        "sales": 306,
+        "revenue": 15609,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "6bns3pu"
+    },
+    {
+        "id": "PRD195",
+        "name": "Mahindra rear filter",
+        "category": "Automobile",
+        "price": 1057.0,
+        "stock": 17,
+        "status": "In Stock",
+        "sales": 94,
+        "revenue": 49463,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "x72zxti"
+    },
+    {
+        "id": "PRD196",
+        "name": "Tata left filter",
+        "category": "Automobile",
+        "price": 2686.0,
+        "stock": 10,
+        "status": "In Stock",
+        "sales": 433,
+        "revenue": 13431,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "or6nrtp"
+    },
+    {
+        "id": "PRD197",
+        "name": "TVS right tire",
+        "category": "Automobile",
+        "price": 348.0,
+        "stock": 93,
+        "status": "In Stock",
+        "sales": 426,
+        "revenue": 31830,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "co1qye4"
+    },
+    {
+        "id": "PRD198",
+        "name": "Suzuki right clutch",
+        "category": "Automobile",
+        "price": 2878.0,
+        "stock": 40,
+        "status": "In Stock",
+        "sales": 419,
+        "revenue": 13408,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "xkzgwl9"
+    },
+    {
+        "id": "PRD199",
+        "name": "Suzuki top radiator",
+        "category": "Automobile",
+        "price": 178.0,
+        "stock": 17,
+        "status": "In Stock",
+        "sales": 237,
+        "revenue": 15616,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "id7iovd"
+    },
+    {
+        "id": "PRD200",
+        "name": "Mahindra bottom clutch",
+        "category": "Automobile",
+        "price": 1270.0,
+        "stock": 63,
+        "status": "Low Stock",
+        "sales": 315,
+        "revenue": 41613,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "6er181u"
     }
 ]

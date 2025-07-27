@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 
 // ✅ Import named export
 
-import { Sidebar } from "./sidebar"
+// import { Sidebar } from "./sidebar.jsx"
 import { UserNav } from "./user-nav"
 import { Overview } from "./overview"
 import { RecentSales } from "./recent-sales"
@@ -25,7 +25,7 @@ import { TicketsCard } from "./tickets-card"
 import { ActivityCard } from "./activity-card"
 import { IssuesCard } from "./issues-card"
 import { ReportsCard } from "./reports-card"
-
+import  MainNavv  from "./Main_nav.jsx"
 export default function DashboardPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -55,7 +55,9 @@ export default function DashboardPage() {
               </svg>
               <span className="sr-only">Toggle Menu</span>
             </button>
-            {/* <MainNavv /> */}
+             <MainNavv />
+
+             {/* <Navbar></Navbar> */}
             <div className="ml-auto flex items-center space-x-4">
               <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -68,7 +70,7 @@ export default function DashboardPage() {
 
         <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold tracking-tight">Welcome back, David</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Ashirwad Enterprises</h2>
             <div className="flex items-center space-x-2">
               <Select defaultValue="daily">
                 <SelectTrigger className="w-[180px]">

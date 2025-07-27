@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
+import React from 'react';
 
-export default function navbar() {
+export default function Aksht() {
   return (
     <div className="flex gap-6 md:gap-10">
       <Link to="/" className="hidden items-center space-x-2 md:flex">

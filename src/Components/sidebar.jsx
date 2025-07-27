@@ -20,7 +20,7 @@ import { Button } from "./ui/button"
 import { ScrollArea } from "./ui/scroll-area"
 import { Sheet, SheetContent } from "./ui/sheet"
 
-export function Sidebar({ className, open, onOpenChange }) {
+export default function Sidebar({ className, open, onOpenChange }) {
   const [selected, setSelected] = useState("dashboard")
 
   const navItems = [

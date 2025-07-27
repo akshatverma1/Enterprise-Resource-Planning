@@ -21,83 +21,29 @@ import { Badge } from "./ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
-
-
-const productsData = [
-  {
-    id: "PRD001",
-    name: "Wireless Headphones",
-    category: "Electronics",
-    price: 199.99,
-    stock: 45,
-    status: "Active",
-    sales: 234,
-    revenue: 46766,
-    image: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: "PRD002",
-    name: "Smart Watch",
-    category: "Electronics",
-    price: 299.99,
-    stock: 12,
-    status: "Low Stock",
-    sales: 189,
-    revenue: 56698,
-    image: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: "PRD003",
-    name: "Coffee Maker",
-    category: "Appliances",
-    price: 149.99,
-    stock: 0,
-    status: "Out of Stock",
-    sales: 156,
-    revenue: 23398,
-    image: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: "PRD004",
-    name: "Laptop Stand",
-    category: "Accessories",
-    price: 79.99,
-    stock: 78,
-    status: "Active",
-    sales: 312,
-    revenue: 24957,
-    image: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: "PRD005",
-    name: "Bluetooth Speaker",
-    category: "Electronics",
-    price: 89.99,
-    stock: 23,
-    status: "Active",
-    sales: 445,
-    revenue: 40046,
-    image: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: "PRD006",
-    name: "Desk Lamp",
-    category: "Furniture",
-    price: 59.99,
-    stock: 5,
-    status: "Low Stock",
-    sales: 167,
-    revenue: 10018,
-    image: "/placeholder.svg?height=40&width=40",
-  },
-]
-
+import Main_nav from "./Main_nav.jsx"
 const categories = ["All", "Electronics", "Appliances", "Accessories", "Furniture"]
 
 export default function ProductsPage() {
+  const [productsData, setProductsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [selectedStatus, setSelectedStatus] = useState("All")
+
+  async function fetchProducts() {
+    let url = "http://localhost:4000/data";
+    try {
+      const data = await fetch(url);
+      const jsonData = await data.json();
+      setProductsData(jsonData);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return;
+      
+    }
+    
+  }
+  fetchProducts();
 
   const filteredProducts = productsData.filter((product) => {
     const matchesSearch =
@@ -136,6 +82,7 @@ export default function ProductsPage() {
           <div className="flex items-center justify-between px-6 py-4">
             <div className="flex items-center space-x-4">
               {/* <MainNav /> */}
+              <Main_nav></Main_nav>
             </div>
             {/* <UserNav /> */}
           </div>
