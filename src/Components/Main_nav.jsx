@@ -14,8 +14,8 @@ export default function Aksht() {
         <Link to="/product" className="flex items-center text-sm font-medium text-muted-foreground">
           Products
         </Link>
-        <Link to="/settings" className="flex items-center text-sm font-medium text-muted-foreground">
-          Settings
+        <Link to="/challan" className="flex items-center text-sm font-medium text-muted-foreground">
+          Challan Maker
         </Link>
       </nav>
     </div>
