@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 import { Badge } from "./ui/badge"
+import html2pdf from "html2pdf.js"
 
 // Mock company data
 const myCompany = {
@@ -267,7 +268,7 @@ export default function BillMakerPage() {
     };
     
     setBillNumber(generateBillNumber());
-}, []);
+  }, []);
 
   const calculateSubtotal = () => {
     return billItems.reduce((sum, item) => sum + item.total, 0)
@@ -288,7 +289,7 @@ export default function BillMakerPage() {
   }
 
   const calculateTotal = () => {
-    return calculateSubtotal();
+    return calculateSubtotal() + calculateTotalGST() - calculateDiscount()
   }
 
   const getUniqueGSTRates = () => {
@@ -351,8 +352,8 @@ export default function BillMakerPage() {
         price: product.price,
         quantity: quantity,
         total: product.price * quantity,
-        gstRate: product.gstRate,
-        hsnCode: product.hsnCode,
+        gstRate: 18, // Assuming 18% GST for all products
+        hsnCode: product.hsn,
       }
       setBillItems([...billItems, newItem])
     }
@@ -381,19 +382,16 @@ export default function BillMakerPage() {
     setBillItems(updatedItems)
   }
 
-  const handlePrint = () => {
-    const printWindow = window.open('', '_blank');
-    const printDocument = printWindow.document;
-    
+  const generateInvoiceHTML = () => {
     const now = new Date();
     const dateStr = now.toLocaleDateString();
     const timeStr = now.toLocaleTimeString();
     
-    printDocument.write(`
+    return `
       <!DOCTYPE html>
       <html>
         <head>
-          <title>Invoice ${billNumber}</title>
+          <title>Challan ${billNumber}</title>
           <style>
             @page {
               size: A4;
@@ -403,7 +401,6 @@ export default function BillMakerPage() {
               margin: 2rem;
               padding: 15px;
               font-family: Arial, sans-serif;
-              zoom: 0.8;
             }
             .invoice-header {
               display: flex;
@@ -447,19 +444,6 @@ export default function BillMakerPage() {
               display: flex;
               justify-content: space-between;
             }
-            .no-print {
-              display: none;
-            }
-            @media print {
-              body {
-                zoom: 0.8;
-                transform: scale(0.8);
-                transform-origin: 0 0;
-              }
-              .page-break {
-                page-break-after: always;
-              }
-            }
           </style>
         </head>
         <body>
@@ -472,7 +456,7 @@ export default function BillMakerPage() {
               <p>GST: ${myCompany.gstNumber}</p>
             </div>
             <div>
-              <h3>INVOICE</h3>
+              <h3>Challan</h3>
               <p>No: ${billNumber}</p>
               <p>Date: ${dateStr}</p>
               <p>Time: ${timeStr}</p>
@@ -547,21 +531,49 @@ export default function BillMakerPage() {
               <p>For ${myCompany.name}</p>
             </div>
           </div>
-          
-          <script>
-            setTimeout(() => {
-              window.print();
-              window.onafterprint = () => window.close();
-            }, 200);
-          </script>
         </body>
       </html>
-    `);
+    `;
+  }
+
+  const handlePrint = () => {
+    const printWindow = window.open('', '_blank');
+    const printDocument = printWindow.document;
     
+    printDocument.write(generateInvoiceHTML());
     printDocument.close();
+    
+    setTimeout(() => {
+      printWindow.print();
+    }, 200);
   }
 
   const handleSave = () => {
+    if (billItems.length === 0 || !customerInfo.companyName) {
+      alert("Please add items to the bill and select a customer first");
+      return;
+    }
+
+    // Generate the invoice HTML
+    const invoiceHTML = generateInvoiceHTML();
+    
+    // Create a temporary element to hold our HTML
+    const element = document.createElement('div');
+    element.innerHTML = invoiceHTML;
+    
+    // Options for the PDF
+    const opt = {
+      margin: 10,
+      filename: `Invoice_${billNumber}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    
+    // Generate and save the PDF
+    html2pdf().set(opt).from(element).save();
+    
+    // Also save to localStorage for record keeping
     const billData = {
       billNumber,
       customerInfo,
@@ -575,12 +587,11 @@ export default function BillMakerPage() {
       date: new Date().toISOString(),
     }
 
-    // Save to localStorage for demo purposes
     const savedBills = JSON.parse(localStorage.getItem("bills") || "[]")
     savedBills.push(billData)
     localStorage.setItem("bills", JSON.stringify(savedBills))
 
-    alert("Bill saved successfully!")
+    // alert("Invoice saved and downloaded as PDF!");
   }
 
   const clearBill = () => {
@@ -837,7 +848,7 @@ export default function BillMakerPage() {
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
-                      <span>Invoice Number:</span>
+                      <span>Challan Number:</span>
                       <Badge variant="outline">{billNumber}</Badge>
                     </div>
                     <div className="flex justify-between text-sm">
@@ -871,7 +882,7 @@ export default function BillMakerPage() {
                     disabled={billItems.length === 0 || !customerInfo.companyName}
                   >
                     <Save className="h-4 w-4 mr-2" />
-                    Save Invoice
+                    Save Challan (PDF)
                   </Button>
                   <Button
                     onClick={handlePrint}
@@ -880,11 +891,11 @@ export default function BillMakerPage() {
                     disabled={billItems.length === 0 || !customerInfo.companyName}
                   >
                     <Printer className="h-4 w-4 mr-2" />
-                    Print Invoice
+                    Print Challan
                   </Button>
                   <Button onClick={clearBill} variant="destructive" className="w-full">
                     <Trash2 className="h-4 w-4 mr-2" />
-                    Clear Bill
+                    Clear Challan
                   </Button>
                 </CardContent>
               </Card>
