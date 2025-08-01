@@ -9,6 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 import { Badge } from "./ui/badge"
 import html2pdf from "html2pdf.js"
+import Mainnav from "./Main_nav.jsx"
 
 // Mock company data
 const myCompany = {
@@ -622,7 +623,13 @@ export default function BillMakerPage() {
 
   return (
     <div className="flex h-screen bg-gray-50">
+
       <div className="flex-1">
+        <br></br>
+        <div style={{marginLeft:"1.5rem"}}>
+        <Mainnav></Mainnav>
+        </div>
+        
         <div className="p-6">
           {/* Header */}
           <div className="mb-6">
