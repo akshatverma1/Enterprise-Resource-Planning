@@ -1,8 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Plus, Trash2, Calculator, Printer, Save, FileText, Building2 } from "lucide-react"
-import Sidebar from "./sidebar"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
@@ -10,18 +9,18 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 import { Badge } from "./ui/badge"
 
-// Mock company data (your company)
+// Mock company data
 const myCompany = {
-  name: "TechCorp Solutions Pvt Ltd",
-  address: "123 Business Park, Tech City, Mumbai - 400001",
-  phone: "+91 98765 43210",
-  email: "info@techcorp.com",
-  gstNumber: "27ABCDE1234F1Z5",
-  panNumber: "ABCDE1234F",
-  cinNumber: "U72900MH2020PTC123456",
+  name: "Ashirwad Enterprises",
+  address: "A-1,Ganesh Dham Colony Sec-C,Sanwer Road, Indore",
+  phone: "+91 9826048905 ,+91 9109621850",
+  email: "ashirwad.2512@gmail.com",
+  gstNumber: "23AFJPV3458B1ZH",
+  panNumber: "AFJPV3458B",
+  cinNumber: "",
 }
 
-// Mock customers data with GST details
+// Mock customers data
 const mockCustomers = [
   {
     id: 1,
@@ -82,22 +81,156 @@ const mockCustomers = [
     panNumber: "WXYZ1234A",
     stateCode: "09",
     stateName: "Uttar Pradesh",
-  },
+  }
 ]
 
-// Mock products data with GST rates
-const mockProducts = [
-  { id: 1, name: "Laptop Pro", price: 1299.99, stock: 15, category: "Electronics", gstRate: 18, hsnCode: "8471" },
-  { id: 2, name: "Wireless Mouse", price: 29.99, stock: 50, category: "Electronics", gstRate: 18, hsnCode: "8471" },
-  { id: 3, name: "Office Chair", price: 199.99, stock: 8, category: "Furniture", gstRate: 12, hsnCode: "9401" },
-  { id: 4, name: "Desk Lamp", price: 49.99, stock: 25, category: "Furniture", gstRate: 12, hsnCode: "9405" },
-  { id: 5, name: "Notebook Set", price: 15.99, stock: 100, category: "Stationery", gstRate: 12, hsnCode: "4820" },
-  { id: 6, name: "Pen Pack", price: 9.99, stock: 200, category: "Stationery", gstRate: 12, hsnCode: "9608" },
-  { id: 7, name: 'Monitor 24"', price: 299.99, stock: 12, category: "Electronics", gstRate: 18, hsnCode: "8528" },
-  { id: 8, name: "Keyboard", price: 79.99, stock: 30, category: "Electronics", gstRate: 18, hsnCode: "8471" },
-]
+// Mock products data
+const mockProducts = 
+[
+    {
+        "id": 1,
+        "name": "Mahindra front brake",
+        "category": "Automobile",
+        "price": 328.0,
+        "stock": 40,
+        "status": "In Stock",
+        "sales": 433,
+        "revenue": 45537,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "2r62sc3",
+        "gst": 59.04,
+        "hsn": "8708"
+    },
+    {
+        "id": 2,
+        "name": "Ford top engine",
+        "category": "Automobile",
+        "price": 1005.0,
+        "stock": 45,
+        "status": "In Stock",
+        "sales": 30,
+        "revenue": 8129,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "ffhg9va",
+        "gst": 180.9,
+        "hsn": "8708"
+    },
+    {
+        "id": 3,
+        "name": "Suzuki right light",
+        "category": "Automobile",
+        "price": 4702.0,
+        "stock": 99,
+        "status": "In Stock",
+        "sales": 306,
+        "revenue": 44242,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "n7ra4rl",
+        "gst": 846.36,
+        "hsn": "8708"
+    },
+    {
+        "id": 4,
+        "name": "JCB bottom mirror",
+        "category": "Automobile",
+        "price": 2798.0,
+        "stock": 43,
+        "status": "In Stock",
+        "sales": 341,
+        "revenue": 19747,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "jnolswd",
+        "gst": 503.64,
+        "hsn": "8708"
+    },
+    {
+        "id": 5,
+        "name": "Tata front light",
+        "category": "Automobile",
+        "price": 4788.0,
+        "stock": 41,
+        "status": "In Stock",
+        "sales": 473,
+        "revenue": 17513,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "sv3m380",
+        "gst": 861.84,
+        "hsn": "8708"
+    },
+    {
+        "id": 6,
+        "name": "Hero top tire",
+        "category": "Automobile",
+        "price": 2249.0,
+        "stock": 96,
+        "status": "In Stock",
+        "sales": 465,
+        "revenue": 2115,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "fjh2qrh",
+        "gst": 404.82,
+        "hsn": "8708"
+    },
+    {
+        "id": 7,
+        "name": "Honda top mirror",
+        "category": "Automobile",
+        "price": 4287.0,
+        "stock": 66,
+        "status": "In Stock",
+        "sales": 429,
+        "revenue": 22803,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "3u23qsq",
+        "gst": 771.66,
+        "hsn": "8708"
+    },
+    {
+        "id": 8,
+        "name": "Suzuki bottom filter",
+        "category": "Automobile",
+        "price": 621.0,
+        "stock": 53,
+        "status": "In Stock",
+        "sales": 245,
+        "revenue": 45342,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "5lzzmho",
+        "gst": 111.78,
+        "hsn": "8708"
+    },
+    {
+        "id": 9,
+        "name": "Mahindra right light",
+        "category": "Automobile",
+        "price": 1847.0,
+        "stock": 67,
+        "status": "In Stock",
+        "sales": 363,
+        "revenue": 48385,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "blcmpgj",
+        "gst": 332.46,
+        "hsn": "8708"
+    },
+    {
+        "id": 10,
+        "name": "Bajaj rear tire",
+        "category": "Automobile",
+        "price": 931.0,
+        "stock": 100,
+        "status": "In Stock",
+        "sales": 47,
+        "revenue": 21066,
+        "image": "/placeholder.svg?height=40&width=40",
+        "partnumber": "czhp63q",
+        "gst": 167.58,
+        "hsn": "8708"
+    },
+  ]
 
 export default function BillMakerPage() {
+  const printRef = useRef();
   const [billItems, setBillItems] = useState([])
   const [selectedProduct, setSelectedProduct] = useState("")
   const [selectedCustomer, setSelectedCustomer] = useState("")
@@ -117,19 +250,54 @@ export default function BillMakerPage() {
   const [billNumber, setBillNumber] = useState("")
 
   useEffect(() => {
-    // Generate bill number
     const generateBillNumber = () => {
-      const date = new Date()
-      const year = date.getFullYear()
-      const month = String(date.getMonth() + 1).padStart(2, "0")
-      const day = String(date.getDate()).padStart(2, "0")
-      const random = Math.floor(Math.random() * 1000)
-        .toString()
-        .padStart(3, "0")
-      return `INV-${year}${month}${day}-${random}`
-    }
-    setBillNumber(generateBillNumber())
-  }, [])
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      
+      // Get the last used serial number from localStorage or start with 1
+      const lastSerialNumber = localStorage.getItem('lastSerialNumber') || 0;
+      const newSerialNumber = parseInt(lastSerialNumber) + 1;
+      
+      // Store the new serial number for next time
+      localStorage.setItem('lastSerialNumber', newSerialNumber.toString());
+      
+      return `INV-${day}${month}${year}-${String(newSerialNumber).padStart(3, "0")}`;
+    };
+    
+    setBillNumber(generateBillNumber());
+}, []);
+
+  const calculateSubtotal = () => {
+    return billItems.reduce((sum, item) => sum + item.total, 0)
+  }
+
+  const calculateGSTByRate = (rate) => {
+    const itemsWithRate = billItems.filter((item) => item.gstRate === rate)
+    const subtotalForRate = itemsWithRate.reduce((sum, item) => sum + item.total, 0)
+    return (subtotalForRate * rate) / 100
+  }
+
+  const calculateTotalGST = () => {
+    return billItems.reduce((sum, item) => sum + (item.total * item.gstRate) / 100, 0)
+  }
+
+  const calculateDiscount = () => {
+    return (calculateSubtotal() * discount) / 100
+  }
+
+  const calculateTotal = () => {
+    return calculateSubtotal();
+  }
+
+  const getUniqueGSTRates = () => {
+    return [...new Set(billItems.map((item) => item.gstRate))].sort()
+  }
+
+  const isInterState = () => {
+    return customerInfo.stateCode !== "27"
+  }
 
   const handleCustomerSelect = (customerId) => {
     setSelectedCustomer(customerId)
@@ -213,38 +381,184 @@ export default function BillMakerPage() {
     setBillItems(updatedItems)
   }
 
-  const calculateSubtotal = () => {
-    return billItems.reduce((sum, item) => sum + item.total, 0)
-  }
-
-  const calculateGSTByRate = (rate) => {
-    const itemsWithRate = billItems.filter((item) => item.gstRate === rate)
-    const subtotalForRate = itemsWithRate.reduce((sum, item) => sum + item.total, 0)
-    return (subtotalForRate * rate) / 100
-  }
-
-  const calculateTotalGST = () => {
-    return billItems.reduce((sum, item) => sum + (item.total * item.gstRate) / 100, 0)
-  }
-
-  const calculateDiscount = () => {
-    return (calculateSubtotal() * discount) / 100
-  }
-
-  const calculateTotal = () => {
-    return calculateSubtotal() + calculateTotalGST() - calculateDiscount()
-  }
-
-  const getUniqueGSTRates = () => {
-    return [...new Set(billItems.map((item) => item.gstRate))].sort()
-  }
-
-  const isInterState = () => {
-    return customerInfo.stateCode !== "27" // Assuming company is in Maharashtra (27)
-  }
-
   const handlePrint = () => {
-    window.print()
+    const printWindow = window.open('', '_blank');
+    const printDocument = printWindow.document;
+    
+    const now = new Date();
+    const dateStr = now.toLocaleDateString();
+    const timeStr = now.toLocaleTimeString();
+    
+    printDocument.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Invoice ${billNumber}</title>
+          <style>
+            @page {
+              size: A4;
+              margin: 0;
+            }
+            body {
+              margin: 2rem;
+              padding: 15px;
+              font-family: Arial, sans-serif;
+              zoom: 0.8;
+            }
+            .invoice-header {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 20px;
+            }
+            .company-info, .customer-info {
+              margin-bottom: 20px;
+            }
+            .invoice-title {
+              text-align: center;
+              margin: 20px 0;
+              font-size: 24px;
+              font-weight: bold;
+            }
+            .invoice-details {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 20px;
+            }
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              margin-bottom: 20px;
+            }
+            th, td {
+              border: 1px solid #ddd;
+              padding: 8px;
+              text-align: left;
+            }
+            th {
+              background-color: #f2f2f2;
+            }
+            .totals {
+              float: right;
+              width: 300px;
+              margin-top: 20px;
+            }
+            .signature {
+              margin-top: 50px;
+              display: flex;
+              justify-content: space-between;
+            }
+            .no-print {
+              display: none;
+            }
+            @media print {
+              body {
+                zoom: 0.8;
+                transform: scale(0.8);
+                transform-origin: 0 0;
+              }
+              .page-break {
+                page-break-after: always;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="invoice-header">
+            <div class="company-info">
+              <h2>${myCompany.name}</h2>
+              <p>${myCompany.address}</p>
+              <p>Phone: ${myCompany.phone}</p>
+              <p>Email: ${myCompany.email}</p>
+              <p>GST: ${myCompany.gstNumber}</p>
+            </div>
+            <div>
+              <h3>INVOICE</h3>
+              <p>No: ${billNumber}</p>
+              <p>Date: ${dateStr}</p>
+              <p>Time: ${timeStr}</p>
+            </div>
+          </div>
+          
+          <div class="customer-info">
+            <h3>Bill To:</h3>
+            <p>${customerInfo.companyName}</p>
+            <p>${customerInfo.address}</p>
+            <p>Contact: ${customerInfo.contactPerson}</p>
+            <p>Phone: ${customerInfo.phone}</p>
+            <p>GST: ${customerInfo.gstNumber}</p>
+            <p>State: ${customerInfo.stateName} (${customerInfo.stateCode})</p>
+          </div>
+          
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Description</th>
+                <th>HSN</th>
+                <th>Qty</th>
+                <th>Rate</th>
+                <th>GST%</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${billItems.map((item, index) => `
+                <tr>
+                  <td>${index + 1}</td>
+                  <td>${item.name}</td>
+                  <td>${item.hsnCode}</td>
+                  <td>${item.quantity}</td>
+                  <td>₹${item.price.toFixed(2)}</td>
+                  <td>${item.gstRate}%</td>
+                  <td>₹${item.total.toFixed(2)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          
+          <div class="totals">
+            <table>
+              <tr>
+                <td>Subtotal:</td>
+                <td>₹${calculateSubtotal().toFixed(2)}</td>
+              </tr>
+              ${getUniqueGSTRates().map(rate => `
+                <tr>
+                  <td>GST ${rate}%:</td>
+                  <td>₹${calculateGSTByRate(rate).toFixed(2)}</td>
+                </tr>
+              `).join('')}
+              <tr>
+                <td>Discount:</td>
+                <td>₹${calculateDiscount().toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td><strong>Total:</strong></td>
+                <td><strong>₹${calculateTotal().toFixed(2)}</strong></td>
+              </tr>
+            </table>
+          </div>
+          
+          <div class="signature">
+            <div>
+              <p>Customer Signature</p>
+            </div>
+            <div>
+              <p>For ${myCompany.name}</p>
+            </div>
+          </div>
+          
+          <script>
+            setTimeout(() => {
+              window.print();
+              window.onafterprint = () => window.close();
+            }, 200);
+          </script>
+        </body>
+      </html>
+    `);
+    
+    printDocument.close();
   }
 
   const handleSave = () => {
@@ -297,14 +611,12 @@ export default function BillMakerPage() {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar />
-
-      <div className="flex-1 lg:ml-64">
+      <div className="flex-1">
         <div className="p-6">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">GST Bill Maker</h1>
-            <p className="text-gray-600">Create GST compliant invoices with automatic tax calculations</p>
+            <h1 className="text-3xl font-bold text-gray-900">Challan</h1>
+            <p className="text-gray-600">Ashirwad Enterprises</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -315,7 +627,7 @@ export default function BillMakerPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Building2 className="h-5 w-5" />
-                    Your Company Details
+                    Company Details
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
@@ -351,7 +663,7 @@ export default function BillMakerPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <FileText className="h-5 w-5" />
-                    Customer Information
+                    Vendor Information
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -429,7 +741,7 @@ export default function BillMakerPage() {
                         <SelectContent>
                           {mockProducts.map((product) => (
                             <SelectItem key={product.id} value={product.id.toString()}>
-                              {product.name} - ₹{product.price} (GST: {product.gstRate}%)
+                              {product.id} - {product.name} (₹{product.price.toFixed(2)})
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -441,7 +753,7 @@ export default function BillMakerPage() {
                         type="number"
                         min="1"
                         value={quantity}
-                        onChange={(e) => setQuantity(Number.parseInt(e.target.value) || 1)}
+                        onChange={(e) => setQuantity(Number.parseInt(e.target.value))}
                       />
                     </div>
                     <Button onClick={addProductToBill} className="mb-0">
@@ -533,45 +845,8 @@ export default function BillMakerPage() {
                       <span>{new Date().toLocaleDateString()}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span>Transaction Type:</span>
-                      <Badge variant={isInterState() ? "destructive" : "default"}>
-                        {isInterState() ? "Inter-State" : "Intra-State"}
-                      </Badge>
-                    </div>
-                  </div>
-
-                  <div className="border-t pt-4 space-y-2">
-                    <div className="flex justify-between">
-                      <span>Subtotal:</span>
-                      <span>₹{calculateSubtotal().toFixed(2)}</span>
-                    </div>
-
-                    {/* GST Breakdown */}
-                    {getUniqueGSTRates().map((rate) => (
-                      <div key={rate} className="flex justify-between text-sm">
-                        <span>{isInterState() ? `IGST ${rate}%:` : `CGST+SGST ${rate}%:`}</span>
-                        <span>₹{calculateGSTByRate(rate).toFixed(2)}</span>
-                      </div>
-                    ))}
-
-                    <div className="flex justify-between font-medium">
-                      <span>Total GST:</span>
-                      <span>₹{calculateTotalGST().toFixed(2)}</span>
-                    </div>
-
-                    <div className="flex justify-between items-center">
-                      <span>Discount ({discount}%):</span>
-                      <div className="flex items-center gap-2">
-                        <Input
-                          type="number"
-                          min="0"
-                          max="100"
-                          value={discount}
-                          onChange={(e) => setDiscount(Number.parseFloat(e.target.value) || 0)}
-                          className="w-16 h-8 text-xs"
-                        />
-                        <span>-₹{calculateDiscount().toFixed(2)}</span>
-                      </div>
+                      <span>Time:</span>
+                      <span>{new Date().toLocaleTimeString()}</span>
                     </div>
                   </div>
 
@@ -583,39 +858,6 @@ export default function BillMakerPage() {
                   </div>
                 </CardContent>
               </Card>
-
-              {/* GST Summary */}
-              {billItems.length > 0 && (
-                <Card>
-                  <CardHeader>
-                    <CardTitle>GST Summary</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    {getUniqueGSTRates().map((rate) => {
-                      const itemsWithRate = billItems.filter((item) => item.gstRate === rate)
-                      const taxableValue = itemsWithRate.reduce((sum, item) => sum + item.total, 0)
-                      const gstAmount = calculateGSTByRate(rate)
-
-                      return (
-                        <div key={rate} className="p-3 bg-gray-50 rounded-lg">
-                          <div className="flex justify-between text-sm font-medium">
-                            <span>GST Rate: {rate}%</span>
-                            <span>{itemsWithRate.length} items</span>
-                          </div>
-                          <div className="flex justify-between text-xs text-gray-600">
-                            <span>Taxable Value:</span>
-                            <span>₹{taxableValue.toFixed(2)}</span>
-                          </div>
-                          <div className="flex justify-between text-xs text-gray-600">
-                            <span>{isInterState() ? "IGST:" : "CGST+SGST:"}</span>
-                            <span>₹{gstAmount.toFixed(2)}</span>
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </CardContent>
-                </Card>
-              )}
 
               {/* Actions */}
               <Card>
@@ -644,33 +886,6 @@ export default function BillMakerPage() {
                     <Trash2 className="h-4 w-4 mr-2" />
                     Clear Bill
                   </Button>
-                </CardContent>
-              </Card>
-
-              {/* Quick Stats */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Quick Stats</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>Items Count:</span>
-                    <Badge>{billItems.length}</Badge>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>Total Quantity:</span>
-                    <Badge>{billItems.reduce((sum, item) => sum + item.quantity, 0)}</Badge>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>GST Amount:</span>
-                    <Badge variant="secondary">₹{calculateTotalGST().toFixed(2)}</Badge>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>Transaction:</span>
-                    <Badge variant={isInterState() ? "destructive" : "default"}>
-                      {isInterState() ? "Inter-State" : "Intra-State"}
-                    </Badge>
-                  </div>
                 </CardContent>
               </Card>
             </div>
