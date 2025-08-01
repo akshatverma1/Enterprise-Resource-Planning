@@ -32,7 +32,7 @@ export default function Sidebar({ className, open, onOpenChange }) {
       path: "/",
     },
     {
-      id: "analytics",
+      id: "analytics",  
       name: "Analytics",
       icon: <BarChart3 className="h-5 w-5" />,
       badge: null,
