@@ -59,10 +59,10 @@ export default function DashboardPage() {
 
              {/* <Navbar></Navbar> */}
             <div className="ml-auto flex items-center space-x-4">
-              <div className="relative">
+              {/* <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input type="search" placeholder="Search..." className="w-[200px] lg:w-[300px] pl-8" />
-              </div>
+              </div> */}
               <UserNav />
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function DashboardPage() {
         <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-bold tracking-tight">Ashirwad Enterprises</h2>
-            <div className="flex items-center space-x-2">
+            {/* <div className="flex items-center space-x-2">
               <Select defaultValue="daily">
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Select a view" />
@@ -83,16 +83,16 @@ export default function DashboardPage() {
                   <SelectItem value="yearly">Yearly</SelectItem>
                 </SelectContent>
               </Select>
-            </div>
+            </div> */}
           </div>
 
-          <div className="bg-blue-600 text-white p-6 rounded-lg">
+          {/* <div className="bg-blue-600 text-white p-6 rounded-lg">
             <SearchSection />
-          </div>
+          </div> */}
 
           <FeatureGrid />
 
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <Card className="col-span-2">
               <AccountSummary />
             </Card>
@@ -111,7 +111,7 @@ export default function DashboardPage() {
             <Card>
               <TargetCard />
             </Card>
-          </div>
+          </div> */}
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <Card>
@@ -125,7 +125,7 @@ export default function DashboardPage() {
             </Card>
           </div>
 
-          <Tabs defaultValue="overview" className="space-y-4">
+          {/* <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="analytics">Analytics</TabsTrigger>
@@ -265,7 +265,7 @@ export default function DashboardPage() {
             <TabsContent value="reports" className="space-y-4">
               <WeeklyProducts />
             </TabsContent>
-          </Tabs>
+          </Tabs> */}
         </div>
       </div>
     </div>

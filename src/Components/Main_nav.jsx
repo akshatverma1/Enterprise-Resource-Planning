@@ -17,6 +17,18 @@ export default function Aksht() {
         <Link to="/challan" className="flex items-center text-sm font-medium text-muted-foreground">
           Challan Maker 
         </Link>
+        <Link to="/machine" className="flex items-center text-sm font-medium text-muted-foreground">
+        Machine Maintenance 
+        </Link>
+        <Link to="/building" className="flex items-center text-sm font-medium text-muted-foreground">
+        Building 
+        </Link>
+        <Link to="/security" className="flex items-center text-sm font-medium text-muted-foreground">
+        Security 
+        </Link>
+        <Link to="/support" className="flex items-center text-sm font-medium text-muted-foreground">
+        Support 
+        </Link>
       </nav>
     </div>
   )
