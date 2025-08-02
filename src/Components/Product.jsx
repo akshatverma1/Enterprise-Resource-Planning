@@ -41,7 +41,7 @@ const mockProducts = Product.map((product, index) => ({
   description: product.description || "No description available",
   specifications: product.specifications || ["No specifications available"],
   dxfDesignUrl: "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing",
-  imageDetailsUrl: "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing"
+  imageDetailsUrl: "https://i.pinimg.com/736x/e2/cb/c3/e2cbc38520ec8bade8951665ae70baa8.jpg"
 }))
 
 const categories = [
@@ -102,44 +102,44 @@ export default function ProductsPage() {
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.partNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.brand.toLowerCase().includes(searchQuery.toLowerCase())
-    
+
     const matchesCategory = selectedCategory === "All" || product.category === selectedCategory
     const matchesBrand = selectedBrand === "All" || product.brand === selectedBrand
-    
+
     let matchesPrice = true
     if (selectedPriceRange !== "all") {
       const [min, max] = selectedPriceRange.split('-').map(Number)
       matchesPrice = product.price >= min && (max ? product.price <= max : true)
     }
-    
+
     const matchesStock = selectedStockStatus === "all" || product.status === selectedStockStatus
-    
+
     return matchesSearch && matchesCategory && matchesBrand && matchesPrice && matchesStock
   })
 
   const handleDownloadAndOpenDXF = async (product, actionType) => {
     setIsDownloading(product.id)
-    
+
     try {
       const response = await fetch(product.dxfDesignUrl)
       if (!response.ok) throw new Error("Failed to fetch DXF file")
-      
+
       const blob = await response.blob()
       const url = window.URL.createObjectURL(blob)
-      
+
       const a = document.createElement('a')
       a.href = url
       a.download = `${product.partNumber}_design.dxf`
       document.body.appendChild(a)
       a.click()
-      
+
       if (actionType === 'partDetails') {
         window.open(product.imageDetailsUrl, '_blank')
       }
-      
+
       window.URL.revokeObjectURL(url)
       document.body.removeChild(a)
-      
+
     } catch (error) {
       console.error("Error handling file:", error)
       alert(`Failed to process file for ${product.name}`)
@@ -338,20 +338,10 @@ export default function ProductsPage() {
                             size="sm"
                             variant="outline"
                             className="w-full bg-transparent"
-                            onClick={() => handleDownloadAndOpenDXF(product, 'view')}
-                            disabled={isDownloading === product.id}
+                            onClick={() => window.open(product.dxfDesignUrl, '_blank')}
                           >
-                            {isDownloading === product.id ? (
-                              <>
-                                <Download className="h-4 w-4 mr-2 animate-pulse" />
-                                Downloading...
-                              </>
-                            ) : (
-                              <>
-                                <Eye className="h-4 w-4 mr-2" />
-                                View DXF Design
-                              </>
-                            )}
+                            <Eye className="h-4 w-4 mr-2" />
+                            View DXF Design
                           </Button>
                           <Button
                             size="sm"
@@ -387,9 +377,9 @@ export default function ProductsPage() {
           <div className="p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold">Add New Product</h2>
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 onClick={() => setShowAddProductForm(false)}
               >
                 <X className="h-5 w-5" />
@@ -421,10 +411,10 @@ export default function ProductsPage() {
 
               <div>
                 <Label htmlFor="category">Category</Label>
-                <Select 
+                <Select
                   name="category"
                   value={newProduct.category}
-                  onValueChange={(value) => setNewProduct({...newProduct, category: value})}
+                  onValueChange={(value) => setNewProduct({ ...newProduct, category: value })}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select category" />
@@ -441,10 +431,10 @@ export default function ProductsPage() {
 
               <div>
                 <Label htmlFor="brand">Brand</Label>
-                <Select 
+                <Select
                   name="brand"
                   value={newProduct.brand}
-                  onValueChange={(value) => setNewProduct({...newProduct, brand: value})}
+                  onValueChange={(value) => setNewProduct({ ...newProduct, brand: value })}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select brand" />
@@ -498,10 +488,10 @@ export default function ProductsPage() {
                 </div>
                 <div>
                   <Label htmlFor="status">Status</Label>
-                  <Select 
+                  <Select
                     name="status"
                     value={newProduct.status}
-                    onValueChange={(value) => setNewProduct({...newProduct, status: value})}
+                    onValueChange={(value) => setNewProduct({ ...newProduct, status: value })}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select status" />
@@ -551,8 +541,8 @@ export default function ProductsPage() {
               </div>
 
               <div className="flex justify-end gap-2 pt-4">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => setShowAddProductForm(false)}
                 >
                   Cancel
