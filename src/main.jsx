@@ -9,6 +9,8 @@ import MachineMaintenancePage from './Components/Machine.jsx';
 import BuildingPage from './Components/Building.jsx';
 import SecurityPage from './Components/SecurityPage.jsx';
 import SupportPage from './Components/SupportPage.jsx';
+import DevicesPage from './Components/devices.jsx';
+import InventoryManagementPage from './Components/Inventory_management.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -21,6 +23,9 @@ createRoot(document.getElementById('root')).render(
         <Route path="/building" element={<BuildingPage />} />
         <Route path="/security" element={<SecurityPage />} />
         <Route path="/support" element={<SupportPage />} />
+        <Route path="/devices" element={<DevicesPage />} />
+        <Route path="/inventory" element={<InventoryManagementPage />} />
+        {/* Add more routes as needed */}
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </BrowserRouter>

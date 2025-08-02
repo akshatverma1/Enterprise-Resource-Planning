@@ -20,6 +20,9 @@ export default function Aksht() {
         <Link to="/machine" className="flex items-center text-sm font-medium text-muted-foreground">
         Machine Maintenance 
         </Link>
+        <Link to="/inventory" className="flex items-center text-sm font-medium text-muted-foreground">
+        Inventory Management 
+        </Link>
         <Link to="/building" className="flex items-center text-sm font-medium text-muted-foreground">
         Building 
         </Link>
@@ -28,6 +31,9 @@ export default function Aksht() {
         </Link>
         <Link to="/support" className="flex items-center text-sm font-medium text-muted-foreground">
         Support 
+        </Link>
+        <Link to="/devices" className="flex items-center text-sm font-medium text-muted-foreground">
+        Devices 
         </Link>
       </nav>
     </div>

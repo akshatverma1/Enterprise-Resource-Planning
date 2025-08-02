@@ -10,6 +10,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 import Sidebar from "./sidebar"
+import Mainnav from "./Main_nav"
 
 const securityAlerts = [
   {
@@ -212,9 +213,13 @@ export default function SecurityPage() {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar />
+      {/* <Sidebar /> */}
 
-      <div className="flex-1 lg:pl-64">
+      <div className="flex-1">
+         <br></br>
+                                <div style={{ marginLeft: "1.5rem", marginBottom: "1.5rem" }}>
+                                    <Mainnav></Mainnav>
+                                </div>
         <div className="p-8">
           {/* Header */}
           <div className="mb-8">
