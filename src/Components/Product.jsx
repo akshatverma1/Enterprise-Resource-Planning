@@ -40,7 +40,7 @@ const mockProducts = Product.map((product, index) => ({
   image: product.image || "/placeholder.svg?height=300&width=300&text=Product+Image",
   description: product.description || "No description available",
   specifications: product.specifications || ["No specifications available"],
-  dxfDesignUrl: "src/Components/des.dxf",
+  dxfDesignUrl: "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing",
   imageDetailsUrl: "https://i.pinimg.com/736x/eb/da/22/ebda22a972e1caf38e5e2c6fee890c42.jpg"
 }))
 
