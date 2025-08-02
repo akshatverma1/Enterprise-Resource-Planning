@@ -9,7 +9,7 @@ import MachineMaintenancePage from './Components/Machine.jsx';
 import BuildingPage from './Components/Building.jsx';
 import SecurityPage from './Components/SecurityPage.jsx';
 import SupportPage from './Components/SupportPage.jsx';
-import DevicesPage from './Components/devices.jsx';
+import DevicesPage from './Components/Despage.jsx';
 import InventoryManagementPage from './Components/Inventory_management.jsx';
 
 createRoot(document.getElementById('root')).render(
