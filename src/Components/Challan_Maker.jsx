@@ -245,27 +245,8 @@ const mockCustomers = [
 //   gst: item.gst || 18,
 //   hsn: item.hsn || "8708", // Default HSN code if not provided
 // }))
-const mockProducts = [];
 
-  async function loadData() {
-    const data = await getAutomobileData();
-    mockProducts = data.map((item) => ({
-      id: item.id,
-      name: item.name,
-      category: item.category,
-      price: item.price,
-      stock: item.stock,
-      status: item.status,
-      sales: item.sales,
-      revenue: item.revenue || 0,
-      image: item.image,
-      partnumber: item.partNumber,
-      gst: item.gst || 18,
-      hsn: item.hsn || "8708",
-    }));
-  }
-
-  loadData();
+  
 
 
 export default function BillMakerPage() {
@@ -287,7 +268,32 @@ export default function BillMakerPage() {
   })
   const [discount, setDiscount] = useState(0)
   const [billNumber, setBillNumber] = useState("")
+  const [mockProducts, setMockProducts] = useState([])
 
+  useEffect(() => {
+    // Load initial data
+    loadData();
+  },[])
+
+  async function loadData() {
+    const data = await getAutomobileData();
+    console.log("Loaded products data:", data);
+    const mock = data.map((item) => ({
+      id: item.id,
+      name: item.name,
+      category: item.category,
+      price: item.price,
+      stock: item.stock,
+      status: item.status,
+      sales: item.sales,
+      revenue: item.revenue || 0,
+      image: item.image,
+      partnumber: item.partNumber,
+      gst: item.gst || 18,
+      hsn: item.hsn || "8708",
+    }));
+    setMockProducts(mock);
+  }
   useEffect(() => {
     const generateBillNumber = () => {
       const date = new Date();

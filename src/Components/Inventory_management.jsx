@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { use, useEffect, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
@@ -43,7 +43,6 @@ export default function InventoryManagementPage() {
     const [selectedProduct, setSelectedProduct] = useState(null)
     const [isSupplierOpen, setIsSupplierOpen] = useState(false)
     const [isPurchaseOpen, setIsPurchaseOpen] = useState(false)
-
     // Sample inventory data
     // const [inventory, setInventory] = useState([
     //     {
@@ -143,23 +142,34 @@ export default function InventoryManagementPage() {
     //         fastMoving: true,
     //     },
     // ])
-    const inventory = getAutomobileData.map((item, index) => ({
-        id: item.id,
-        name: item.name,
-        category: item.category,
-        brand: item.brand,
-        sku: item.sku,
-        quantity: item.quantity,
-        minQuantity: item.minQuantity,
-        price: item.price,
-        costPrice: item.costPrice,
-        supplier: item.supplier,
-        location: item.location,
-        lastUpdated: item.lastUpdated,
-        status: item.status,
-        fastMoving: item.fastMoving || false, // Default to false if not provided
-    }))
+    const [inventory, setInventory] = useState([])
 
+    useEffect(()=>{
+        fetch();
+    },[])
+
+
+    async function fetch(){
+        const dats = await getAutomobileData();
+        const productss = dats.map((item, index) => ({
+            id: item.id,
+            name: item.name,
+            category: item.category,
+            brand: item.brand,
+            sku: item.sku,
+            quantity: item.quantity,
+            minQuantity: item.minQuantity,
+            price: item.price,
+            costPrice: item.costPrice,
+            supplier: item.supplier,
+            location: item.location,
+            lastUpdated: item.lastUpdated,
+            status: item.status,
+            fastMoving: item.fastMoving || false, // Default to false if not provided
+        }))
+        setInventory(productss);
+    }
+   
 
     const [suppliers] = useState([
         { id: "SUP001", name: "Auto Parts Ltd", contact: "+91 98765 43210", email: "contact@autoparts.com" },
