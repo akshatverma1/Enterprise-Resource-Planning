@@ -11,6 +11,7 @@ import SecurityPage from './Components/SecurityPage.jsx';
 import SupportPage from './Components/SupportPage.jsx';
 import DevicesPage from './Components/Despage.jsx';
 import InventoryManagementPage from './Components/Inventory_management.jsx';
+import AttendancePage from './Components/Attendance.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/support" element={<SupportPage />} />
         <Route path="/devices" element={<DevicesPage />} />
         <Route path="/inventory" element={<InventoryManagementPage />} />
+        <Route path="/attendance" element={<AttendancePage />} />
         {/* Add more routes as needed */}
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>

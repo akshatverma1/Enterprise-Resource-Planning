@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import {
   Search,
   Plus,
@@ -21,28 +21,57 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Label } from "./ui/label"
 import { Textarea } from "./ui/textarea"
 import Mainnav from "./Main_nav"
-import Product from "./mockProducts_automobile.json"
+// import Product from "./mockProducts_automobile.json"
+import { getAutomobileData } from "./mockProducts_automobile"
 
-// Enhanced mock products with imageDetailsUrl
-const mockProducts = Product.map((product, index) => ({
-  id: index + 1,
-  name: product.name,
-  partNumber: product.partNumber,
-  category: product.category,
-  brand: product.brand,
-  price: product.price,
-  originalPrice: product.originalPrice,
-  stock: product.stock,
-  status: product.status,
-  sales: product.sales,
-  rating: product.rating,
-  reviews: product.reviews,
-  image: product.image || "/placeholder.svg?height=300&width=300&text=Product+Image",
-  description: product.description || "No description available",
-  specifications: product.specifications || ["No specifications available"],
-  dxfDesignUrl: "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing",
-  imageDetailsUrl: "https://i.pinimg.com/736x/e2/cb/c3/e2cbc38520ec8bade8951665ae70baa8.jpg"
-}))
+// // Enhanced mock products with imageDetailsUrl
+// const mockProducts = getAutomobileData.map((product, index) => ({
+//   id: index + 1,
+//   name: product.name,
+//   partNumber: product.partNumber,
+//   category: product.category,
+//   brand: product.brand,
+//   price: product.price,
+//   originalPrice: product.originalPrice,
+//   stock: product.stock,
+//   status: product.status,
+//   sales: product.sales,
+//   rating: product.rating,
+//   reviews: product.reviews,
+//   image: product.image || "/placeholder.svg?height=300&width=300&text=Product+Image",
+//   description: product.description || "No description available",
+//   specifications: product.specifications || ["No specifications available"],
+//   dxfDesignUrl: "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing",
+//   imageDetailsUrl: "https://i.pinimg.com/736x/e2/cb/c3/e2cbc38520ec8bade8951665ae70baa8.jpg"
+// }))
+
+    async function fetchAndFormatProducts() {
+        const data = await getAutomobileData();
+    
+        const mockProducts = data.map((product, index) => ({
+          id: index + 1,
+          name: product.name,
+          partNumber: product.partNumber,
+          category: product.category,
+          brand: product.brand,
+          price: product.price,
+          originalPrice: product.originalPrice,
+          stock: product.stock,
+          status: product.status,
+          sales: product.sales,
+          rating: product.rating,
+          reviews: product.reviews,
+          image: product.image || "/placeholder.svg?height=300&width=300&text=Product+Image",
+          description: product.description || "No description available",
+          specifications: product.specifications || ["No specifications available"],
+          dxfDesignUrl: "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing",
+          imageDetailsUrl: "https://i.pinimg.com/736x/e2/cb/c3/e2cbc38520ec8bade8951665ae70baa8.jpg"
+        }));
+
+    }
+
+
+    fetchAndFormatProducts();
 
 const categories = [
   "All",

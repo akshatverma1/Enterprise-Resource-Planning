@@ -12,7 +12,8 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 import { Textarea } from "./ui/textarea"
 import Sidebar from "./sidebar"
-import Items from "./mockProducts_automobile.json"
+// import Item from "./mockProducts_automobile.js"
+import { getAutomobileData } from "./mockProducts_automobile.js"
 import Mainnav from "./Main_nav.jsx"
 import {
     Package,
@@ -142,7 +143,7 @@ export default function InventoryManagementPage() {
     //         fastMoving: true,
     //     },
     // ])
-    const inventory = Items.map((item, index) => ({
+    const inventory = getAutomobileData.map((item, index) => ({
         id: item.id,
         name: item.name,
         category: item.category,

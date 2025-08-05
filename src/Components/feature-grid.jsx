@@ -11,83 +11,71 @@ import {
   BarChart3,
   Globe,
   HeadphonesIcon,
+  Package,
+  FileText,
+  Building,
+  Wrench,
+  Headset,
+  CalendarCheck
 } from "lucide-react"
 import { Card, CardContent } from "./ui/card"
 import { Link } from "react-router-dom"
 
 export function FeatureGrid() {
   const features = [
-    // {
-    //   icon: <Users className="h-8 w-8" />,
-    //   title: "Users",
-    //   description: "Manage admin people",
-    //   href: "/users",
-    // },
-    // {
-    //   icon: <UserPlus className="h-8 w-8" />,
-    //   title: "Groups",
-    //   description: "Create grouping lists",
-    //   href: "#",
-    // },
     {
-      icon: <LayoutDashboard className="h-8 w-8" />,
+      icon: <Package className="h-8 w-8" />,
+      title: "Products",
+      description: "",
+      href: "product",
+    },
+    {
+      icon: <FileText className="h-8 w-8" />,
+      title: "Challan",
+      description: "",
+      href: "/challan",
+    },
+    {
+      icon: <Wrench className="h-8 w-8" />,
       title: "Machine Maintenance",
-      description: "Machinery service routine",
+      description: "",
       href: "/machine",
     },
-    // {
-    //   icon: <Monitor className="h-8 w-8" />,
-    //   title: "Devices",
-    //   description: "Secure data devices",
-    //   href: "#",
-    // },
     {
-      icon: <Grid className="h-8 w-8" />,
-      title: "Products",
-      description: "Items for sale",
-      href: "/product",
+      icon: <Monitor className="h-8 w-8" />,
+      title: "Inventory Management",
+      description: "",
+      href: "/inventory",
+    },
+    {
+      icon: <CalendarCheck className="h-8 w-8" />,
+      title: "Attendance",
+      description: "",
+      href: "/attendance",
+    },
+    {
+      icon: <Building2 className="h-8 w-8" />,
+      title: "Building",
+      description: "",
+      href: "/building",
     },
     {
       icon: <ShieldCheck className="h-8 w-8" />,
       title: "Security",
-      description: "Configure security logs",
+      description: "",
       href: "/security",
     },
     {
-      icon: <Receipt className="h-8 w-8" />,
-      title: "Challan",
-      description: "Generate a formal challan for this specific payment process.",
-      href: "/challan",
-    },
-    // {
-    //   icon: <UserCheck className="h-8 w-8" />,
-    //   title: "Roles",
-    //   description: "Manage admin roles",
-    //   href: "#",
-    // },
-    {
-      icon: <Building2 className="h-8 w-8" />,
-      title: "Buildings",
-      description: "Manage building rooms",
-      href: "/building",
-    },
-    // {
-    //   icon: <BarChart3 className="h-8 w-8" />,
-    //   title: "Resources",
-    //   description: "Manage our resources",
-    //   href: "#",
-    // },
-    // {
-    //   icon: <Globe className="h-8 w-8" />,
-    //   title: "Domains",
-    //   description: "Manage our domains",
-    //   href: "#",
-    // },
-    {
-      icon: <HeadphonesIcon className="h-8 w-8" />,
+      icon: <Headset className="h-8 w-8" />,
       title: "Support",
-      description: "Talk to tech support",
+      description: "",
       href: "/support",
+    },
+    {
+      icon: <Monitor className="h-8 w-8" />,
+      title: "Devices",
+      description: "",
+      href: "/devices",
     },
   ]
 
@@ -97,7 +85,7 @@ export function FeatureGrid() {
         <Link to={feature.href} key={index}>
           <Card className="h-full transition-all hover:bg-muted/50">
             <CardContent className="flex flex-col items-center justify-center p-6 text-center">
-              <div className="m-4 rounded-full bg-blue-100 p-3 text-blue-600">{feature.icon}</div>
+              <div style={{marginTop:"2rem"}} className="m-4 rounded-full bg-blue-100 p-3 text-blue-600">{feature.icon}</div>
               <h3 className="mb-1 font-medium">{feature.title}</h3>
               <p className="text-xs text-muted-foreground">{feature.description}</p>
             </CardContent>

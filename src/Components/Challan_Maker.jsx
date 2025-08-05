@@ -10,7 +10,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Badge } from "./ui/badge"
 import html2pdf from "html2pdf.js"
 import Mainnav from "./Main_nav.jsx"
-import Productitems from "./mockProducts_automobile.json"
+// import Productitems from "./mockProducts_automobile.json"
+import { getAutomobileData } from "./mockProducts_automobile.js"
 // Mock company data
 const myCompany = {
   name: "Ashirwad Enterprises",
@@ -230,21 +231,41 @@ const mockCustomers = [
 //         "hsn": "8708"
 //     },
 //   ]
-const mockProducts = Productitems.map((item) => ({
-  id: item.id,
-  name: item.name,
-  category: item.category,
-  price: item.price,
-  stock: item.stock,
-  status: item.status,
-  sales: item.sales,
-  revenue: item.revenue || 0,
-  image: item.image,
-  partnumber: item.partNumber,
-  gst: item.gst || 18,
-  hsn: item.hsn || "8708", // Default HSN code if not provided
-}))
+// const mockProducts = getAutomobileData.map((item) => ({
+//   id: item.id,
+//   name: item.name,
+//   category: item.category,
+//   price: item.price,
+//   stock: item.stock,
+//   status: item.status,
+//   sales: item.sales,
+//   revenue: item.revenue || 0,
+//   image: item.image,
+//   partnumber: item.partNumber,
+//   gst: item.gst || 18,
+//   hsn: item.hsn || "8708", // Default HSN code if not provided
+// }))
+const mockProducts = [];
 
+  async function loadData() {
+    const data = await getAutomobileData();
+    mockProducts = data.map((item) => ({
+      id: item.id,
+      name: item.name,
+      category: item.category,
+      price: item.price,
+      stock: item.stock,
+      status: item.status,
+      sales: item.sales,
+      revenue: item.revenue || 0,
+      image: item.image,
+      partnumber: item.partNumber,
+      gst: item.gst || 18,
+      hsn: item.hsn || "8708",
+    }));
+  }
+
+  loadData();
 
 
 export default function BillMakerPage() {

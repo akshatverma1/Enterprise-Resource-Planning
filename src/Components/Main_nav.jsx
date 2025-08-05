@@ -11,30 +11,6 @@ export default function Aksht() {
         <Link to="/" className="flex items-center text-sm font-medium text-muted-foreground">
           Home
         </Link>
-        <Link to="/product" className="flex items-center text-sm font-medium text-muted-foreground">
-          Products
-        </Link>
-        <Link to="/challan" className="flex items-center text-sm font-medium text-muted-foreground">
-          Challan Maker 
-        </Link>
-        <Link to="/machine" className="flex items-center text-sm font-medium text-muted-foreground">
-        Machine Maintenance 
-        </Link>
-        <Link to="/inventory" className="flex items-center text-sm font-medium text-muted-foreground">
-        Inventory Management 
-        </Link>
-        <Link to="/building" className="flex items-center text-sm font-medium text-muted-foreground">
-        Building 
-        </Link>
-        <Link to="/security" className="flex items-center text-sm font-medium text-muted-foreground">
-        Security 
-        </Link>
-        <Link to="/support" className="flex items-center text-sm font-medium text-muted-foreground">
-        Support 
-        </Link>
-        <Link to="/devices" className="flex items-center text-sm font-medium text-muted-foreground">
-        Devices 
-        </Link>
       </nav>
     </div>
   )
