@@ -769,7 +769,7 @@ function ProductForm({ initialData, onSubmit }) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form  onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
                 <div>
                     <Label htmlFor="name">Product Name</Label>
@@ -778,6 +778,7 @@ function ProductForm({ initialData, onSubmit }) {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
+                        name = "userName"
                     />
                 </div>
                 <div>
@@ -787,6 +788,7 @@ function ProductForm({ initialData, onSubmit }) {
                         value={formData.sku}
                         onChange={(e) => setFormData({ ...formData, sku: e.target.value })}
                         required
+                        name ="userSku"
                     />
                 </div>
             </div>
@@ -794,7 +796,7 @@ function ProductForm({ initialData, onSubmit }) {
             <div className="grid grid-cols-2 gap-4">
                 <div>
                     <Label htmlFor="category">Category</Label>
-                    <Select value={formData.category} onValueChange={(value) => setFormData({ ...formData, category: value })}>
+                    <Select name="userCategory" value={formData.category} onValueChange={(value) => setFormData({ ...formData, category: value })}>
                         <SelectTrigger>
                             <SelectValue placeholder="Select category" />
                         </SelectTrigger>
@@ -814,6 +816,7 @@ function ProductForm({ initialData, onSubmit }) {
                         value={formData.brand}
                         onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
                         required
+                        name ="userBrand"
                     />
                 </div>
             </div>
@@ -827,6 +830,7 @@ function ProductForm({ initialData, onSubmit }) {
                         value={formData.quantity}
                         onChange={(e) => setFormData({ ...formData, quantity: Number.parseInt(e.target.value) })}
                         required
+                        name ="userQuantity"
                     />
                 </div>
                 <div>
@@ -837,6 +841,7 @@ function ProductForm({ initialData, onSubmit }) {
                         value={formData.minQuantity}
                         onChange={(e) => setFormData({ ...formData, minQuantity: Number.parseInt(e.target.value) })}
                         required
+                        name = "userMinQuantity"
                     />
                 </div>
             </div>
@@ -850,6 +855,7 @@ function ProductForm({ initialData, onSubmit }) {
                         value={formData.costPrice}
                         onChange={(e) => setFormData({ ...formData, costPrice: Number.parseInt(e.target.value) })}
                         required
+                        name = "userCostPrice"
                     />
                 </div>
                 <div>
@@ -860,20 +866,12 @@ function ProductForm({ initialData, onSubmit }) {
                         value={formData.price}
                         onChange={(e) => setFormData({ ...formData, price: Number.parseInt(e.target.value) })}
                         required
+                        name = "userPrice"
                     />
                 </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <Label htmlFor="supplier">Supplier</Label>
-                    <Input
-                        id="supplier"
-                        value={formData.supplier}
-                        onChange={(e) => setFormData({ ...formData, supplier: e.target.value })}
-                        required
-                    />
-                </div>
                 <div>
                     <Label htmlFor="location">Storage Location</Label>
                     <Input
@@ -882,6 +880,7 @@ function ProductForm({ initialData, onSubmit }) {
                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                         placeholder="e.g., A-1-01"
                         required
+                        name = "userLocation"
                     />
                 </div>
             </div>
