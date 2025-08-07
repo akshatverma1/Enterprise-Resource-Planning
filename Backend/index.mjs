@@ -29,17 +29,22 @@ app.listen(port, () => {
 });
 
 //Get All Product
-app.get("/data",(req,res)=>{
-    console.log("API REQUEST");
-    res.json(data);
-})
-
+app.get("/api/products", async (req, res) => {
+  try {
+    const products = await Product.find().sort({ createdAt: -1 });
+    console.log("Get all product");
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 //new product api
 app.post("/api/products", async (req, res) => {
   try {
     const product = new Product(req.body);
     const saved = await product.save();
+    console.log("New Product Added");
     // res.status(201).json(saved);
     res.redirect("https://www.akshatv.life");
   } catch (error) {
@@ -47,26 +52,30 @@ app.post("/api/products", async (req, res) => {
   }
 });
 
-app.patch("/api/products/:id", async (req, res) => {
+
+//Update the Product
+app.patch("/updateProduct/:id", async (req, res) => {
   try {
-    const updated = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    if (!updated) return res.status(404).json({ message: "Product not found" });
-    // res.json(updated);
-    res.redirect("https://www.akshatv.life");
+      const updatedProduct = await Product.findByIdAndUpdate(
+          req.params.id,
+          req.body,
+          { new: true }
+      );
+      res.status(200).json(updatedProduct);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+      res.status(500).json({ message: "Update failed", error });
   }
 });
 
-app.delete("/api/products/:id", async (req, res) => {
+//Delete Product
+app.get("/deleteProduct/:id", async (req, res) => {
   try {
     const deleted = await Product.findByIdAndDelete(req.params.id);
+    console.log("Product Deleted");
     if (!deleted) return res.status(404).json({ message: "Product not found" });
-    res.redirect("https://www.akshat.life");
+    
+    // ✅ Proper JSON response instead of redirect
+    res.status(200).json({ message: "Product deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

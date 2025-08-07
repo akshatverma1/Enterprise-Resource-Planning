@@ -144,15 +144,15 @@ export default function InventoryManagementPage() {
     // ])
     const [inventory, setInventory] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch();
-    },[])
+    }, [])
 
 
-    async function fetch(){
+    async function fetch() {
         const dats = await getAutomobileData();
         const productss = dats.map((item, index) => ({
-            id: item.id,
+            id: item._id,
             name: item.name,
             category: item.category,
             brand: item.brand,
@@ -169,7 +169,7 @@ export default function InventoryManagementPage() {
         }))
         setInventory(productss);
     }
-   
+
 
     const [suppliers] = useState([
         { id: "SUP001", name: "Auto Parts Ltd", contact: "+91 98765 43210", email: "contact@autoparts.com" },
@@ -251,21 +251,64 @@ export default function InventoryManagementPage() {
         setIsAddProductOpen(false)
     }
 
-    const handleEditProduct = (productData) => {
-        setInventory(
-            inventory.map((item) =>
-                item.id === selectedProduct.id
-                    ? { ...item, ...productData, lastUpdated: new Date().toISOString().split("T")[0] }
-                    : item,
-            ),
-        )
-        setIsEditProductOpen(false)
-        setSelectedProduct(null)
-    }
+    const handleEditProduct = async (productData) => {
+        try {
+            const response = await fetch(`http://localhost:4000/updateProduct/${selectedProduct._id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(productData),
+            });
 
-    const handleDeleteProduct = (productId) => {
-        setInventory(inventory.filter((item) => item.id !== productId))
-    }
+            if (!response.ok) {
+                throw new Error('Failed to update product');
+            }
+
+            const updatedProduct = await response.json();
+
+            // Update state
+            setInventory((prevInventory) =>
+                prevInventory.map((item) =>
+                    item._id === selectedProduct._id
+                        ? { ...item, ...updatedProduct }
+                        : item
+                )
+            );
+
+            // Close the dialog
+            setIsEditProductOpen(false);
+            setSelectedProduct(null);
+        } catch (error) {
+            console.error('Update failed:', error);
+            alert('Failed to update the product. Please try again.');
+        }
+    };
+
+
+    const handleDeleteProduct = async (id) => {
+        try {
+          console.log("Deleting product with ID:", id);
+      
+          const res = await fetch(`http://localhost:4000/deleteProduct/${id}`, {
+            method: "GET", // Using GET instead of DELETE
+          });
+      
+          if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message || "Delete failed");
+          }
+      
+          const result = await res.json();
+          console.log("Deleted:", result);
+      
+          // Fix: Use _id not id in filter
+          setInventory((prev) => prev.filter((p) => p._id !== id));
+        } catch (error) {
+          console.error("Error deleting product:", error.message);
+          alert("Failed to delete product");
+        }
+      };
 
     const exportToCSV = () => {
         const headers = [
@@ -313,6 +356,9 @@ export default function InventoryManagementPage() {
 
     return (
         <div className="flex h-screen bg-gray-50">
+            <button onClick={() => handleDeleteProduct("68951c4a75c4e2632ba34f42")}>
+                Delete
+            </button>
             {/* <Sidebar /> */}
             <div className="flex-1 ">
                 <br></br>
@@ -748,149 +794,150 @@ export default function InventoryManagementPage() {
     )
 }
 
-// Product Form Component
-function ProductForm({ initialData, onSubmit }) {
+const ProductForm = ({ initialData = {} }) => {
     const [formData, setFormData] = useState({
-        name: initialData?.name || "",
-        category: initialData?.category || "",
-        brand: initialData?.brand || "",
-        sku: initialData?.sku || "",
-        quantity: initialData?.quantity || 0,
-        minQuantity: initialData?.minQuantity || 0,
-        price: initialData?.price || 0,
-        costPrice: initialData?.costPrice || 0,
-        supplier: initialData?.supplier || "",
-        location: initialData?.location || "",
-    })
+        name: initialData.name || "",
+        category: initialData.category || "",
+        company: initialData.company || "",
+        supplier: initialData.supplier || "",
+        location: initialData.location || 0,
+        partNumber: initialData.partNumber || "",
+        price: initialData.price || 0,
+        stock: initialData.stock || 0,
+        image: initialData.image || "",
+        designImage: initialData.designImage || "",
+        designDXF: initialData.designDXF || "",
+        gst: initialData.gst || "",
+        coating: initialData.coating || "",
+    });
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        onSubmit(formData)
-    }
+    const handleChange = (field) => (e) => {
+        const value = e?.target?.type === "number"
+            ? parseInt(e.target.value)
+            : e?.target?.value ?? e;
+        setFormData({ ...formData, [field]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const isEditing = Boolean(initialData._id);
+
+        const url = isEditing
+            ? `http://localhost:4000/api/products/${initialData._id}`
+            : "http://localhost:4000/api/products";
+
+        const method = isEditing ? "PATCH" : "POST";
+
+        try {
+            const res = await fetch(url, {
+                method,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            if (!res.ok) throw new Error("Request failed");
+            alert(isEditing ? "Product updated!" : "Product added!");
+        } catch (err) {
+            console.error(err);
+            alert("Something went wrong.");
+        }
+    };
 
     return (
-        <form  onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <Label htmlFor="name">Product Name</Label>
-                    <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        required
-                        name = "userName"
-                    />
-                </div>
-                <div>
-                    <Label htmlFor="sku">SKU</Label>
-                    <Input
-                        id="sku"
-                        value={formData.sku}
-                        onChange={(e) => setFormData({ ...formData, sku: e.target.value })}
-                        required
-                        name ="userSku"
-                    />
-                </div>
-            </div>
+        <div className="p-1">
+            <Card className="max-w-4xl mx-auto">
+                <CardContent className="p-6">
+                    <form onSubmit={handleSubmit}>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <Label htmlFor="name">Name</Label>
+                                <Input id="name" value={formData.name} onChange={handleChange("name")} />
+                            </div>
+                            <div>
+                                <Label htmlFor="category">Category</Label>
+                                <Input id="category" value={formData.category} onChange={handleChange("category")} />
+                            </div>
+                        </div>
 
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <Label htmlFor="category">Category</Label>
-                    <Select name="userCategory" value={formData.category} onValueChange={(value) => setFormData({ ...formData, category: value })}>
-                        <SelectTrigger>
-                            <SelectValue placeholder="Select category" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="Batteries">Batteries</SelectItem>
-                            <SelectItem value="Oils">Oils</SelectItem>
-                            <SelectItem value="Spare Parts">Spare Parts</SelectItem>
-                            <SelectItem value="Filters">Filters</SelectItem>
-                            <SelectItem value="Tires">Tires</SelectItem>
-                        </SelectContent>
-                    </Select>
-                </div>
-                <div>
-                    <Label htmlFor="brand">Brand</Label>
-                    <Input
-                        id="brand"
-                        value={formData.brand}
-                        onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
-                        required
-                        name ="userBrand"
-                    />
-                </div>
-            </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <Label htmlFor="company">Company</Label>
+                                <Input id="company" value={formData.company} onChange={handleChange("company")} />
+                            </div>
+                            <div>
+                                <Label htmlFor="supplier">Supplier</Label>
+                                <Input id="supplier" value={formData.supplier} onChange={handleChange("supplier")} />
+                            </div>
+                        </div>
 
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <Label htmlFor="quantity">Current Quantity</Label>
-                    <Input
-                        id="quantity"
-                        type="number"
-                        value={formData.quantity}
-                        onChange={(e) => setFormData({ ...formData, quantity: Number.parseInt(e.target.value) })}
-                        required
-                        name ="userQuantity"
-                    />
-                </div>
-                <div>
-                    <Label htmlFor="minQuantity">Minimum Quantity</Label>
-                    <Input
-                        id="minQuantity"
-                        type="number"
-                        value={formData.minQuantity}
-                        onChange={(e) => setFormData({ ...formData, minQuantity: Number.parseInt(e.target.value) })}
-                        required
-                        name = "userMinQuantity"
-                    />
-                </div>
-            </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <Label htmlFor="location">Location (Shelf No.)</Label>
+                                <Input type="number" id="location" value={formData.location} onChange={handleChange("location")} />
+                            </div>
+                            <div>
+                                <Label htmlFor="partNumber">Part Number</Label>
+                                <Input id="partNumber" value={formData.partNumber} onChange={handleChange("partNumber")} />
+                            </div>
+                        </div>
 
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <Label htmlFor="costPrice">Cost Price (₹)</Label>
-                    <Input
-                        id="costPrice"
-                        type="number"
-                        value={formData.costPrice}
-                        onChange={(e) => setFormData({ ...formData, costPrice: Number.parseInt(e.target.value) })}
-                        required
-                        name = "userCostPrice"
-                    />
-                </div>
-                <div>
-                    <Label htmlFor="price">Selling Price (₹)</Label>
-                    <Input
-                        id="price"
-                        type="number"
-                        value={formData.price}
-                        onChange={(e) => setFormData({ ...formData, price: Number.parseInt(e.target.value) })}
-                        required
-                        name = "userPrice"
-                    />
-                </div>
-            </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <Label htmlFor="price">Price (₹)</Label>
+                                <Input type="number" id="price" value={formData.price} onChange={handleChange("price")} />
+                            </div>
+                            <div>
+                                <Label htmlFor="stock">Stock</Label>
+                                <Input type="number" id="stock" value={formData.stock} onChange={handleChange("stock")} />
+                            </div>
+                        </div>
 
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <Label htmlFor="location">Storage Location</Label>
-                    <Input
-                        id="location"
-                        value={formData.location}
-                        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                        placeholder="e.g., A-1-01"
-                        required
-                        name = "userLocation"
-                    />
-                </div>
-            </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <Label htmlFor="image">Image URL</Label>
+                                <Input id="image" value={formData.image} onChange={handleChange("image")} />
+                            </div>
+                            <div>
+                                <Label htmlFor="designImage">Design Image URL</Label>
+                                <Input id="designImage" value={formData.designImage} onChange={handleChange("designImage")} />
+                            </div>
+                        </div>
 
-            <div className="flex justify-end gap-2 pt-4">
-                <Button type="submit">{initialData ? "Update Product" : "Add Product"}</Button>
-            </div>
-        </form>
-    )
-}
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <Label htmlFor="designDXF">Design DXF URL</Label>
+                                <Input id="designDXF" value={formData.designDXF} onChange={handleChange("designDXF")} />
+                            </div>
+                            <div>
+                                <Label htmlFor="gst">GST</Label>
+                                <Input id="gst" value={formData.gst} onChange={handleChange("gst")} />
+                            </div>
+                        </div>
+
+                        <div>
+                            <Label htmlFor="coating">Coating Info</Label>
+                            <Input id="coating" value={formData.coating} onChange={handleChange("coating")} />
+                        </div>
+
+                        <div className="flex justify-end mt-6">
+                            <Button type="submit">{initialData._id ? "Update" : "Add"} Product</Button>
+                        </div>
+                    </form>
+                </CardContent>
+            </Card>
+        </div>
+
+    );
+};
+
+
+
+const FormField = ({ label, id, type = "text", value, onChange }) => (
+    <div>
+        <Label htmlFor={id}>{label}</Label>
+        <Input id={id} type={type} value={value} onChange={onChange} required />
+    </div>
+);
 
 // Supplier Form Component
 function SupplierForm() {
