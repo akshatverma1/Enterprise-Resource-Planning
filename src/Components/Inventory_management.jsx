@@ -286,29 +286,29 @@ export default function InventoryManagementPage() {
     };
 
 
-    const handleDeleteProduct = async (id) => {
-        try {
-          console.log("Deleting product with ID:", id);
+    // const handleDeleteProduct = async (id) => {
+    //     try {
+    //       console.log("Deleting product with ID:", id);
       
-          const res = await fetch(`http://localhost:4000/deleteProduct/${id}`, {
-            method: "GET", // Using GET instead of DELETE
-          });
+    //       const res = await fetch(`http://localhost:4000/deleteProduct/${id}`, {
+    //         method: "GET", // Using GET instead of DELETE
+    //       });
       
-          if (!res.ok) {
-            const error = await res.json();
-            throw new Error(error.message || "Delete failed");
-          }
+    //       if (!res.ok) {
+    //         const error = await res.json();
+    //         throw new Error(error.message || "Delete failed");
+    //       }
       
-          const result = await res.json();
-          console.log("Deleted:", result);
+    //       const result = await res.json();
+    //       console.log("Deleted:", result);
       
-          // Fix: Use _id not id in filter
-          setInventory((prev) => prev.filter((p) => p._id !== id));
-        } catch (error) {
-          console.error("Error deleting product:", error.message);
-          alert("Failed to delete product");
-        }
-      };
+    //       // Fix: Use _id not id in filter
+    //       setInventory((prev) => prev.filter((p) => p._id !== id));
+    //     } catch (error) {
+    //       console.error("Error deleting product:", error.message);
+    //       alert("Failed to delete product");
+    //     }
+    //   };
 
     const exportToCSV = () => {
         const headers = [
