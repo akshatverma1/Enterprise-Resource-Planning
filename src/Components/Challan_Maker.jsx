@@ -279,7 +279,7 @@ export default function BillMakerPage() {
     const data = await getAutomobileData();
     console.log("Loaded products data:", data);
     const mock = data.map((item) => ({
-      id: item.id,
+      id: item._id,
       name: item.name,
       category: item.category,
       price: item.price,
@@ -801,7 +801,7 @@ export default function BillMakerPage() {
                         </SelectTrigger>
                         <SelectContent>
                           {mockProducts.map((product) => (
-                            <SelectItem key={product.id} value={product.id.toString()}>
+                            <SelectItem key={product.id} value={product.id}>
                               {product.partnumber} - {product.name} (₹{product.price.toFixed(2)})
                             </SelectItem>
                           ))}

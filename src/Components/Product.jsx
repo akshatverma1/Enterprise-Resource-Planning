@@ -362,7 +362,7 @@ export default function ProductsPage() {
                           <div className="space-y-1">
                             <div className="flex items-center space-x-2">
                               <span className="text-lg font-bold text-green-600">
-                                ₹{product.originalPrice.toLocaleString()}
+                                ₹{product.price}
                               </span>
                             </div>
                           </div>

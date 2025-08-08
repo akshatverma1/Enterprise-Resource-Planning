@@ -32,7 +32,7 @@ import {
     Bell,
     FileText,
 } from "lucide-react"
-
+import axios from "axios"
 export default function InventoryManagementPage() {
     const [searchTerm, setSearchTerm] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("all")
@@ -249,6 +249,7 @@ export default function InventoryManagementPage() {
         }
         setInventory([...inventory, newProduct])
         setIsAddProductOpen(false)
+        window.location.reload();
     }
 
     const handleEditProduct = async (productData) => {
@@ -286,29 +287,16 @@ export default function InventoryManagementPage() {
     };
 
 
-    // const handleDeleteProduct = async (id) => {
-    //     try {
-    //       console.log("Deleting product with ID:", id);
+    const handleDeleteProduct = async (id) => {
+
+          console.log("Deleting product with ID:", id);
       
-    //       const res = await fetch(`http://localhost:4000/deleteProduct/${id}`, {
-    //         method: "GET", // Using GET instead of DELETE
-    //       });
-      
-    //       if (!res.ok) {
-    //         const error = await res.json();
-    //         throw new Error(error.message || "Delete failed");
-    //       }
-      
-    //       const result = await res.json();
-    //       console.log("Deleted:", result);
-      
-    //       // Fix: Use _id not id in filter
-    //       setInventory((prev) => prev.filter((p) => p._id !== id));
-    //     } catch (error) {
-    //       console.error("Error deleting product:", error.message);
-    //       alert("Failed to delete product");
-    //     }
-    //   };
+          const res = await axios.delete(`http://localhost:4000/deleteProduct/${id}`);
+
+          // Fix: Use _id not id in filter
+          setInventory((prev) => prev.filter((p) => p._id !== id));
+          window.location.reload();
+      };
 
     const exportToCSV = () => {
         const headers = [
@@ -356,9 +344,6 @@ export default function InventoryManagementPage() {
 
     return (
         <div className="flex h-screen bg-gray-50">
-            <button onClick={() => handleDeleteProduct("68951c4a75c4e2632ba34f42")}>
-                Delete
-            </button>
             {/* <Sidebar /> */}
             <div className="flex-1 ">
                 <br></br>
@@ -837,6 +822,7 @@ const ProductForm = ({ initialData = {} }) => {
 
             if (!res.ok) throw new Error("Request failed");
             alert(isEditing ? "Product updated!" : "Product added!");
+            window.location.reload();
         } catch (err) {
             console.error(err);
             alert("Something went wrong.");
