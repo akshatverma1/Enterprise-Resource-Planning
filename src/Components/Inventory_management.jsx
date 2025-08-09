@@ -1,20 +1,19 @@
-"use client"
+"use client";
 
-import { use, useEffect, useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Label } from "./ui/label"
-import { Badge } from "./ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
-import { Textarea } from "./ui/textarea"
-import Sidebar from "./sidebar"
-// import Item from "./mockProducts_automobile.js"
-import { getAutomobileData } from "./mockProducts_automobile.js"
-import Mainnav from "./Main_nav.jsx"
+import { useEffect, useState } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { Badge } from "./ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Textarea } from "./ui/textarea";
+import Sidebar from "./sidebar";
+import { getAutomobileData } from "./mockProducts_automobile.js";
+import Mainnav from "./Main_nav.jsx";
 import {
     Package,
     Plus,
@@ -31,145 +30,47 @@ import {
     Trash2,
     Bell,
     FileText,
-} from "lucide-react"
-import axios from "axios"
+} from "lucide-react";
+import axios from "axios";
+
 export default function InventoryManagementPage() {
-    const [searchTerm, setSearchTerm] = useState("")
-    const [selectedCategory, setSelectedCategory] = useState("all")
-    const [selectedBrand, setSelectedBrand] = useState("all")
-    const [stockFilter, setStockFilter] = useState("all")
-    const [isAddProductOpen, setIsAddProductOpen] = useState(false)
-    const [isEditProductOpen, setIsEditProductOpen] = useState(false)
-    const [selectedProduct, setSelectedProduct] = useState(null)
-    const [isSupplierOpen, setIsSupplierOpen] = useState(false)
-    const [isPurchaseOpen, setIsPurchaseOpen] = useState(false)
-    // Sample inventory data
-    // const [inventory, setInventory] = useState([
-    //     {
-    //         id: "INV001",
-    //         name: "Car Battery 12V 70Ah",
-    //         category: "Batteries",
-    //         brand: "Exide",
-    //         sku: "EXD-12V70",
-    //         quantity: 25,
-    //         minQuantity: 10,
-    //         price: 8500,
-    //         costPrice: 7200,
-    //         supplier: "Auto Parts Ltd",
-    //         location: "A-1-01",
-    //         lastUpdated: "2024-01-15",
-    //         status: "In Stock",
-    //         fastMoving: true,
-    //     },
-    //     {
-    //         id: "INV002",
-    //         name: "Engine Oil 5W-30 4L",
-    //         category: "Oils",
-    //         brand: "Castrol",
-    //         sku: "CTL-5W30-4L",
-    //         quantity: 5,
-    //         minQuantity: 15,
-    //         price: 2800,
-    //         costPrice: 2200,
-    //         supplier: "Oil Distributors",
-    //         location: "B-2-05",
-    //         lastUpdated: "2024-01-14",
-    //         status: "Low Stock",
-    //         fastMoving: true,
-    //     },
-    //     {
-    //         id: "INV003",
-    //         name: "Brake Pads Set",
-    //         category: "Spare Parts",
-    //         brand: "Bosch",
-    //         sku: "BSH-BP-001",
-    //         quantity: 0,
-    //         minQuantity: 8,
-    //         price: 3200,
-    //         costPrice: 2500,
-    //         supplier: "Bosch India",
-    //         location: "C-1-12",
-    //         lastUpdated: "2024-01-13",
-    //         status: "Out of Stock",
-    //         fastMoving: false,
-    //     },
-    //     {
-    //         id: "INV004",
-    //         name: "Air Filter",
-    //         category: "Spare Parts",
-    //         brand: "Mann",
-    //         sku: "MAN-AF-205",
-    //         quantity: 45,
-    //         minQuantity: 20,
-    //         price: 850,
-    //         costPrice: 650,
-    //         supplier: "Filter Solutions",
-    //         location: "C-2-08",
-    //         lastUpdated: "2024-01-16",
-    //         status: "In Stock",
-    //         fastMoving: true,
-    //     },
-    //     {
-    //         id: "INV005",
-    //         name: "Transmission Oil ATF",
-    //         category: "Oils",
-    //         brand: "Mobil",
-    //         sku: "MOB-ATF-1L",
-    //         quantity: 12,
-    //         minQuantity: 10,
-    //         price: 1200,
-    //         costPrice: 950,
-    //         supplier: "Oil Distributors",
-    //         location: "B-1-03",
-    //         lastUpdated: "2024-01-15",
-    //         status: "In Stock",
-    //         fastMoving: false,
-    //     },
-    //     {
-    //         id: "INV006",
-    //         name: "Spark Plugs Set",
-    //         category: "Spare Parts",
-    //         brand: "NGK",
-    //         sku: "NGK-SP-V4",
-    //         quantity: 8,
-    //         minQuantity: 12,
-    //         price: 1800,
-    //         costPrice: 1400,
-    //         supplier: "NGK India",
-    //         location: "C-3-15",
-    //         lastUpdated: "2024-01-14",
-    //         status: "Low Stock",
-    //         fastMoving: true,
-    //     },
-    // ])
-    const [inventory, setInventory] = useState([])
+    const [searchTerm, setSearchTerm] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("all");
+    const [selectedBrand, setSelectedBrand] = useState("all");
+    const [stockFilter, setStockFilter] = useState("all");
+    const [isAddProductOpen, setIsAddProductOpen] = useState(false);
+    const [isEditProductOpen, setIsEditProductOpen] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isSupplierOpen, setIsSupplierOpen] = useState(false);
+    const [isPurchaseOpen, setIsPurchaseOpen] = useState(false);
+    const [inventory, setInventory] = useState([]);
 
     useEffect(() => {
         fetch();
-    }, [])
-
+    }, []);
 
     async function fetch() {
         const dats = await getAutomobileData();
-        const productss = dats.map((item, index) => ({
+        const productss = dats.map((item) => ({
             id: item._id,
             name: item.name,
             category: item.category,
-            brand: item.brand,
-            sku: item.sku,
-            quantity: item.quantity,
-            minQuantity: item.minQuantity,
-            price: item.price,
-            costPrice: item.costPrice,
+            company: item.company,
             supplier: item.supplier,
             location: item.location,
+            partNumber: item.partNumber,
+            price: item.price,
+            stock: item.stock,
+            image: item.image,
+            designImage: item.designImage,
+            designDXF: item.designDXF,
+            gst: item.gst,
+            coating: item.coating,
+            createdAt: item.createdAt,
             lastUpdated: item.lastUpdated,
-            status: item.status,
-            fastMoving: item.fastMoving || false, // Default to false if not provided
-        }))
+        }));
         setInventory(productss);
     }
-
 
     const [suppliers] = useState([
         { id: "SUP001", name: "Auto Parts Ltd", contact: "+91 98765 43210", email: "contact@autoparts.com" },
@@ -177,7 +78,7 @@ export default function InventoryManagementPage() {
         { id: "SUP003", name: "Bosch India", contact: "+91 76543 21098", email: "orders@bosch.in" },
         { id: "SUP004", name: "Filter Solutions", contact: "+91 65432 10987", email: "info@filtersol.com" },
         { id: "SUP005", name: "NGK India", contact: "+91 54321 09876", email: "support@ngk.in" },
-    ])
+    ]);
 
     const [purchases] = useState([
         {
@@ -204,99 +105,69 @@ export default function InventoryManagementPage() {
             total: 15000,
             status: "Delivered",
         },
-    ])
+    ]);
+
+
+    const showInventory = inventory.map((item) => ({
+        id: item.id,
+        name: item.name,
+        category: item.category,
+        company: item.company,
+        supplier: item.supplier,
+        location: item.location,
+        partNumber: item.partNumber,
+        price: item.price,
+        stock: item.stock,
+        image: item.image,
+        designImage: item.designImage,
+        designDXF: item.designDXF,
+        gst: item.gst,
+        coating: item.coating,
+        createdAt: item.createdAt,   // from timestamps
+        updatedAt: item.updatedAt,   // from timestamps
+    }));
+    console.log("Inventory Data:", showInventory);
 
     // Calculate dashboard metrics
-    const totalItems = inventory.length
-    const totalStockValue = inventory.reduce((sum, item) => sum + item.quantity * item.price, 0)
-    const lowStockItems = inventory.filter((item) => item.quantity <= item.minQuantity).length
-    const outOfStockItems = inventory.filter((item) => item.quantity === 0).length
-    const fastMovingItems = inventory.filter((item) => item.fastMoving).length
+    const totalItems = inventory.length;
+    const totalStockValue = inventory.reduce((sum, item) => sum + item.quantity * item.price, 0);
+    const lowStockItems = inventory.filter((item) => item.quantity <= item.minQuantity).length;
+    const outOfStockItems = inventory.filter((item) => item.quantity === 0).length;
+    const fastMovingItems = inventory.filter((item) => item.fastMoving).length;
 
     // Filter inventory based on search and filters
     const filteredInventory = inventory.filter((item) => {
         const matchesSearch =
             item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             item.sku.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.brand.toLowerCase().includes(searchTerm.toLowerCase())
+            item.brand.toLowerCase().includes(searchTerm.toLowerCase());
 
-        const matchesCategory = selectedCategory === "all" || item.category === selectedCategory
-        const matchesBrand = selectedBrand === "all" || item.brand === selectedBrand
+        const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
+        const matchesBrand = selectedBrand === "all" || item.brand === selectedBrand;
 
-        let matchesStock = true
-        if (stockFilter === "low") matchesStock = item.quantity <= item.minQuantity
-        else if (stockFilter === "out") matchesStock = item.quantity === 0
-        else if (stockFilter === "in") matchesStock = item.quantity > item.minQuantity
+        let matchesStock = true;
+        if (stockFilter === "low") matchesStock = item.quantity <= item.minQuantity;
+        else if (stockFilter === "out") matchesStock = item.quantity === 0;
+        else if (stockFilter === "in") matchesStock = item.quantity > item.minQuantity;
 
-        return matchesSearch && matchesCategory && matchesBrand && matchesStock
-    })
+        return matchesSearch && matchesCategory && matchesBrand && matchesStock;
+    });
 
     const getStockStatus = (item) => {
-        if (item.quantity === 0) return { status: "Out of Stock", color: "bg-red-500" }
-        if (item.quantity <= item.minQuantity) return { status: "Low Stock", color: "bg-yellow-500" }
-        return { status: "In Stock", color: "bg-green-500" }
-    }
-
-    const categories = ["all", ...new Set(inventory.map((item) => item.category))]
-    const brands = ["all", ...new Set(inventory.map((item) => item.brand))]
-
-    const handleAddProduct = (productData) => {
-        const newProduct = {
-            id: `INV${String(inventory.length + 1).padStart(3, "0")}`,
-            ...productData,
-            lastUpdated: new Date().toISOString().split("T")[0],
-            fastMoving: false,
-        }
-        setInventory([...inventory, newProduct])
-        setIsAddProductOpen(false)
-        window.location.reload();
-    }
-
-    const handleEditProduct = async (productData) => {
-        try {
-            const response = await fetch(`http://localhost:4000/updateProduct/${selectedProduct._id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(productData),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to update product');
-            }
-
-            const updatedProduct = await response.json();
-
-            // Update state
-            setInventory((prevInventory) =>
-                prevInventory.map((item) =>
-                    item._id === selectedProduct._id
-                        ? { ...item, ...updatedProduct }
-                        : item
-                )
-            );
-
-            // Close the dialog
-            setIsEditProductOpen(false);
-            setSelectedProduct(null);
-        } catch (error) {
-            console.error('Update failed:', error);
-            alert('Failed to update the product. Please try again.');
-        }
+        if (item.quantity === 0) return { status: "Out of Stock", color: "bg-red-500" };
+        if (item.quantity <= item.minQuantity) return { status: "Low Stock", color: "bg-yellow-500" };
+        return { status: "In Stock", color: "bg-green-500" };
     };
 
+    const categories = ["all", ...new Set(inventory.map((item) => item.category))];
+    const brands = ["all", ...new Set(inventory.map((item) => item.brand))];
 
     const handleDeleteProduct = async (id) => {
-
-          console.log("Deleting product with ID:", id);
-      
-          const res = await axios.delete(`http://localhost:4000/deleteProduct/${id}`);
-
-          // Fix: Use _id not id in filter
-          setInventory((prev) => prev.filter((p) => p._id !== id));
-          window.location.reload();
-      };
+        console.log("Deleting product with ID:", id);
+        const res = await axios.delete(`http://localhost:4000/deleteProduct/${id}`);
+        setInventory((prev) => prev.filter((p) => p.id !== id));
+        window.location.reload();
+    };
 
     const exportToCSV = () => {
         const headers = [
@@ -312,7 +183,7 @@ export default function InventoryManagementPage() {
             "Supplier",
             "Location",
             "Status",
-        ]
+        ];
         const csvContent = [
             headers.join(","),
             ...filteredInventory.map((item) =>
@@ -329,22 +200,21 @@ export default function InventoryManagementPage() {
                     `"${item.supplier}"`,
                     item.location,
                     `"${getStockStatus(item).status}"`,
-                ].join(","),
+                ].join(",")
             ),
-        ].join("\n")
+        ].join("\n");
 
-        const blob = new Blob([csvContent], { type: "text/csv" })
-        const url = window.URL.createObjectURL(blob)
-        const a = document.createElement("a")
-        a.href = url
-        a.download = "inventory_export.csv"
-        a.click()
-        window.URL.revokeObjectURL(url)
-    }
+        const blob = new Blob([csvContent], { type: "text/csv" });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "inventory_export.csv";
+        a.click();
+        window.URL.revokeObjectURL(url);
+    };
 
     return (
         <div className="flex h-screen bg-gray-50">
-            {/* <Sidebar /> */}
             <div className="flex-1 ">
                 <br></br>
                 <div style={{ marginLeft: "1.5rem", marginBottom: "1.5rem" }}>
@@ -419,9 +289,9 @@ export default function InventoryManagementPage() {
                     <Tabs defaultValue="inventory" className="space-y-4">
                         <TabsList>
                             <TabsTrigger value="inventory">Inventory</TabsTrigger>
-                            <TabsTrigger value="suppliers">Suppliers</TabsTrigger>
-                            <TabsTrigger value="purchases">Purchase History</TabsTrigger>
-                            <TabsTrigger value="alerts">Low Stock Alerts</TabsTrigger>
+                            {/* <TabsTrigger value="suppliers">Suppliers</TabsTrigger> */}
+                            {/* <TabsTrigger value="purchases">Purchase History</TabsTrigger> */}
+                            {/* <TabsTrigger value="alerts">Low Stock Alerts</TabsTrigger> */}
                         </TabsList>
 
                         {/* Inventory Tab */}
@@ -446,16 +316,12 @@ export default function InventoryManagementPage() {
                                                         <DialogTitle>Add New Product</DialogTitle>
                                                         <DialogDescription>Add a new item to your inventory</DialogDescription>
                                                     </DialogHeader>
-                                                    <ProductForm onSubmit={handleAddProduct} />
+                                                    <ProductForm onSubmit={() => setIsAddProductOpen(false)} />
                                                 </DialogContent>
                                             </Dialog>
                                             <Button variant="outline" onClick={exportToCSV}>
                                                 <Download className="h-4 w-4 mr-2" />
                                                 Export CSV
-                                            </Button>
-                                            <Button variant="outline">
-                                                <Upload className="h-4 w-4 mr-2" />
-                                                Import CSV
                                             </Button>
                                         </div>
                                     </div>
@@ -511,72 +377,146 @@ export default function InventoryManagementPage() {
 
                                     {/* Inventory Table */}
                                     <div className="rounded-md border">
+
                                         <Table>
                                             <TableHeader>
                                                 <TableRow>
-                                                    <TableHead>Product</TableHead>
+                                                    <TableHead>Image</TableHead>
+                                                    <TableHead>Part No.</TableHead>
+                                                    <TableHead>Name</TableHead>
                                                     <TableHead>Category</TableHead>
-                                                    <TableHead>SKU</TableHead>
-                                                    <TableHead>Quantity</TableHead>
-                                                    <TableHead>Price</TableHead>
-                                                    <TableHead>Status</TableHead>
+                                                    <TableHead>Company</TableHead>
+                                                    <TableHead>Supplier</TableHead>
+                                                    <TableHead>Stock</TableHead>
                                                     <TableHead>Location</TableHead>
+                                                    <TableHead>Price</TableHead>
+                                                    <TableHead>GST</TableHead>
+                                                    <TableHead>Coating</TableHead>
+                                                    <TableHead>Design Image</TableHead>
+                                                    <TableHead>Design DXF</TableHead>
+                                                    <TableHead>Created At</TableHead>
                                                     <TableHead>Actions</TableHead>
                                                 </TableRow>
                                             </TableHeader>
+
                                             <TableBody>
-                                                {filteredInventory.map((item) => {
-                                                    const stockStatus = getStockStatus(item)
-                                                    return (
-                                                        <TableRow key={item.id}>
-                                                            <TableCell>
-                                                                <div>
-                                                                    <div className="font-medium">{item.name}</div>
-                                                                    <div className="text-sm text-gray-500">{item.brand}</div>
-                                                                </div>
-                                                            </TableCell>
-                                                            <TableCell>{item.category}</TableCell>
-                                                            <TableCell className="font-mono text-sm">{item.sku}</TableCell>
-                                                            <TableCell>
-                                                                <div className="flex items-center gap-2">
-                                                                    <span className={item.quantity <= item.minQuantity ? "text-red-600 font-medium" : ""}>
-                                                                        {item.quantity}
-                                                                    </span>
-                                                                    <span className="text-gray-400">/ {item.minQuantity}</span>
-                                                                    {item.fastMoving && (
-                                                                        <Badge variant="secondary" className="text-xs">
-                                                                            Fast
-                                                                        </Badge>
-                                                                    )}
-                                                                </div>
-                                                            </TableCell>
-                                                            <TableCell>₹{item.price.toLocaleString()}</TableCell>
-                                                            <TableCell>
-                                                                <Badge className={`${stockStatus.color} text-white`}>{stockStatus.status}</Badge>
-                                                            </TableCell>
-                                                            <TableCell className="font-mono text-sm">{item.location}</TableCell>
-                                                            <TableCell>
-                                                                <div className="flex items-center gap-2">
-                                                                    <Button
-                                                                        variant="ghost"
-                                                                        size="sm"
-                                                                        onClick={() => {
-                                                                            setSelectedProduct(item)
-                                                                            setIsEditProductOpen(true)
-                                                                        }}
-                                                                    >
-                                                                        <Edit className="h-4 w-4" />
-                                                                    </Button>
-                                                                    <Button variant="ghost" size="sm" onClick={() => handleDeleteProduct(item.id)}>
-                                                                        <Trash2 className="h-4 w-4" />
-                                                                    </Button>
-                                                                </div>
-                                                            </TableCell>
-                                                        </TableRow>
-                                                    )
-                                                })}
+                                                {showInventory.map((item) => (
+                                                    <TableRow key={item.id}>
+
+                                                        {/* Product Image */}
+                                                        <TableCell>
+                                                            {item.image ? (
+                                                                <img
+                                                                    src={item.image}
+                                                                    alt={item.name}
+                                                                    className="w-12 h-12 rounded object-cover border"
+                                                                />
+                                                            ) : (
+                                                                <span className="text-gray-400">No Image</span>
+                                                            )}
+                                                        </TableCell>
+
+                                                        {/* Part Number */}
+                                                        <TableCell className="font-mono text-sm">{item.partNumber}</TableCell>
+
+                                                        {/* Name */}
+                                                        <TableCell className="font-medium">{item.name}</TableCell>
+
+                                                        {/* Category */}
+                                                        <TableCell>{item.category}</TableCell>
+
+                                                        {/* Company */}
+                                                        <TableCell>{item.company}</TableCell>
+
+                                                        {/* Supplier */}
+                                                        <TableCell>{item.supplier}</TableCell>
+
+                                                        {/* Stock */}
+                                                        <TableCell className="font-mono text-sm">{item.stock}</TableCell>
+
+                                                        {/* Location */}
+                                                        <TableCell>A-{item.location}</TableCell>
+
+                                                        {/* Price */}
+                                                        <TableCell>₹{item.price?.toLocaleString()}</TableCell>
+
+                                                        {/* GST */}
+                                                        <TableCell>{item.gst || "-"}</TableCell>
+
+                                                        {/* Coating */}
+                                                        <TableCell>{item.coating || "-"}</TableCell>
+
+                                                        {/* Design Image */}
+                                                        <TableCell>
+                                                            {item.designImage ? (
+                                                                <a
+                                                                    href={item.designImage}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="text-blue-600 underline"
+                                                                >
+                                                                    View
+                                                                </a>
+                                                            ) : (
+                                                                "-"
+                                                            )}
+                                                        </TableCell>
+
+                                                        {/* Design DXF */}
+                                                        <TableCell>
+                                                            {item.designDXF ? (
+                                                                <a
+                                                                    href={item.designDXF}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="text-blue-600 underline"
+                                                                >
+                                                                    Download
+                                                                </a>
+                                                            ) : (
+                                                                "-"
+                                                            )}
+                                                        </TableCell>
+
+                                                        {/* Created At */}
+                                                        <TableCell className="text-sm text-gray-500">
+                                                            {new Date(item.createdAt).toLocaleString()}
+                                                        </TableCell>
+
+                                                        {/* Updated At */}
+                                                        {/* <TableCell className="text-sm text-gray-500">
+                                                            {new Date(item.updatedAt).toLocaleString()}
+                                                        </TableCell> */}
+
+                                                        {/* Actions */}
+                                                        <TableCell>
+                                                            <div className="flex items-center gap-2">
+                                                                <Button
+                                                                    variant="ghost"
+                                                                    size="sm"
+                                                                    onClick={() => {
+                                                                        setSelectedProduct(item);
+                                                                        setIsEditProductOpen(true);
+                                                                    }}
+                                                                >
+                                                                    <Edit className="h-4 w-4" />
+                                                                </Button>
+                                                                <Button
+                                                                    variant="ghost"
+                                                                    size="sm"
+                                                                    onClick={() => handleDeleteProduct(item.id)}
+                                                                >
+                                                                    <Trash2 className="h-4 w-4" />
+                                                                </Button>
+                                                            </div>
+                                                        </TableCell>
+
+                                                    </TableRow>
+                                                ))}
                                             </TableBody>
                                         </Table>
+
+
                                     </div>
                                 </CardContent>
                             </Card>
@@ -770,16 +710,16 @@ export default function InventoryManagementPage() {
                                 <DialogTitle>Edit Product</DialogTitle>
                                 <DialogDescription>Update product information</DialogDescription>
                             </DialogHeader>
-                            {selectedProduct && <ProductForm initialData={selectedProduct} onSubmit={handleEditProduct} />}
+                            {selectedProduct && <ProductForm initialData={selectedProduct} onSubmit={() => setIsEditProductOpen(false)} />}
                         </DialogContent>
                     </Dialog>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-const ProductForm = ({ initialData = {} }) => {
+const ProductForm = ({ initialData = {}, onSubmit }) => {
     const [formData, setFormData] = useState({
         name: initialData.name || "",
         category: initialData.category || "",
@@ -805,13 +745,13 @@ const ProductForm = ({ initialData = {} }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const isEditing = Boolean(initialData._id);
+        const isEditing = Boolean(initialData.id);
 
         const url = isEditing
-            ? `http://localhost:4000/api/products/${initialData._id}`
+            ? `http://localhost:4000/api/products/${initialData.id}`
             : "http://localhost:4000/api/products";
 
-        const method = "POST";
+        const method = isEditing ? "PUT" : "POST";
 
         try {
             const res = await fetch(url, {
@@ -820,12 +760,17 @@ const ProductForm = ({ initialData = {} }) => {
                 body: JSON.stringify(formData),
             });
 
-            if (!res.ok) throw new Error("Request failed");
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData?.message || "Request failed");
+            }
+
             alert(isEditing ? "Product updated!" : "Product added!");
             window.location.reload();
+            onSubmit?.();
         } catch (err) {
             console.error(err);
-            alert("Something went wrong.");
+            alert("Something went wrong: " + err.message);
         }
     };
 
@@ -906,17 +851,16 @@ const ProductForm = ({ initialData = {} }) => {
                         </div>
 
                         <div className="flex justify-end mt-6">
-                            <Button type="submit">{initialData._id ? "Update" : "Add"} Product</Button>
+                            <Button type="submit">{initialData.id ? "Update" : "Add"} Product</Button>
                         </div>
                     </form>
                 </CardContent>
             </Card>
         </div>
-
     );
 };
 
-
+// ... (SupplierForm, PurchaseOrderForm, and other components remain the same)
 
 const FormField = ({ label, id, type = "text", value, onChange }) => (
     <div>
@@ -932,13 +876,13 @@ function SupplierForm() {
         contact: "",
         email: "",
         address: "",
-    })
+    });
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         // Handle supplier creation
-        console.log("New supplier:", formData)
-    }
+        console.log("New supplier:", formData);
+    };
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -988,7 +932,7 @@ function SupplierForm() {
                 <Button type="submit">Add Supplier</Button>
             </div>
         </form>
-    )
+    );
 }
 
 // Purchase Order Form Component
@@ -997,13 +941,13 @@ function PurchaseOrderForm() {
         supplier: "",
         expectedDate: "",
         items: [{ product: "", quantity: 0, price: 0 }],
-    })
+    });
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         // Handle purchase order creation
-        console.log("New purchase order:", formData)
-    }
+        console.log("New purchase order:", formData);
+    };
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -1054,5 +998,5 @@ function PurchaseOrderForm() {
                 <Button type="submit">Create Purchase Order</Button>
             </div>
         </form>
-    )
+    );
 }

@@ -63,13 +63,14 @@ app.post("/api/products", async (req, res) => {
 
 
 //Update the Product
-app.put("/updateProduct/:id", async (req, res) => {
+app.put("/api/products/:id", async (req, res) => {
   try {
       const updatedProduct = await Product.findByIdAndUpdate(
           req.params.id,
           req.body,
           { new: true }
       );
+      console.log("Product Updated");
       res.status(200).json(updatedProduct);
   } catch (error) {
       res.status(500).json({ message: "Update failed", error });
