@@ -12,7 +12,6 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 import Sidebar from "./sidebar";
-import { getAutomobileData } from "./mockProducts_automobile.js";
 import Mainnav from "./Main_nav.jsx";
 import {
     Package,
@@ -44,129 +43,101 @@ export default function InventoryManagementPage() {
     const [isSupplierOpen, setIsSupplierOpen] = useState(false);
     const [isPurchaseOpen, setIsPurchaseOpen] = useState(false);
     const [inventory, setInventory] = useState([]);
+    const [suppliers, setSuppliers] = useState([]);
+    const [purchases, setPurchases] = useState([]);
 
     useEffect(() => {
-        fetch();
+        fetchInventory();
+        fetchSuppliers();
+        fetchPurchases();
     }, []);
 
-    async function fetch() {
-        const dats = await getAutomobileData();
-        const productss = dats.map((item) => ({
-            id: item._id,
-            name: item.name,
-            category: item.category,
-            company: item.company,
-            supplier: item.supplier,
-            location: item.location,
-            partNumber: item.partNumber,
-            price: item.price,
-            stock: item.stock,
-            image: item.image,
-            designImage: item.designImage,
-            designDXF: item.designDXF,
-            gst: item.gst,
-            coating: item.coating,
-            createdAt: item.createdAt,
-            lastUpdated: item.lastUpdated,
-        }));
-        setInventory(productss);
+    async function fetchInventory() {
+        try {
+            const response = await axios.get('http://localhost:4000/api/products');
+            const productss = response.data.map((item) => ({
+                id: item._id,
+                name: item.name,
+                category: item.category,
+                company: item.company,
+                supplier: item.supplier,
+                location: item.location,
+                partNumber: item.partNumber,
+                price: item.price,
+                stock: item.stock,
+                image: item.image,
+                designImage: item.designImage,
+                designDXF: item.designDXF,
+                gst: item.gst,
+                coating: item.coating,
+                createdAt: item.createdAt,
+                updatedAt: item.updatedAt,
+            }));
+            setInventory(productss);
+        } catch (error) {
+            console.error("Error fetching inventory:", error);
+        }
     }
 
-    const [suppliers] = useState([
-        { id: "SUP001", name: "Auto Parts Ltd", contact: "+91 98765 43210", email: "contact@autoparts.com" },
-        { id: "SUP002", name: "Oil Distributors", contact: "+91 87654 32109", email: "sales@oildist.com" },
-        { id: "SUP003", name: "Bosch India", contact: "+91 76543 21098", email: "orders@bosch.in" },
-        { id: "SUP004", name: "Filter Solutions", contact: "+91 65432 10987", email: "info@filtersol.com" },
-        { id: "SUP005", name: "NGK India", contact: "+91 54321 09876", email: "support@ngk.in" },
-    ]);
+    async function fetchSuppliers() {
+        try {
+            const response = await axios.get('http://localhost:4000/api/suppliers');
+            setSuppliers(response.data);
+        } catch (error) {
+            console.error("Error fetching suppliers:", error);
+        }
+    }
 
-    const [purchases] = useState([
-        {
-            id: "PO001",
-            supplier: "Auto Parts Ltd",
-            date: "2024-01-10",
-            items: 3,
-            total: 45000,
-            status: "Delivered",
-        },
-        {
-            id: "PO002",
-            supplier: "Oil Distributors",
-            date: "2024-01-12",
-            items: 2,
-            total: 28000,
-            status: "Pending",
-        },
-        {
-            id: "PO003",
-            supplier: "Bosch India",
-            date: "2024-01-08",
-            items: 1,
-            total: 15000,
-            status: "Delivered",
-        },
-    ]);
-
-
-    const showInventory = inventory.map((item) => ({
-        id: item.id,
-        name: item.name,
-        category: item.category,
-        company: item.company,
-        supplier: item.supplier,
-        location: item.location,
-        partNumber: item.partNumber,
-        price: item.price,
-        stock: item.stock,
-        image: item.image,
-        designImage: item.designImage,
-        designDXF: item.designDXF,
-        gst: item.gst,
-        coating: item.coating,
-        createdAt: item.createdAt,   // from timestamps
-        updatedAt: item.updatedAt,   // from timestamps
-    }));
-    console.log("Inventory Data:", showInventory);
+    async function fetchPurchases() {
+        try {
+            const response = await axios.get('http://localhost:4000/api/purchases');
+            setPurchases(response.data);
+        } catch (error) {
+            console.error("Error fetching purchases:", error);
+        }
+    }
 
     // Calculate dashboard metrics
     const totalItems = inventory.length;
-    const totalStockValue = inventory.reduce((sum, item) => sum + item.quantity * item.price, 0);
-    const lowStockItems = inventory.filter((item) => item.quantity <= item.minQuantity).length;
-    const outOfStockItems = inventory.filter((item) => item.quantity === 0).length;
-    const fastMovingItems = inventory.filter((item) => item.fastMoving).length;
+    const totalStockValue = inventory.reduce((sum, item) => sum + item.stock * item.price, 0);
+    const lowStockItems = inventory.filter((item) => item.stock <= 10 && item.stock > 0).length;
+    const outOfStockItems = inventory.filter((item) => item.stock === 0).length;
+    const fastMovingItems = 0; // Not available in API
 
     // Filter inventory based on search and filters
     const filteredInventory = inventory.filter((item) => {
         const matchesSearch =
             item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.sku.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.brand.toLowerCase().includes(searchTerm.toLowerCase());
+            item.partNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (item.company && item.company.toLowerCase().includes(searchTerm.toLowerCase()));
 
         const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
-        const matchesBrand = selectedBrand === "all" || item.brand === selectedBrand;
+        const matchesBrand = selectedBrand === "all" || item.company === selectedBrand;
 
         let matchesStock = true;
-        if (stockFilter === "low") matchesStock = item.quantity <= item.minQuantity;
-        else if (stockFilter === "out") matchesStock = item.quantity === 0;
-        else if (stockFilter === "in") matchesStock = item.quantity > item.minQuantity;
+        if (stockFilter === "low") matchesStock = item.stock <= 10 && item.stock > 0;
+        else if (stockFilter === "out") matchesStock = item.stock === 0;
+        else if (stockFilter === "in") matchesStock = item.stock > 10;
 
         return matchesSearch && matchesCategory && matchesBrand && matchesStock;
     });
 
     const getStockStatus = (item) => {
-        if (item.quantity === 0) return { status: "Out of Stock", color: "bg-red-500" };
-        if (item.quantity <= item.minQuantity) return { status: "Low Stock", color: "bg-yellow-500" };
+        if (item.stock === 0) return { status: "Out of Stock", color: "bg-red-500" };
+        if (item.stock <= 10) return { status: "Low Stock", color: "bg-yellow-500" };
         return { status: "In Stock", color: "bg-green-500" };
     };
 
     const categories = ["all", ...new Set(inventory.map((item) => item.category))];
-    const brands = ["all", ...new Set(inventory.map((item) => item.brand))];
+    const brands = ["all", ...new Set(inventory.map((item) => item.company))];
 
     const handleDeleteProduct = async (id) => {
-        console.log("Deleting product with ID:", id);
-        const res = await axios.delete(`http://localhost:4000/deleteProduct/${id}`);
-        setInventory((prev) => prev.filter((p) => p.id !== id));
-        window.location.reload();
+        try {
+            await axios.delete(`http://localhost:4000/api/products/${id}`);
+            setInventory((prev) => prev.filter((p) => p.id !== id));
+        } catch (error) {
+            console.error("Error deleting product:", error);
+        }
     };
 
     const exportToCSV = () => {
@@ -174,14 +145,14 @@ export default function InventoryManagementPage() {
             "ID",
             "Name",
             "Category",
-            "Brand",
-            "SKU",
-            "Quantity",
-            "Min Quantity",
-            "Price",
-            "Cost Price",
+            "Company",
             "Supplier",
             "Location",
+            "Part Number",
+            "Price",
+            "Stock",
+            "GST",
+            "Coating",
             "Status",
         ];
         const csvContent = [
@@ -191,14 +162,14 @@ export default function InventoryManagementPage() {
                     item.id,
                     `"${item.name}"`,
                     item.category,
-                    item.brand,
-                    item.sku,
-                    item.quantity,
-                    item.minQuantity,
-                    item.price,
-                    item.costPrice,
+                    item.company,
                     `"${item.supplier}"`,
                     item.location,
+                    item.partNumber,
+                    item.price,
+                    item.stock,
+                    item.gst,
+                    item.coating,
                     `"${getStockStatus(item).status}"`,
                 ].join(",")
             ),
@@ -223,8 +194,8 @@ export default function InventoryManagementPage() {
                 <div className="p-6">
                     {/* Header */}
                     <div className="mb-6">
-                        <h1 className="text-3xl font-bold text-gray-900">Ashirwad Enterprises Inventory Management</h1>
-                        <p className="text-gray-600">Manage your automotive parts and supplies inventory</p>
+                        <h1 className="text-3xl font-bold text-gray-900">Inventory Management</h1>
+                        <p className="text-gray-600">Manage your products inventory</p>
                     </div>
 
                     {/* Dashboard Cards */}
@@ -251,7 +222,7 @@ export default function InventoryManagementPage() {
                             </CardContent>
                         </Card>
 
-                        <Card>
+                        {/* <Card>
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                                 <CardTitle className="text-sm font-medium">Low Stock</CardTitle>
                                 <AlertTriangle className="h-4 w-4 text-yellow-500" />
@@ -282,16 +253,16 @@ export default function InventoryManagementPage() {
                                 <div className="text-2xl font-bold text-green-600">{fastMovingItems}</div>
                                 <p className="text-xs text-muted-foreground">High demand items</p>
                             </CardContent>
-                        </Card>
+                        </Card>  */}
                     </div>
 
                     {/* Main Content */}
                     <Tabs defaultValue="inventory" className="space-y-4">
                         <TabsList>
                             <TabsTrigger value="inventory">Inventory</TabsTrigger>
-                            {/* <TabsTrigger value="suppliers">Suppliers</TabsTrigger> */}
-                            {/* <TabsTrigger value="purchases">Purchase History</TabsTrigger> */}
-                            {/* <TabsTrigger value="alerts">Low Stock Alerts</TabsTrigger> */}
+                            {/* <TabsTrigger value="suppliers">Suppliers</TabsTrigger>
+                            <TabsTrigger value="purchases">Purchase History</TabsTrigger>
+                            <TabsTrigger value="alerts">Low Stock Alerts</TabsTrigger> */}
                         </TabsList>
 
                         {/* Inventory Tab */}
@@ -301,7 +272,7 @@ export default function InventoryManagementPage() {
                                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                                         <div>
                                             <CardTitle>Inventory Items</CardTitle>
-                                            <CardDescription>Manage your automotive parts inventory</CardDescription>
+                                            <CardDescription>Manage your inventory</CardDescription>
                                         </div>
                                         <div className="flex flex-wrap gap-2">
                                             <Dialog open={isAddProductOpen} onOpenChange={setIsAddProductOpen}>
@@ -316,7 +287,10 @@ export default function InventoryManagementPage() {
                                                         <DialogTitle>Add New Product</DialogTitle>
                                                         <DialogDescription>Add a new item to your inventory</DialogDescription>
                                                     </DialogHeader>
-                                                    <ProductForm onSubmit={() => setIsAddProductOpen(false)} />
+                                                    <ProductForm onSubmit={() => {
+                                                        setIsAddProductOpen(false);
+                                                        fetchInventory();
+                                                    }} />
                                                 </DialogContent>
                                             </Dialog>
                                             <Button variant="outline" onClick={exportToCSV}>
@@ -332,7 +306,7 @@ export default function InventoryManagementPage() {
                                         <div className="relative flex-1">
                                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                                             <Input
-                                                placeholder="Search products, SKU, or brand..."
+                                                placeholder="Search products, part number, or company..."
                                                 value={searchTerm}
                                                 onChange={(e) => setSearchTerm(e.target.value)}
                                                 className="pl-10"
@@ -352,12 +326,12 @@ export default function InventoryManagementPage() {
                                         </Select>
                                         <Select value={selectedBrand} onValueChange={setSelectedBrand}>
                                             <SelectTrigger className="w-full sm:w-48">
-                                                <SelectValue placeholder="Brand" />
+                                                <SelectValue placeholder="Company" />
                                             </SelectTrigger>
                                             <SelectContent>
                                                 {brands.map((brand) => (
                                                     <SelectItem key={brand} value={brand}>
-                                                        {brand === "all" ? "All Brands" : brand}
+                                                        {brand === "all" ? "All Companies" : brand}
                                                     </SelectItem>
                                                 ))}
                                             </SelectContent>
@@ -377,7 +351,6 @@ export default function InventoryManagementPage() {
 
                                     {/* Inventory Table */}
                                     <div className="rounded-md border">
-
                                         <Table>
                                             <TableHeader>
                                                 <TableRow>
@@ -400,9 +373,8 @@ export default function InventoryManagementPage() {
                                             </TableHeader>
 
                                             <TableBody>
-                                                {showInventory.map((item) => (
+                                                {filteredInventory.map((item) => (
                                                     <TableRow key={item.id}>
-
                                                         {/* Product Image */}
                                                         <TableCell>
                                                             {item.image ? (
@@ -483,11 +455,6 @@ export default function InventoryManagementPage() {
                                                             {new Date(item.createdAt).toLocaleString()}
                                                         </TableCell>
 
-                                                        {/* Updated At */}
-                                                        {/* <TableCell className="text-sm text-gray-500">
-                                                            {new Date(item.updatedAt).toLocaleString()}
-                                                        </TableCell> */}
-
                                                         {/* Actions */}
                                                         <TableCell>
                                                             <div className="flex items-center gap-2">
@@ -510,13 +477,10 @@ export default function InventoryManagementPage() {
                                                                 </Button>
                                                             </div>
                                                         </TableCell>
-
                                                     </TableRow>
                                                 ))}
                                             </TableBody>
                                         </Table>
-
-
                                     </div>
                                 </CardContent>
                             </Card>
@@ -543,7 +507,10 @@ export default function InventoryManagementPage() {
                                                     <DialogTitle>Add New Supplier</DialogTitle>
                                                     <DialogDescription>Add a new supplier to your database</DialogDescription>
                                                 </DialogHeader>
-                                                <SupplierForm />
+                                                <SupplierForm onSuccess={() => {
+                                                    setIsSupplierOpen(false);
+                                                    fetchSuppliers();
+                                                }} />
                                             </DialogContent>
                                         </Dialog>
                                     </div>
@@ -562,8 +529,8 @@ export default function InventoryManagementPage() {
                                             </TableHeader>
                                             <TableBody>
                                                 {suppliers.map((supplier) => (
-                                                    <TableRow key={supplier.id}>
-                                                        <TableCell className="font-mono">{supplier.id}</TableCell>
+                                                    <TableRow key={supplier._id}>
+                                                        <TableCell className="font-mono">{supplier._id}</TableCell>
                                                         <TableCell className="font-medium">{supplier.name}</TableCell>
                                                         <TableCell>{supplier.contact}</TableCell>
                                                         <TableCell>{supplier.email}</TableCell>
@@ -607,7 +574,10 @@ export default function InventoryManagementPage() {
                                                     <DialogTitle>Create Purchase Order</DialogTitle>
                                                     <DialogDescription>Create a new purchase order</DialogDescription>
                                                 </DialogHeader>
-                                                <PurchaseOrderForm />
+                                                <PurchaseOrderForm onSuccess={() => {
+                                                    setIsPurchaseOpen(false);
+                                                    fetchPurchases();
+                                                }} />
                                             </DialogContent>
                                         </Dialog>
                                     </div>
@@ -628,11 +598,11 @@ export default function InventoryManagementPage() {
                                             </TableHeader>
                                             <TableBody>
                                                 {purchases.map((purchase) => (
-                                                    <TableRow key={purchase.id}>
-                                                        <TableCell className="font-mono">{purchase.id}</TableCell>
+                                                    <TableRow key={purchase._id}>
+                                                        <TableCell className="font-mono">{purchase._id}</TableCell>
                                                         <TableCell>{purchase.supplier}</TableCell>
-                                                        <TableCell>{purchase.date}</TableCell>
-                                                        <TableCell>{purchase.items} items</TableCell>
+                                                        <TableCell>{new Date(purchase.date).toLocaleDateString()}</TableCell>
+                                                        <TableCell>{purchase.items.length} items</TableCell>
                                                         <TableCell>₹{purchase.total.toLocaleString()}</TableCell>
                                                         <TableCell>
                                                             <Badge variant={purchase.status === "Delivered" ? "default" : "secondary"}>
@@ -671,7 +641,7 @@ export default function InventoryManagementPage() {
                                 <CardContent>
                                     <div className="space-y-4">
                                         {inventory
-                                            .filter((item) => item.quantity <= item.minQuantity)
+                                            .filter((item) => item.stock <= 10 && item.stock > 0)
                                             .map((item) => (
                                                 <div
                                                     key={item.id}
@@ -682,13 +652,13 @@ export default function InventoryManagementPage() {
                                                         <div>
                                                             <div className="font-medium">{item.name}</div>
                                                             <div className="text-sm text-gray-500">
-                                                                Current: {item.quantity} | Minimum: {item.minQuantity}
+                                                                Current: {item.stock} | Minimum: 10
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div className="flex items-center gap-2">
                                                         <Badge variant="outline" className="text-yellow-700 border-yellow-300">
-                                                            {item.quantity === 0 ? "Out of Stock" : "Low Stock"}
+                                                            Low Stock
                                                         </Badge>
                                                         <Button size="sm">
                                                             <ShoppingCart className="h-4 w-4 mr-2" />
@@ -710,7 +680,13 @@ export default function InventoryManagementPage() {
                                 <DialogTitle>Edit Product</DialogTitle>
                                 <DialogDescription>Update product information</DialogDescription>
                             </DialogHeader>
-                            {selectedProduct && <ProductForm initialData={selectedProduct} onSubmit={() => setIsEditProductOpen(false)} />}
+                            {selectedProduct && <ProductForm
+                                initialData={selectedProduct}
+                                onSubmit={() => {
+                                    setIsEditProductOpen(false);
+                                    fetchInventory();
+                                }}
+                            />}
                         </DialogContent>
                     </Dialog>
                 </div>
@@ -766,7 +742,6 @@ const ProductForm = ({ initialData = {}, onSubmit }) => {
             }
 
             alert(isEditing ? "Product updated!" : "Product added!");
-            window.location.reload();
             onSubmit?.();
         } catch (err) {
             console.error(err);
@@ -782,44 +757,44 @@ const ProductForm = ({ initialData = {}, onSubmit }) => {
                         <div className="grid grid-cols-2 gap-4">
                             <div>
                                 <Label htmlFor="name">Name</Label>
-                                <Input id="name" value={formData.name} onChange={handleChange("name")} />
+                                <Input id="name" value={formData.name} onChange={handleChange("name")} required />
                             </div>
                             <div>
                                 <Label htmlFor="category">Category</Label>
-                                <Input id="category" value={formData.category} onChange={handleChange("category")} />
+                                <Input id="category" value={formData.category} onChange={handleChange("category")} required />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div>
                                 <Label htmlFor="company">Company</Label>
-                                <Input id="company" value={formData.company} onChange={handleChange("company")} />
+                                <Input id="company" value={formData.company} onChange={handleChange("company")} required />
                             </div>
                             <div>
                                 <Label htmlFor="supplier">Supplier</Label>
-                                <Input id="supplier" value={formData.supplier} onChange={handleChange("supplier")} />
+                                <Input id="supplier" value="Ashirwad Enterprises" onChange={handleChange("supplier")} required />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div>
                                 <Label htmlFor="location">Location (Shelf No.)</Label>
-                                <Input type="number" id="location" value={formData.location} onChange={handleChange("location")} />
+                                <Input type="number" id="location" value={formData.location} onChange={handleChange("location")} required />
                             </div>
                             <div>
                                 <Label htmlFor="partNumber">Part Number</Label>
-                                <Input id="partNumber" value={formData.partNumber} onChange={handleChange("partNumber")} />
+                                <Input id="partNumber" value={formData.partNumber} onChange={handleChange("partNumber")} required />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div>
                                 <Label htmlFor="price">Price (₹)</Label>
-                                <Input type="number" id="price" value={formData.price} onChange={handleChange("price")} />
+                                <Input type="number" id="price" value={formData.price} onChange={handleChange("price")} required />
                             </div>
                             <div>
                                 <Label htmlFor="stock">Stock</Label>
-                                <Input type="number" id="stock" value={formData.stock} onChange={handleChange("stock")} />
+                                <Input type="number" id="stock" value={formData.stock} onChange={handleChange("stock")} required />
                             </div>
                         </div>
 
@@ -841,14 +816,71 @@ const ProductForm = ({ initialData = {}, onSubmit }) => {
                             </div>
                             <div>
                                 <Label htmlFor="gst">GST</Label>
-                                <Input id="gst" value={formData.gst} onChange={handleChange("gst")} />
+                                <Select
+                                    value={formData.gst}
+                                    onValueChange={(value) => {
+                                        if (value === "other") {
+                                            // Set to empty so user can type custom GST
+                                            setFormData((prev) => ({ ...prev, gst: "" }));
+                                        } else {
+                                            setFormData((prev) => ({ ...prev, gst: value }));
+                                        }
+                                    }}
+                                >
+                                    {/* ✅ Prevents auto-submit */}
+                                    <SelectTrigger id="gst" type="button">
+                                        <SelectValue placeholder="Select GST" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="0%">0%</SelectItem>
+                                        <SelectItem value="5%">5%</SelectItem>
+                                        <SelectItem value="12%">12%</SelectItem>
+                                        <SelectItem value="18%">18%</SelectItem>
+                                        <SelectItem value="28%">28%</SelectItem>
+                                    </SelectContent>
+                                </Select>
+
+                                {/* Show custom GST input if the value is empty (means "Other" was chosen) */}
+                                {formData.gst === "" && (
+                                    <div className="mt-2">
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter custom GST %"
+                                            value={formData.gst}
+                                            onChange={(e) =>
+                                                setFormData((prev) => ({ ...prev, gst: e.target.value }))
+                                            }
+                                        />
+                                    </div>
+                                )}
                             </div>
+
+
                         </div>
 
                         <div>
                             <Label htmlFor="coating">Coating Info</Label>
-                            <Input id="coating" value={formData.coating} onChange={handleChange("coating")} />
+                            <Select
+                                value={formData.coating}
+                                onValueChange={(value) =>
+                                    setFormData((prev) => ({ ...prev, coating: value }))
+                                }
+                            >
+                                {/* Force type="button" so it won't submit */}
+                                <SelectTrigger id="coating" type="button">
+                                    <SelectValue placeholder="Choose a coating type" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="Powder">Powder</SelectItem>
+                                    <SelectItem value="Plating">Plating</SelectItem>
+                                    <SelectItem value="Null">Null</SelectItem>
+                                </SelectContent>
+                            </Select>
                         </div>
+
+
+
+
 
                         <div className="flex justify-end mt-6">
                             <Button type="submit">{initialData.id ? "Update" : "Add"} Product</Button>
@@ -860,17 +892,7 @@ const ProductForm = ({ initialData = {}, onSubmit }) => {
     );
 };
 
-// ... (SupplierForm, PurchaseOrderForm, and other components remain the same)
-
-const FormField = ({ label, id, type = "text", value, onChange }) => (
-    <div>
-        <Label htmlFor={id}>{label}</Label>
-        <Input id={id} type={type} value={value} onChange={onChange} required />
-    </div>
-);
-
-// Supplier Form Component
-function SupplierForm() {
+const SupplierForm = ({ onSuccess }) => {
     const [formData, setFormData] = useState({
         name: "",
         contact: "",
@@ -878,10 +900,18 @@ function SupplierForm() {
         address: "",
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle supplier creation
-        console.log("New supplier:", formData);
+        try {
+            const response = await axios.post('http://localhost:4000/api/suppliers', formData);
+            if (response.status === 201) {
+                alert("Supplier added successfully!");
+                onSuccess();
+            }
+        } catch (error) {
+            console.error("Error adding supplier:", error);
+            alert("Failed to add supplier");
+        }
     };
 
     return (
@@ -933,20 +963,29 @@ function SupplierForm() {
             </div>
         </form>
     );
-}
+};
 
-// Purchase Order Form Component
-function PurchaseOrderForm() {
+const PurchaseOrderForm = ({ onSuccess }) => {
     const [formData, setFormData] = useState({
         supplier: "",
-        expectedDate: "",
-        items: [{ product: "", quantity: 0, price: 0 }],
+        date: new Date().toISOString().split('T')[0],
+        items: [],
+        total: 0,
+        status: "Pending"
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle purchase order creation
-        console.log("New purchase order:", formData);
+        try {
+            const response = await axios.post('http://localhost:4000/api/purchases', formData);
+            if (response.status === 201) {
+                alert("Purchase order created successfully!");
+                onSuccess();
+            }
+        } catch (error) {
+            console.error("Error creating purchase order:", error);
+            alert("Failed to create purchase order");
+        }
     };
 
     return (
@@ -954,24 +993,20 @@ function PurchaseOrderForm() {
             <div className="grid grid-cols-2 gap-4">
                 <div>
                     <Label htmlFor="supplier">Supplier</Label>
-                    <Select value={formData.supplier} onValueChange={(value) => setFormData({ ...formData, supplier: value })}>
-                        <SelectTrigger>
-                            <SelectValue placeholder="Select supplier" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="Auto Parts Ltd">Auto Parts Ltd</SelectItem>
-                            <SelectItem value="Oil Distributors">Oil Distributors</SelectItem>
-                            <SelectItem value="Bosch India">Bosch India</SelectItem>
-                        </SelectContent>
-                    </Select>
+                    <Input
+                        id="supplier"
+                        value={formData.supplier}
+                        onChange={(e) => setFormData({ ...formData, supplier: e.target.value })}
+                        required
+                    />
                 </div>
                 <div>
-                    <Label htmlFor="expectedDate">Expected Delivery</Label>
+                    <Label htmlFor="date">Order Date</Label>
                     <Input
-                        id="expectedDate"
+                        id="date"
                         type="date"
-                        value={formData.expectedDate}
-                        onChange={(e) => setFormData({ ...formData, expectedDate: e.target.value })}
+                        value={formData.date}
+                        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                         required
                     />
                 </div>
@@ -987,7 +1022,15 @@ function PurchaseOrderForm() {
                             <Input type="number" placeholder="Unit price" />
                         </div>
                     ))}
-                    <Button type="button" variant="outline" size="sm">
+                    <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setFormData({
+                            ...formData,
+                            items: [...formData.items, { product: "", quantity: 0, price: 0 }]
+                        })}
+                    >
                         <Plus className="h-4 w-4 mr-2" />
                         Add Item
                     </Button>
@@ -999,4 +1042,4 @@ function PurchaseOrderForm() {
             </div>
         </form>
     );
-}
+};
