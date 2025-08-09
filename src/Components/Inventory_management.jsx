@@ -811,7 +811,7 @@ const ProductForm = ({ initialData = {} }) => {
             ? `http://localhost:4000/api/products/${initialData._id}`
             : "http://localhost:4000/api/products";
 
-        const method = isEditing ? "PATCH" : "POST";
+        const method = "POST";
 
         try {
             const res = await fetch(url, {
