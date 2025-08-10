@@ -43,6 +43,10 @@ async function connectDB() {
 }
 
 // Routes
+app.get("/",async(req,res)=>{
+  await connectDB();
+  res.send("Home Route");
+})
 app.get("/api/products", async (req, res) => {
   await connectDB();
   try {
