@@ -5,7 +5,8 @@ import mongoose from "mongoose";
 const data = JSON.parse(fs.readFileSync("./random_parts_data.json", "utf-8"));
 import axios from "axios";
 import Product from"./models/Products.js";
-
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 const port = 4000;
 
@@ -22,7 +23,7 @@ app.use(cors({
 }));
 
 async function connectDB() {
-  await mongoose.connect("mongodb+srv://ashirwad2512:akshat@erp.nsr0tg8.mongodb.net/?retryWrites=true&w=majority&appName=erp");
+  await mongoose.connect(process.env.db_url);
 }
 try {
   connectDB().then((result) => {
