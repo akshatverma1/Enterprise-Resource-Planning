@@ -5,9 +5,14 @@ import mongoose from "mongoose";
 const data = JSON.parse(fs.readFileSync("./random_parts_data.json", "utf-8"));
 import axios from "axios";
 import Product from"./models/Products.js";
-
+import path from"path";
 const app = express();
 const port = 4000;
+
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "/views"));
+
 
 app.use(express.json());
 const allowedOrigins = ['http://localhost:5173', 'https://www.akshatv.life'];
