@@ -34,9 +34,9 @@ try {
 }
 
 //Server Start
-app.listen(port, () => {
-  console.log("Server is Running on port " + port);
-});
+// app.listen(port, () => {
+//   console.log("Server is Running on port " + port);
+// });
 
 //Get All Product
 app.get("/api/products", async (req, res) => {
@@ -99,3 +99,4 @@ app.delete("/api/products/:id", async (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   }
 });
+export default app;
