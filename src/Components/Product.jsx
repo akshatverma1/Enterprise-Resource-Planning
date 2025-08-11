@@ -1,6 +1,6 @@
 "use client"
 
-import { useState,useEffect } from "react"
+import { useState, useEffect } from "react"
 import {
   Search,
   Plus,
@@ -21,31 +21,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Label } from "./ui/label"
 import { Textarea } from "./ui/textarea"
 import Mainnav from "./Main_nav"
-// import Product from "./mockProducts_automobile.json"
 import { getAutomobileData } from "./mockProducts_automobile"
-
-// // Enhanced mock products with imageDetailsUrl
-// const mockProducts = getAutomobileData.map((product, index) => ({
-//   id: index + 1,
-//   name: product.name,
-//   partNumber: product.partNumber,
-//   category: product.category,
-//   brand: product.brand,
-//   price: product.price,
-//   originalPrice: product.originalPrice,
-//   stock: product.stock,
-//   status: product.status,
-//   sales: product.sales,
-//   rating: product.rating,
-//   reviews: product.reviews,
-//   image: product.image || "/placeholder.svg?height=300&width=300&text=Product+Image",
-//   description: product.description || "No description available",
-//   specifications: product.specifications || ["No specifications available"],
-//   dxfDesignUrl: "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing",
-//   imageDetailsUrl: "https://i.pinimg.com/736x/e2/cb/c3/e2cbc38520ec8bade8951665ae70baa8.jpg"
-// }))
-
-    
 
 const categories = [
   "All",
@@ -101,36 +77,44 @@ export default function ProductsPage() {
   })
 
   const [mockProducts, setMockProducts] = useState([])
+  const [loading, setLoading] = useState(true) // Add loading state
+
   useEffect(() => {
     fetchAndFormatProducts();
   },[])
 
   async function fetchAndFormatProducts() {
-    const data = await getAutomobileData();
+    try {
+      setLoading(true) // Start loading
+      const data = await getAutomobileData();
 
-    const mock = data.map((product, index) => ({
-      id: index + 1,
-      name: product.name,
-      partNumber: product.partNumber,
-      category: product.category,
-      brand: product.brand,
-      price: product.price,
-      originalPrice: product.originalPrice,
-      stock: product.stock,
-      status: product.status,
-      sales: product.sales,
-      rating: product.rating,
-      reviews: product.reviews,
-      image: product.image || "/placeholder.svg?height=300&width=300&text=Product+Image",
-      description: product.description || "No description available",
-      specifications: product.specifications || ["No specifications available"],
-      dxfDesignUrl: "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing",
-      imageDetailsUrl: "https://i.pinimg.com/736x/e2/cb/c3/e2cbc38520ec8bade8951665ae70baa8.jpg"
-    }));
+      const mock = data.map((product, index) => ({
+        id: index + 1,
+        name: product.name,
+        partNumber: product.partNumber,
+        category: product.category,
+        brand: product.brand,
+        price: product.price,
+        originalPrice: product.originalPrice,
+        stock: product.stock,
+        status: product.status,
+        sales: product.sales,
+        rating: product.rating,
+        reviews: product.reviews,
+        image: product.image || "/placeholder.svg?height=300&width=300&text=Product+Image",
+        description: product.description || "No description available",
+        specifications: product.specifications || ["No specifications available"],
+        dxfDesignUrl: "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing",
+        imageDetailsUrl: "https://i.pinimg.com/736x/e2/cb/c3/e2cbc38520ec8bade8951665ae70baa8.jpg"
+      }));
 
-    setMockProducts(mock);
-
-}
+      setMockProducts(mock);
+    } catch (error) {
+      console.error("Error fetching products:", error)
+    } finally {
+      setLoading(false) // End loading regardless of success/error
+    }
+  }
 
   const filteredProducts = mockProducts.filter((product) => {
     const matchesSearch =
@@ -228,7 +212,9 @@ export default function ProductsPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <h1 className="text-2xl font-semibold text-gray-900">Ashirwad Enterprises Products</h1>
-              <Badge variant="secondary">{mockProducts.length} total products</Badge>
+              <Badge variant="secondary">
+                {loading ? "Loading..." : `${mockProducts.length} total products`}
+              </Badge>
             </div>
 
             <div className="flex items-center space-x-4">
@@ -336,71 +322,77 @@ export default function ProductsPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {filteredProducts.map((product) => (
-                  <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow group">
-                    <div className="relative">
-                      <div className="aspect-square bg-gray-100 overflow-hidden">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </div>
-
-                    <CardContent className="p-4">
-                      <div className="space-y-3">
-                        <div>
-                          <Badge variant="outline" className="text-xs mt-2 mb-2">
-                            {product.brand}
-                          </Badge>
-                          <h3 className="font-semibold text-sm line-clamp-2 mb-1">Part No. - {product.partNumber}</h3>
-                          <p className="text-xs text-gray-500 font-mono">{product.name}</p>
+                {loading ? (
+                  // Loading spinner
+                  <div className="col-span-full flex flex-col items-center justify-center py-12">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+                    <p className="mt-4 text-gray-500">Loading products...</p>
+                  </div>
+                ) : filteredProducts.length === 0 ? (
+                  <div className="text-center py-12 col-span-full">
+                    <Package className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">No products found</h3>
+                    <p className="text-gray-500">Try adjusting your search or filter criteria</p>
+                  </div>
+                ) : (
+                  filteredProducts.map((product) => (
+                    <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow group">
+                      <div className="relative">
+                        <div className="aspect-square bg-gray-100 overflow-hidden">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
                         </div>
+                      </div>
 
-                        <div className="flex items-center justify-between">
-                          <div className="space-y-1">
-                            <div className="flex items-center space-x-2">
-                              <span className="text-lg font-bold text-green-600">
-                                ₹{product.price}
-                              </span>
+                      <CardContent className="p-4">
+                        <div className="space-y-3">
+                          <div>
+                            <Badge variant="outline" className="text-xs mt-2 mb-2">
+                              {product.brand}
+                            </Badge>
+                            <h3 className="font-semibold text-sm line-clamp-2 mb-1">Part No. - {product.partNumber}</h3>
+                            <p className="text-xs text-gray-500 font-mono">{product.name}</p>
+                          </div>
+
+                          <div className="flex items-center justify-between">
+                            <div className="space-y-1">
+                              <div className="flex items-center space-x-2">
+                                <span className="text-lg font-bold text-green-600">
+                                  ₹{product.price}
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
 
-                        <div className="space-y-2 pt-2">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="w-full bg-transparent"
-                            onClick={() => window.open(product.dxfDesignUrl, '_blank')}
-                          >
-                            <Eye className="h-4 w-4 mr-2" />
-                            View DXF Design
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="w-full bg-transparent"
-                            onClick={() => handleViewImageDetails(product)}
-                          >
-                            <ImageIcon className="h-4 w-4 mr-2" />
-                            Part Details
-                          </Button>
+                          <div className="space-y-2 pt-2">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="w-full bg-transparent"
+                              onClick={() => window.open(product.dxfDesignUrl, '_blank')}
+                            >
+                              <Eye className="h-4 w-4 mr-2" />
+                              View DXF Design
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="w-full bg-transparent"
+                              onClick={() => handleViewImageDetails(product)}
+                            >
+                              <ImageIcon className="h-4 w-4 mr-2" />
+                              Part Details
+                            </Button>
+                          </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                      </CardContent>
+                    </Card>
+                  ))
+                )}
               </div>
-
-              {filteredProducts.length === 0 && (
-                <div className="text-center py-12">
-                  <Package className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">No products found</h3>
-                  <p className="text-gray-500">Try adjusting your search or filter criteria</p>
-                </div>
-              )}
             </CardContent>
           </Card>
         </main>

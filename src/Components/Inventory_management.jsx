@@ -45,6 +45,9 @@ export default function InventoryManagementPage() {
     const [inventory, setInventory] = useState([]);
     const [suppliers, setSuppliers] = useState([]);
     const [purchases, setPurchases] = useState([]);
+    const [loadingInventory, setLoadingInventory] = useState(true);
+    const [loadingSuppliers, setLoadingSuppliers] = useState(true);
+    const [loadingPurchases, setLoadingPurchases] = useState(true);
 
     useEffect(() => {
         fetchInventory();
@@ -54,6 +57,7 @@ export default function InventoryManagementPage() {
 
     async function fetchInventory() {
         try {
+            setLoadingInventory(true);
             const response = await axios.get('https://enterprise-resource-planning-backen.vercel.app/api/products');
             const productss = response.data.map((item) => ({
                 id: item._id,
@@ -76,24 +80,32 @@ export default function InventoryManagementPage() {
             setInventory(productss);
         } catch (error) {
             console.error("Error fetching inventory:", error);
+        } finally {
+            setLoadingInventory(false);
         }
     }
 
     async function fetchSuppliers() {
         try {
+            setLoadingSuppliers(true);
             const response = await axios.get('http://localhost:4000/api/suppliers');
             setSuppliers(response.data);
         } catch (error) {
             console.error("Error fetching suppliers:", error);
+        } finally {
+            setLoadingSuppliers(false);
         }
     }
 
     async function fetchPurchases() {
         try {
+            setLoadingPurchases(true);
             const response = await axios.get('http://localhost:4000/api/purchases');
             setPurchases(response.data);
         } catch (error) {
             console.error("Error fetching purchases:", error);
+        } finally {
+            setLoadingPurchases(false);
         }
     }
 
@@ -206,8 +218,17 @@ export default function InventoryManagementPage() {
                                 <Package className="h-4 w-4 text-muted-foreground" />
                             </CardHeader>
                             <CardContent>
-                                <div className="text-2xl font-bold">{totalItems}</div>
-                                <p className="text-xs text-muted-foreground">Active products</p>
+                                {loadingInventory ? (
+                                    <div className="animate-pulse">
+                                        <div className="h-8 bg-gray-200 rounded w-16 mb-2"></div>
+                                        <div className="h-4 bg-gray-200 rounded w-24"></div>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="text-2xl font-bold">{totalItems}</div>
+                                        <p className="text-xs text-muted-foreground">Active products</p>
+                                    </>
+                                )}
                             </CardContent>
                         </Card>
 
@@ -217,19 +238,37 @@ export default function InventoryManagementPage() {
                                 <DollarSign className="h-4 w-4 text-muted-foreground" />
                             </CardHeader>
                             <CardContent>
-                                <div className="text-2xl font-bold">₹{totalStockValue.toLocaleString()}</div>
-                                <p className="text-xs text-muted-foreground">Total inventory value</p>
+                                {loadingInventory ? (
+                                    <div className="animate-pulse">
+                                        <div className="h-8 bg-gray-200 rounded w-24 mb-2"></div>
+                                        <div className="h-4 bg-gray-200 rounded w-32"></div>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="text-2xl font-bold">₹{totalStockValue.toLocaleString()}</div>
+                                        <p className="text-xs text-muted-foreground">Total inventory value</p>
+                                    </>
+                                )}
                             </CardContent>
                         </Card>
 
-                        {/* <Card>
+                        <Card>
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                                 <CardTitle className="text-sm font-medium">Low Stock</CardTitle>
                                 <AlertTriangle className="h-4 w-4 text-yellow-500" />
                             </CardHeader>
                             <CardContent>
-                                <div className="text-2xl font-bold text-yellow-600">{lowStockItems}</div>
-                                <p className="text-xs text-muted-foreground">Items need reorder</p>
+                                {loadingInventory ? (
+                                    <div className="animate-pulse">
+                                        <div className="h-8 bg-gray-200 rounded w-16 mb-2"></div>
+                                        <div className="h-4 bg-gray-200 rounded w-24"></div>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="text-2xl font-bold text-yellow-600">{lowStockItems}</div>
+                                        <p className="text-xs text-muted-foreground">Items need reorder</p>
+                                    </>
+                                )}
                             </CardContent>
                         </Card>
 
@@ -239,8 +278,17 @@ export default function InventoryManagementPage() {
                                 <TrendingDown className="h-4 w-4 text-red-500" />
                             </CardHeader>
                             <CardContent>
-                                <div className="text-2xl font-bold text-red-600">{outOfStockItems}</div>
-                                <p className="text-xs text-muted-foreground">Items unavailable</p>
+                                {loadingInventory ? (
+                                    <div className="animate-pulse">
+                                        <div className="h-8 bg-gray-200 rounded w-16 mb-2"></div>
+                                        <div className="h-4 bg-gray-200 rounded w-24"></div>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="text-2xl font-bold text-red-600">{outOfStockItems}</div>
+                                        <p className="text-xs text-muted-foreground">Items unavailable</p>
+                                    </>
+                                )}
                             </CardContent>
                         </Card>
 
@@ -250,19 +298,28 @@ export default function InventoryManagementPage() {
                                 <TrendingUp className="h-4 w-4 text-green-500" />
                             </CardHeader>
                             <CardContent>
-                                <div className="text-2xl font-bold text-green-600">{fastMovingItems}</div>
-                                <p className="text-xs text-muted-foreground">High demand items</p>
+                                {loadingInventory ? (
+                                    <div className="animate-pulse">
+                                        <div className="h-8 bg-gray-200 rounded w-16 mb-2"></div>
+                                        <div className="h-4 bg-gray-200 rounded w-24"></div>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="text-2xl font-bold text-green-600">{fastMovingItems}</div>
+                                        <p className="text-xs text-muted-foreground">High demand items</p>
+                                    </>
+                                )}
                             </CardContent>
-                        </Card>  */}
+                        </Card>
                     </div>
 
                     {/* Main Content */}
                     <Tabs defaultValue="inventory" className="space-y-4">
                         <TabsList>
                             <TabsTrigger value="inventory">Inventory</TabsTrigger>
-                            {/* <TabsTrigger value="suppliers">Suppliers</TabsTrigger>
+                            <TabsTrigger value="suppliers">Suppliers</TabsTrigger>
                             <TabsTrigger value="purchases">Purchase History</TabsTrigger>
-                            <TabsTrigger value="alerts">Low Stock Alerts</TabsTrigger> */}
+                            <TabsTrigger value="alerts">Low Stock Alerts</TabsTrigger>
                         </TabsList>
 
                         {/* Inventory Tab */}
@@ -373,112 +430,129 @@ export default function InventoryManagementPage() {
                                             </TableHeader>
 
                                             <TableBody>
-                                                {filteredInventory.map((item) => (
-                                                    <TableRow key={item.id}>
-                                                        {/* Product Image */}
-                                                        <TableCell>
-                                                            {item.image ? (
-                                                                <img
-                                                                    src={item.image}
-                                                                    alt={item.name}
-                                                                    className="w-12 h-12 rounded object-cover border"
-                                                                />
-                                                            ) : (
-                                                                <span className="text-gray-400">No Image</span>
-                                                            )}
-                                                        </TableCell>
-
-                                                        {/* Part Number */}
-                                                        <TableCell className="font-mono text-sm">{item.partNumber}</TableCell>
-
-                                                        {/* Name */}
-                                                        <TableCell className="font-medium">{item.name}</TableCell>
-
-                                                        {/* Category */}
-                                                        <TableCell>{item.category}</TableCell>
-
-                                                        {/* Company */}
-                                                        <TableCell>{item.company}</TableCell>
-
-                                                        {/* Supplier */}
-                                                        <TableCell>{item.supplier}</TableCell>
-
-                                                        {/* Stock */}
-                                                        <TableCell className="font-mono text-sm">{item.stock}</TableCell>
-
-                                                        {/* Location */}
-                                                        <TableCell>A-{item.location}</TableCell>
-
-                                                        {/* Price */}
-                                                        <TableCell>₹{item.price?.toLocaleString()}</TableCell>
-
-                                                        {/* GST */}
-                                                        <TableCell>{item.gst || "-"}</TableCell>
-
-                                                        {/* Coating */}
-                                                        <TableCell>{item.coating || "-"}</TableCell>
-
-                                                        {/* Design Image */}
-                                                        <TableCell>
-                                                            {item.designImage ? (
-                                                                <a
-                                                                    href={item.designImage}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className="text-blue-600 underline"
-                                                                >
-                                                                    View
-                                                                </a>
-                                                            ) : (
-                                                                "-"
-                                                            )}
-                                                        </TableCell>
-
-                                                        {/* Design DXF */}
-                                                        <TableCell>
-                                                            {item.designDXF ? (
-                                                                <a
-                                                                    href={item.designDXF}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className="text-blue-600 underline"
-                                                                >
-                                                                    Download
-                                                                </a>
-                                                            ) : (
-                                                                "-"
-                                                            )}
-                                                        </TableCell>
-
-                                                        {/* Created At */}
-                                                        <TableCell className="text-sm text-gray-500">
-                                                            {new Date(item.createdAt).toLocaleString()}
-                                                        </TableCell>
-
-                                                        {/* Actions */}
-                                                        <TableCell>
-                                                            <div className="flex items-center gap-2">
-                                                                <Button
-                                                                    variant="ghost"
-                                                                    size="sm"
-                                                                    onClick={() => {
-                                                                        setSelectedProduct(item);
-                                                                        setIsEditProductOpen(true);
-                                                                    }}
-                                                                >
-                                                                    <Edit className="h-4 w-4" />
-                                                                </Button>
-                                                                <Button
-                                                                    variant="ghost"
-                                                                    size="sm"
-                                                                    onClick={() => handleDeleteProduct(item.id)}
-                                                                >
-                                                                    <Trash2 className="h-4 w-4" />
-                                                                </Button>
+                                                {loadingInventory ? (
+                                                    <TableRow>
+                                                        <TableCell colSpan={15} className="h-96 text-center">
+                                                            <div className="flex flex-col items-center justify-center py-8">
+                                                                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+                                                                <p className="text-gray-600">Loading inventory...</p>
                                                             </div>
                                                         </TableCell>
                                                     </TableRow>
-                                                ))}
+                                                ) : filteredInventory.length === 0 ? (
+                                                    <TableRow>
+                                                        <TableCell colSpan={15} className="h-24 text-center">
+                                                            No products found
+                                                        </TableCell>
+                                                    </TableRow>
+                                                ) : (
+                                                    filteredInventory.map((item) => (
+                                                        <TableRow key={item.id}>
+                                                            {/* Product Image */}
+                                                            <TableCell>
+                                                                {item.image ? (
+                                                                    <img
+                                                                        src={item.image}
+                                                                        alt={item.name}
+                                                                        className="w-12 h-12 rounded object-cover border"
+                                                                    />
+                                                                ) : (
+                                                                    <span className="text-gray-400">No Image</span>
+                                                                )}
+                                                            </TableCell>
+
+                                                            {/* Part Number */}
+                                                            <TableCell className="font-mono text-sm">{item.partNumber}</TableCell>
+
+                                                            {/* Name */}
+                                                            <TableCell className="font-medium">{item.name}</TableCell>
+
+                                                            {/* Category */}
+                                                            <TableCell>{item.category}</TableCell>
+
+                                                            {/* Company */}
+                                                            <TableCell>{item.company}</TableCell>
+
+                                                            {/* Supplier */}
+                                                            <TableCell>{item.supplier}</TableCell>
+
+                                                            {/* Stock */}
+                                                            <TableCell className="font-mono text-sm">{item.stock}</TableCell>
+
+                                                            {/* Location */}
+                                                            <TableCell>A-{item.location}</TableCell>
+
+                                                            {/* Price */}
+                                                            <TableCell>₹{item.price?.toLocaleString()}</TableCell>
+
+                                                            {/* GST */}
+                                                            <TableCell>{item.gst || "-"}</TableCell>
+
+                                                            {/* Coating */}
+                                                            <TableCell>{item.coating || "-"}</TableCell>
+
+                                                            {/* Design Image */}
+                                                            <TableCell>
+                                                                {item.designImage ? (
+                                                                    <a
+                                                                        href={item.designImage}
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        className="text-blue-600 underline"
+                                                                    >
+                                                                        View
+                                                                    </a>
+                                                                ) : (
+                                                                    "-"
+                                                                )}
+                                                            </TableCell>
+
+                                                            {/* Design DXF */}
+                                                            <TableCell>
+                                                                {item.designDXF ? (
+                                                                    <a
+                                                                        href={item.designDXF}
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        className="text-blue-600 underline"
+                                                                    >
+                                                                        Download
+                                                                    </a>
+                                                                ) : (
+                                                                    "-"
+                                                                )}
+                                                            </TableCell>
+
+                                                            {/* Created At */}
+                                                            <TableCell className="text-sm text-gray-500">
+                                                                {new Date(item.createdAt).toLocaleString()}
+                                                            </TableCell>
+
+                                                            {/* Actions */}
+                                                            <TableCell>
+                                                                <div className="flex items-center gap-2">
+                                                                    <Button
+                                                                        variant="ghost"
+                                                                        size="sm"
+                                                                        onClick={() => {
+                                                                            setSelectedProduct(item);
+                                                                            setIsEditProductOpen(true);
+                                                                        }}
+                                                                    >
+                                                                        <Edit className="h-4 w-4" />
+                                                                    </Button>
+                                                                    <Button
+                                                                        variant="ghost"
+                                                                        size="sm"
+                                                                        onClick={() => handleDeleteProduct(item.id)}
+                                                                    >
+                                                                        <Trash2 className="h-4 w-4" />
+                                                                    </Button>
+                                                                </div>
+                                                            </TableCell>
+                                                        </TableRow>
+                                                    ))
+                                                )}
                                             </TableBody>
                                         </Table>
                                     </div>
@@ -528,24 +602,41 @@ export default function InventoryManagementPage() {
                                                 </TableRow>
                                             </TableHeader>
                                             <TableBody>
-                                                {suppliers.map((supplier) => (
-                                                    <TableRow key={supplier._id}>
-                                                        <TableCell className="font-mono">{supplier._id}</TableCell>
-                                                        <TableCell className="font-medium">{supplier.name}</TableCell>
-                                                        <TableCell>{supplier.contact}</TableCell>
-                                                        <TableCell>{supplier.email}</TableCell>
-                                                        <TableCell>
-                                                            <div className="flex items-center gap-2">
-                                                                <Button variant="ghost" size="sm">
-                                                                    <Edit className="h-4 w-4" />
-                                                                </Button>
-                                                                <Button variant="ghost" size="sm">
-                                                                    <Eye className="h-4 w-4" />
-                                                                </Button>
+                                                {loadingSuppliers ? (
+                                                    <TableRow>
+                                                        <TableCell colSpan={5} className="h-96 text-center">
+                                                            <div className="flex flex-col items-center justify-center py-8">
+                                                                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+                                                                <p className="text-gray-600">Loading suppliers...</p>
                                                             </div>
                                                         </TableCell>
                                                     </TableRow>
-                                                ))}
+                                                ) : suppliers.length === 0 ? (
+                                                    <TableRow>
+                                                        <TableCell colSpan={5} className="h-24 text-center">
+                                                            No suppliers found
+                                                        </TableCell>
+                                                    </TableRow>
+                                                ) : (
+                                                    suppliers.map((supplier) => (
+                                                        <TableRow key={supplier._id}>
+                                                            <TableCell className="font-mono">{supplier._id}</TableCell>
+                                                            <TableCell className="font-medium">{supplier.name}</TableCell>
+                                                            <TableCell>{supplier.contact}</TableCell>
+                                                            <TableCell>{supplier.email}</TableCell>
+                                                            <TableCell>
+                                                                <div className="flex items-center gap-2">
+                                                                    <Button variant="ghost" size="sm">
+                                                                        <Edit className="h-4 w-4" />
+                                                                    </Button>
+                                                                    <Button variant="ghost" size="sm">
+                                                                        <Eye className="h-4 w-4" />
+                                                                    </Button>
+                                                                </div>
+                                                            </TableCell>
+                                                        </TableRow>
+                                                    ))
+                                                )}
                                             </TableBody>
                                         </Table>
                                     </div>
@@ -597,30 +688,47 @@ export default function InventoryManagementPage() {
                                                 </TableRow>
                                             </TableHeader>
                                             <TableBody>
-                                                {purchases.map((purchase) => (
-                                                    <TableRow key={purchase._id}>
-                                                        <TableCell className="font-mono">{purchase._id}</TableCell>
-                                                        <TableCell>{purchase.supplier}</TableCell>
-                                                        <TableCell>{new Date(purchase.date).toLocaleDateString()}</TableCell>
-                                                        <TableCell>{purchase.items.length} items</TableCell>
-                                                        <TableCell>₹{purchase.total.toLocaleString()}</TableCell>
-                                                        <TableCell>
-                                                            <Badge variant={purchase.status === "Delivered" ? "default" : "secondary"}>
-                                                                {purchase.status}
-                                                            </Badge>
-                                                        </TableCell>
-                                                        <TableCell>
-                                                            <div className="flex items-center gap-2">
-                                                                <Button variant="ghost" size="sm">
-                                                                    <Eye className="h-4 w-4" />
-                                                                </Button>
-                                                                <Button variant="ghost" size="sm">
-                                                                    <FileText className="h-4 w-4" />
-                                                                </Button>
+                                                {loadingPurchases ? (
+                                                    <TableRow>
+                                                        <TableCell colSpan={7} className="h-96 text-center">
+                                                            <div className="flex flex-col items-center justify-center py-8">
+                                                                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+                                                                <p className="text-gray-600">Loading purchase history...</p>
                                                             </div>
                                                         </TableCell>
                                                     </TableRow>
-                                                ))}
+                                                ) : purchases.length === 0 ? (
+                                                    <TableRow>
+                                                        <TableCell colSpan={7} className="h-24 text-center">
+                                                            No purchase history found
+                                                        </TableCell>
+                                                    </TableRow>
+                                                ) : (
+                                                    purchases.map((purchase) => (
+                                                        <TableRow key={purchase._id}>
+                                                            <TableCell className="font-mono">{purchase._id}</TableCell>
+                                                            <TableCell>{purchase.supplier}</TableCell>
+                                                            <TableCell>{new Date(purchase.date).toLocaleDateString()}</TableCell>
+                                                            <TableCell>{purchase.items.length} items</TableCell>
+                                                            <TableCell>₹{purchase.total.toLocaleString()}</TableCell>
+                                                            <TableCell>
+                                                                <Badge variant={purchase.status === "Delivered" ? "default" : "secondary"}>
+                                                                    {purchase.status}
+                                                                </Badge>
+                                                            </TableCell>
+                                                            <TableCell>
+                                                                <div className="flex items-center gap-2">
+                                                                    <Button variant="ghost" size="sm">
+                                                                        <Eye className="h-4 w-4" />
+                                                                    </Button>
+                                                                    <Button variant="ghost" size="sm">
+                                                                        <FileText className="h-4 w-4" />
+                                                                    </Button>
+                                                                </div>
+                                                            </TableCell>
+                                                        </TableRow>
+                                                    ))
+                                                )}
                                             </TableBody>
                                         </Table>
                                     </div>
@@ -639,35 +747,48 @@ export default function InventoryManagementPage() {
                                     <CardDescription>Items that need immediate attention</CardDescription>
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="space-y-4">
-                                        {inventory
-                                            .filter((item) => item.stock <= 10 && item.stock > 0)
-                                            .map((item) => (
-                                                <div
-                                                    key={item.id}
-                                                    className="flex items-center justify-between p-4 border rounded-lg bg-yellow-50"
-                                                >
-                                                    <div className="flex items-center gap-4">
-                                                        <AlertTriangle className="h-5 w-5 text-yellow-500" />
-                                                        <div>
-                                                            <div className="font-medium">{item.name}</div>
-                                                            <div className="text-sm text-gray-500">
-                                                                Current: {item.stock} | Minimum: 10
+                                    {loadingInventory ? (
+                                        <div className="flex flex-col items-center justify-center py-8">
+                                            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-yellow-500 mb-4"></div>
+                                            <p className="text-gray-600">Checking stock levels...</p>
+                                        </div>
+                                    ) : (
+                                        <div className="space-y-4">
+                                            {inventory
+                                                .filter((item) => item.stock <= 10 && item.stock > 0)
+                                                .map((item) => (
+                                                    <div
+                                                        key={item.id}
+                                                        className="flex items-center justify-between p-4 border rounded-lg bg-yellow-50"
+                                                    >
+                                                        <div className="flex items-center gap-4">
+                                                            <AlertTriangle className="h-5 w-5 text-yellow-500" />
+                                                            <div>
+                                                                <div className="font-medium">{item.name}</div>
+                                                                <div className="text-sm text-gray-500">
+                                                                    Current: {item.stock} | Minimum: 10
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <div className="flex items-center gap-2">
+                                                            <Badge variant="outline" className="text-yellow-700 border-yellow-300">
+                                                                Low Stock
+                                                            </Badge>
+                                                            <Button size="sm">
+                                                                <ShoppingCart className="h-4 w-4 mr-2" />
+                                                                Reorder
+                                                            </Button>
+                                                        </div>
                                                     </div>
-                                                    <div className="flex items-center gap-2">
-                                                        <Badge variant="outline" className="text-yellow-700 border-yellow-300">
-                                                            Low Stock
-                                                        </Badge>
-                                                        <Button size="sm">
-                                                            <ShoppingCart className="h-4 w-4 mr-2" />
-                                                            Reorder
-                                                        </Button>
-                                                    </div>
+                                                ))}
+
+                                            {inventory.filter(item => item.stock <= 10 && item.stock > 0).length === 0 && (
+                                                <div className="text-center py-8 text-gray-500">
+                                                    No low stock items found
                                                 </div>
-                                            ))}
-                                    </div>
+                                            )}
+                                        </div>
+                                    )}
                                 </CardContent>
                             </Card>
                         </TabsContent>
@@ -854,8 +975,6 @@ const ProductForm = ({ initialData = {}, onSubmit }) => {
                                     </div>
                                 )}
                             </div>
-
-
                         </div>
 
                         <div>
@@ -877,10 +996,6 @@ const ProductForm = ({ initialData = {}, onSubmit }) => {
                                 </SelectContent>
                             </Select>
                         </div>
-
-
-
-
 
                         <div className="flex justify-end mt-6">
                             <Button type="submit">{initialData.id ? "Update" : "Add"} Product</Button>
