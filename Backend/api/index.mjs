@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import Product from "../models/Products.js";
+import Product from "../models/Products.js"; // keep separate model file
 
 dotenv.config();
 
@@ -22,27 +22,19 @@ app.use(
   })
 );
 
-// ✅ MongoDB Connection (Reusable for serverless)
-// let isConnected = false;
-// async function connectDB() {
-//   if (isConnected) return;
-//   if (!process.env.db_url) {
-//     throw new Error("❌ MongoDB connection string is missing in ENV (db_url)");
-//   }
-//   const db = await mongoose.connect(process.env.db_url);
-//   isConnected = db.connections[0].readyState;
-//   console.log("✅ MongoDB Connected");
-// }
-
+// ✅ Stable MongoDB connection (Vercel-safe)
+let isConnected = false;
 async function connectDB() {
-  await mongoose.connect(process.env.db_url);
-}
-try {
-  connectDB().then((result) => {
-      console.log("MongoDB is Connected");
-  })
-} catch (error) {
-  console.log(error);
+  if (isConnected) return;
+  if (!process.env.db_url) {
+    throw new Error("❌ MongoDB connection string is missing in ENV (db_url)");
+  }
+  const db = await mongoose.connect(process.env.db_url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  isConnected = db.connections[0].readyState;
+  console.log("✅ MongoDB Connected");
 }
 
 // ✅ Middleware to ensure DB connection
@@ -51,6 +43,7 @@ app.use(async (req, res, next) => {
     await connectDB();
     next();
   } catch (error) {
+    console.error("Database connection failed:", error);
     res.status(500).json({ error: "Database connection failed" });
   }
 });
@@ -60,10 +53,7 @@ app.get("/", (req, res) => {
   res.send("Akshat Verma API is running");
 });
 
-// app.listen(4000,()=>{
-//   console.log("66")
-// });
-// Get all products
+// ✅ API Routes
 app.get("/api/products", async (req, res) => {
   try {
     const products = await Product.find().sort({ createdAt: -1 });
@@ -73,7 +63,6 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
-// Add new product
 app.post("/api/products", async (req, res) => {
   try {
     const product = new Product(req.body);
@@ -84,7 +73,6 @@ app.post("/api/products", async (req, res) => {
   }
 });
 
-// Update product
 app.put("/api/products/:id", async (req, res) => {
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
@@ -98,7 +86,6 @@ app.put("/api/products/:id", async (req, res) => {
   }
 });
 
-// Delete product
 app.delete("/api/products/:id", async (req, res) => {
   try {
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
@@ -117,5 +104,5 @@ app.delete("/api/products/:id", async (req, res) => {
   }
 });
 
-// ✅ Export handler for Vercel
+// ✅ Export (no app.listen for Vercel)
 export default app;
