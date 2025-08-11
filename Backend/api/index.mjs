@@ -53,6 +53,11 @@ app.use(express.json());
 
 connectDB();
 
+//test Route
+app.get("/",(req,res)=>{
+  res.send("Routes is Working");
+})
+
 // Routes
 app.get("/api/products", async (req, res) => {
   try {
