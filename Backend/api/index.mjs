@@ -91,7 +91,7 @@ app.put("/api/products/:id",async (req,res)=>{
     );
     res.status(200).json(updatedProduct);
   }catch(err){
-    console.log("error"+"="+err);
+    console.log("error"+" "+err);
     res.status(500).json({ message: "Update failed", error });
   }
 })
