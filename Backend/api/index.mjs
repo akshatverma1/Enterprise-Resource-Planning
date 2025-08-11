@@ -23,15 +23,26 @@ app.use(
 );
 
 // ✅ MongoDB Connection (Reusable for serverless)
-let isConnected = false;
+// let isConnected = false;
+// async function connectDB() {
+//   if (isConnected) return;
+//   if (!process.env.db_url) {
+//     throw new Error("❌ MongoDB connection string is missing in ENV (db_url)");
+//   }
+//   const db = await mongoose.connect(process.env.db_url);
+//   isConnected = db.connections[0].readyState;
+//   console.log("✅ MongoDB Connected");
+// }
+
 async function connectDB() {
-  if (isConnected) return;
-  if (!process.env.db_url) {
-    throw new Error("❌ MongoDB connection string is missing in ENV (db_url)");
-  }
-  const db = await mongoose.connect(process.env.db_url);
-  isConnected = db.connections[0].readyState;
-  console.log("✅ MongoDB Connected");
+  await mongoose.connect(process.env.db_url);
+}
+try {
+  connectDB().then((result) => {
+      console.log("MongoDB is Connected");
+  })
+} catch (error) {
+  console.log(error);
 }
 
 // ✅ Middleware to ensure DB connection
@@ -49,6 +60,9 @@ app.get("/", (req, res) => {
   res.send("Akshat Verma API is running");
 });
 
+// app.listen(4000,()=>{
+//   console.log("66")
+// });
 // Get all products
 app.get("/api/products", async (req, res) => {
   try {
