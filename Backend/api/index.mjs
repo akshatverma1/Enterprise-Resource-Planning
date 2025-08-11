@@ -81,20 +81,7 @@ app.post("/api/products", async (req, res) => {
   }
 });
 
-app.put("/api/products/:id",async (req,res)=>{
-  try{
-    await connectDB();
-    const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    res.status(200).json(updatedProduct);
-  }catch(err){
-    console.log("error"+" "+err);
-    res.status(500).json({ message: "Update failed", error });
-  }
-})
+
 
 
 app.delete("/api/products/:id", async (req, res) => {
