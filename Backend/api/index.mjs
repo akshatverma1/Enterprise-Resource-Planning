@@ -36,7 +36,7 @@ async function connectDB() {
   isConnected = db.connections[0].readyState;
   console.log("✅ MongoDB Connected");
 }
-
+connectDB();
 // ✅ Middleware to ensure DB connection
 app.use(async (req, res, next) => {
   try {
