@@ -1,108 +1,89 @@
+import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
-import Product from "../models/Products.js"; // keep separate model file
-
+// ✅ Connect to MongoDB Atlas
 dotenv.config();
+const MONGO_URI = process.env.db_url;
+if (!MONGO_URI) {
+  throw new Error("❌ MONGO_URI is not set in environment variables");
+}
 
-const app = express();
-app.use(express.json());
-
-// ✅ CORS setup
-const allowedOrigins = ["http://localhost:5173", "https://www.akshatv.life"];
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
-      return callback(new Error("Not allowed by CORS"));
-    },
-    credentials: true,
-  })
-);
-
-// ✅ Stable MongoDB connection (Vercel-safe)
 let isConnected = false;
 async function connectDB() {
   if (isConnected) return;
-  if (!process.env.db_url) {
-    throw new Error("❌ MongoDB connection string is missing in ENV (db_url)");
-  }
-  const db = await mongoose.connect(process.env.db_url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-  isConnected = db.connections[0].readyState;
-  console.log("✅ MongoDB Connected");
-}
-connectDB();
-// ✅ Middleware to ensure DB connection
-app.use(async (req, res, next) => {
   try {
-    await connectDB();
-    next();
-  } catch (error) {
-    console.error("Database connection failed:", error);
-    res.status(500).json({ error: "Database connection failed" });
+    const db = await mongoose.connect(MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+    isConnected = db.connections[0].readyState;
+    console.log("✅ MongoDB connected");
+  } catch (err) {
+    console.error("❌ MongoDB connection error:", err);
+    throw err;
   }
+}
+
+// ✅ Define Mongoose schema and model in same file
+const productSchema = new mongoose.Schema({
+  name: String,
+  category: String,
+  brand: String,
+  SKU: String,
+  quantity: Number,
+  minQuantity: Number,
+  price: Number,
+  costPrice: Number,
+  supplier: String,
+  location: String,
+  partNumber: String,
+  gst: String,
+  coating: String,
+  images: [String]
 });
 
-// Test route
-app.get("/", (req, res) => {
-  res.send("Akshat Verma API is running");
-});
+// Prevent OverwriteModelError on re-deploy
+const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
 
-// ✅ API Routes
+// ✅ Express App
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+connectDB();
+
+// Routes
 app.get("/api/products", async (req, res) => {
   try {
-    const products = await Product.find().sort({ createdAt: -1 });
+    await connectDB();
+    const products = await Product.find();
     res.json(products);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
 app.post("/api/products", async (req, res) => {
   try {
-    const product = new Product(req.body);
-    const saved = await product.save();
-    res.status(201).json(saved);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-app.put("/api/products/:id", async (req, res) => {
-  try {
-    const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    res.status(200).json(updatedProduct);
-  } catch (error) {
-    res.status(500).json({ message: "Update failed", error });
+    await connectDB();
+    const newProduct = new Product(req.body);
+    await newProduct.save();
+    res.status(201).json(newProduct);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
 app.delete("/api/products/:id", async (req, res) => {
   try {
-    const deletedProduct = await Product.findByIdAndDelete(req.params.id);
-    if (!deletedProduct) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Product not found" });
-    }
-    res.status(200).json({
-      success: true,
-      message: "Product deleted successfully",
-      data: deletedProduct,
-    });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    await connectDB();
+    const deleted = await Product.findByIdAndDelete(req.params.id);
+    res.json(deleted);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
-// ✅ Export (no app.listen for Vercel)
+// ✅ Export for Vercel
 export default app;
