@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { AppleIcon } from "lucide-react";
 // ✅ Connect to MongoDB Atlas
 dotenv.config();
 const MONGO_URI = process.env.db_url;
