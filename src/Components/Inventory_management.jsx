@@ -54,7 +54,7 @@ export default function InventoryManagementPage() {
 
     async function fetchInventory() {
         try {
-            const response = await axios.get('http://localhost:4000/api/products');
+            const response = await axios.get('https://enterprise-resource-planning-backen.vercel.app/api/products');
             const productss = response.data.map((item) => ({
                 id: item._id,
                 name: item.name,
@@ -133,7 +133,7 @@ export default function InventoryManagementPage() {
 
     const handleDeleteProduct = async (id) => {
         try {
-            await axios.delete(`http://localhost:4000/api/products/${id}`);
+            await axios.delete(`https://enterprise-resource-planning-backen.vercel.app/api/products/${id}`);
             setInventory((prev) => prev.filter((p) => p.id !== id));
         } catch (error) {
             console.error("Error deleting product:", error);
@@ -724,8 +724,8 @@ const ProductForm = ({ initialData = {}, onSubmit }) => {
         const isEditing = Boolean(initialData.id);
 
         const url = isEditing
-            ? `http://localhost:4000/api/products/${initialData.id}`
-            : "http://localhost:4000/api/products";
+            ? `https://enterprise-resource-planning-backen.vercel.app/api/products/${initialData.id}`
+            : "https://enterprise-resource-planning-backen.vercel.app/api/products";
 
         const method = isEditing ? "PUT" : "POST";
 
