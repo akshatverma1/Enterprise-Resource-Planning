@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import { AppleIcon } from "lucide-react";
 // ✅ Connect to MongoDB Atlas
 dotenv.config();
 const MONGO_URI = process.env.db_url;
@@ -79,6 +80,22 @@ app.post("/api/products", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+app.put("/api/products/:id",async (req,res)=>{
+  try{
+    await connectDB();
+    const updatedProduct = await Product.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.status(200).json(updatedProduct);
+  }catch(err){
+    console.log("error"+"="+err);
+    res.status(500).json({ message: "Update failed", error });
+  }
+})
+
 
 app.delete("/api/products/:id", async (req, res) => {
   try {
