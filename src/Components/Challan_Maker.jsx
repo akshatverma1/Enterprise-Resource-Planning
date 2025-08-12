@@ -10,8 +10,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Badge } from "./ui/badge"
 import html2pdf from "html2pdf.js"
 import Mainnav from "./Main_nav.jsx"
-// import Productitems from "./mockProducts_automobile.json"
 import { getAutomobileData } from "./mockProducts_automobile.js"
+
 // Mock company data
 const myCompany = {
   name: "Ashirwad Enterprises",
@@ -87,168 +87,6 @@ const mockCustomers = [
   }
 ]
 
-// Mock products data
-// const mockProducts = 
-// [
-//     {
-//         "id": 1,
-//         "name": "Mahindra front brake",
-//         "category": "Automobile",
-//         "price": 328.0,
-//         "stock": 40,
-//         "status": "In Stock",
-//         "sales": 433,
-//         "revenue": 45537,
-//         "image": "/placeholder.svg?height=40&width=40",
-//         "partnumber": "2r62sc3",
-//         "gst": 59.04,
-//         "hsn": "8708"
-//     },
-//     {
-//         "id": 2,
-//         "name": "Ford top engine",
-//         "category": "Automobile",
-//         "price": 1005.0,
-//         "stock": 45,
-//         "status": "In Stock",
-//         "sales": 30,
-//         "revenue": 8129,
-//         "image": "/placeholder.svg?height=40&width=40",
-//         "partnumber": "ffhg9va",
-//         "gst": 180.9,
-//         "hsn": "8708"
-//     },
-//     {
-//         "id": 3,
-//         "name": "Suzuki right light",
-//         "category": "Automobile",
-//         "price": 4702.0,
-//         "stock": 99,
-//         "status": "In Stock",
-//         "sales": 306,
-//         "revenue": 44242,
-//         "image": "/placeholder.svg?height=40&width=40",
-//         "partnumber": "n7ra4rl",
-//         "gst": 846.36,
-//         "hsn": "8708"
-//     },
-//     {
-//         "id": 4,
-//         "name": "JCB bottom mirror",
-//         "category": "Automobile",
-//         "price": 2798.0,
-//         "stock": 43,
-//         "status": "In Stock",
-//         "sales": 341,
-//         "revenue": 19747,
-//         "image": "/placeholder.svg?height=40&width=40",
-//         "partnumber": "jnolswd",
-//         "gst": 503.64,
-//         "hsn": "8708"
-//     },
-//     {
-//         "id": 5,
-//         "name": "Tata front light",
-//         "category": "Automobile",
-//         "price": 4788.0,
-//         "stock": 41,
-//         "status": "In Stock",
-//         "sales": 473,
-//         "revenue": 17513,
-//         "image": "/placeholder.svg?height=40&width=40",
-//         "partnumber": "sv3m380",
-//         "gst": 861.84,
-//         "hsn": "8708"
-//     },
-//     {
-//         "id": 6,
-//         "name": "Hero top tire",
-//         "category": "Automobile",
-//         "price": 2249.0,
-//         "stock": 96,
-//         "status": "In Stock",
-//         "sales": 465,
-//         "revenue": 2115,
-//         "image": "/placeholder.svg?height=40&width=40",
-//         "partnumber": "fjh2qrh",
-//         "gst": 404.82,
-//         "hsn": "8708"
-//     },
-//     {
-//         "id": 7,
-//         "name": "Honda top mirror",
-//         "category": "Automobile",
-//         "price": 4287.0,
-//         "stock": 66,
-//         "status": "In Stock",
-//         "sales": 429,
-//         "revenue": 22803,
-//         "image": "/placeholder.svg?height=40&width=40",
-//         "partnumber": "3u23qsq",
-//         "gst": 771.66,
-//         "hsn": "8708"
-//     },
-//     {
-//         "id": 8,
-//         "name": "Suzuki bottom filter",
-//         "category": "Automobile",
-//         "price": 621.0,
-//         "stock": 53,
-//         "status": "In Stock",
-//         "sales": 245,
-//         "revenue": 45342,
-//         "image": "/placeholder.svg?height=40&width=40",
-//         "partnumber": "5lzzmho",
-//         "gst": 111.78,
-//         "hsn": "8708"
-//     },
-//     {
-//         "id": 9,
-//         "name": "Mahindra right light",
-//         "category": "Automobile",
-//         "price": 1847.0,
-//         "stock": 67,
-//         "status": "In Stock",
-//         "sales": 363,
-//         "revenue": 48385,
-//         "image": "/placeholder.svg?height=40&width=40",
-//         "partnumber": "blcmpgj",
-//         "gst": 332.46,
-//         "hsn": "8708"
-//     },
-//     {
-//         "id": 10,
-//         "name": "Bajaj rear tire",
-//         "category": "Automobile",
-//         "price": 931.0,
-//         "stock": 100,
-//         "status": "In Stock",
-//         "sales": 47,
-//         "revenue": 21066,
-//         "image": "/placeholder.svg?height=40&width=40",
-//         "partnumber": "czhp63q",
-//         "gst": 167.58,
-//         "hsn": "8708"
-//     },
-//   ]
-// const mockProducts = getAutomobileData.map((item) => ({
-//   id: item.id,
-//   name: item.name,
-//   category: item.category,
-//   price: item.price,
-//   stock: item.stock,
-//   status: item.status,
-//   sales: item.sales,
-//   revenue: item.revenue || 0,
-//   image: item.image,
-//   partnumber: item.partNumber,
-//   gst: item.gst || 18,
-//   hsn: item.hsn || "8708", // Default HSN code if not provided
-// }))
-
-  
-
-
 export default function BillMakerPage() {
   const printRef = useRef();
   const [billItems, setBillItems] = useState([])
@@ -271,13 +109,11 @@ export default function BillMakerPage() {
   const [mockProducts, setMockProducts] = useState([])
 
   useEffect(() => {
-    // Load initial data
     loadData();
   },[])
 
   async function loadData() {
     const data = await getAutomobileData();
-    console.log("Loaded products data:", data);
     const mock = data.map((item) => ({
       id: item._id,
       name: item.name,
@@ -294,6 +130,7 @@ export default function BillMakerPage() {
     }));
     setMockProducts(mock);
   }
+  
   useEffect(() => {
     const generateBillNumber = () => {
       const date = new Date();
@@ -301,11 +138,9 @@ export default function BillMakerPage() {
       const month = String(date.getMonth() + 1).padStart(2, "0");
       const day = String(date.getDate()).padStart(2, "0");
       
-      // Get the last used serial number from localStorage or start with 1
       const lastSerialNumber = localStorage.getItem('lastSerialNumber') || 0;
       const newSerialNumber = parseInt(lastSerialNumber) + 1;
       
-      // Store the new serial number for next time
       localStorage.setItem('lastSerialNumber', newSerialNumber.toString());
       
       return `INV-${day}${month}${year}-${String(newSerialNumber).padStart(3, "0")}`;
@@ -379,7 +214,8 @@ export default function BillMakerPage() {
   const addProductToBill = () => {
     if (!selectedProduct || quantity <= 0) return
 
-    const product = mockProducts.find((p) => p.id === Number.parseInt(selectedProduct))
+    // Find product by ID instead of name
+    const product = mockProducts.find((p) => p.id === selectedProduct)
     if (!product) return
 
     const existingItemIndex = billItems.findIndex((item) => item.productId === product.id)
@@ -396,7 +232,7 @@ export default function BillMakerPage() {
         price: product.price,
         quantity: quantity,
         total: product.price * quantity,
-        gstRate: 18, // Assuming 18% GST for all products
+        gstRate: 18,
         hsnCode: product.hsn,
       }
       setBillItems([...billItems, newItem])
@@ -598,14 +434,11 @@ export default function BillMakerPage() {
       return;
     }
 
-    // Generate the invoice HTML
     const invoiceHTML = generateInvoiceHTML();
     
-    // Create a temporary element to hold our HTML
     const element = document.createElement('div');
     element.innerHTML = invoiceHTML;
     
-    // Options for the PDF
     const opt = {
       margin: 10,
       filename: `Invoice_${billNumber}.pdf`,
@@ -614,10 +447,8 @@ export default function BillMakerPage() {
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
     
-    // Generate and save the PDF
     html2pdf().set(opt).from(element).save();
     
-    // Also save to localStorage for record keeping
     const billData = {
       billNumber,
       customerInfo,
@@ -634,8 +465,6 @@ export default function BillMakerPage() {
     const savedBills = JSON.parse(localStorage.getItem("bills") || "[]")
     savedBills.push(billData)
     localStorage.setItem("bills", JSON.stringify(savedBills))
-
-    // alert("Invoice saved and downloaded as PDF!");
   }
 
   const clearBill = () => {
@@ -653,7 +482,6 @@ export default function BillMakerPage() {
       stateName: "",
     })
     setDiscount(0)
-    // Generate new bill number
     const date = new Date()
     const year = date.getFullYear()
     const month = String(date.getMonth() + 1).padStart(2, "0")
@@ -795,14 +623,18 @@ export default function BillMakerPage() {
                   <div className="flex gap-4 items-end">
                     <div className="flex-1">
                       <label className="block text-sm font-medium text-gray-700 mb-1">Select Product</label>
-                      <Select value={selectedProduct} onValueChange={setSelectedProduct}>
+                      <Select 
+                        value={selectedProduct} 
+                        onValueChange={(value) => setSelectedProduct(value)}
+                      >
                         <SelectTrigger>
                           <SelectValue placeholder="Choose a product" />
                         </SelectTrigger>
                         <SelectContent>
                           {mockProducts.map((product) => (
+                            // Store product ID instead of name in value
                             <SelectItem key={product.id} value={product.id}>
-                              {product.partnumber} - {product.name} (₹{product.price.toFixed(2)})
+                              {product.partnumber} - {product.name} - ₹{product.price.toFixed(2)}
                             </SelectItem>
                           ))}
                         </SelectContent>
