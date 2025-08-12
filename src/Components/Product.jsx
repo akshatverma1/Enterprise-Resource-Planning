@@ -117,13 +117,19 @@ export default function ProductsPage() {
   }
 
   const filteredProducts = mockProducts.filter((product) => {
+    // Add null checks for searchable fields
+    const name = product.name || "";
+    const partNumber = product.partNumber || "";
+    const brand = product.brand || "";
+    const category = product.category || "";
+    
     const matchesSearch =
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.partNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.brand.toLowerCase().includes(searchQuery.toLowerCase())
+      name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      partNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      brand.toLowerCase().includes(searchQuery.toLowerCase())
 
-    const matchesCategory = selectedCategory === "All" || product.category === selectedCategory
-    const matchesBrand = selectedBrand === "All" || product.brand === selectedBrand
+    const matchesCategory = selectedCategory === "All" || category === selectedCategory
+    const matchesBrand = selectedBrand === "All" || brand === selectedBrand
 
     let matchesPrice = true
     if (selectedPriceRange !== "all") {

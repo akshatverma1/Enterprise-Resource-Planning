@@ -190,12 +190,12 @@ export default function SupportPage() {
             <p className="text-gray-600">Get help and manage support tickets</p>
           </div>
 
-          <Tabs defaultValue="tickets" className="space-y-6">
-            <TabsList>
+          <Tabs defaultValue="contact" className="space-y-6">
+            {/* <TabsList>
               <TabsTrigger value="tickets">Support Tickets</TabsTrigger>
               <TabsTrigger value="faq">FAQ</TabsTrigger>
               <TabsTrigger value="contact">Contact</TabsTrigger>
-            </TabsList>
+            </TabsList> */}
 
             <TabsContent value="tickets" className="space-y-6">
               {/* Stats Cards */}
@@ -363,7 +363,7 @@ export default function SupportPage() {
               </div>
 
               {/* Tickets Table */}
-              <Card>
+              {/* <Card>
                 <CardHeader>
                   <CardTitle>Support Tickets</CardTitle>
                   <CardDescription>Manage and track your support requests</CardDescription>
@@ -402,7 +402,7 @@ export default function SupportPage() {
                     </TableBody>
                   </Table>
                 </CardContent>
-              </Card>
+              </Card> */}
             </TabsContent>
 
             <TabsContent value="faq" className="space-y-6">
@@ -423,34 +423,34 @@ export default function SupportPage() {
             </TabsContent>
 
             <TabsContent value="contact" className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Card>
                   <CardContent className="p-6 text-center">
-                    <Phone className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                    <Phone className="mt-6 h-12 w-12 text-blue-600 mx-auto mb-4" />
                     <h3 className="font-semibold text-lg mb-2">Phone Support</h3>
                     <p className="text-gray-600 mb-4">Call us for immediate assistance</p>
-                    <p className="font-semibold">+1-800-SUPPORT</p>
+                    <p className="font-semibold">+91-9109621850</p>
                     <p className="text-sm text-gray-500">Mon-Fri 9AM-6PM EST</p>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardContent className="p-6 text-center">
-                    <Mail className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                    <Mail className="mt-6 h-12 w-12 text-green-600 mx-auto mb-4" />
                     <h3 className="font-semibold text-lg mb-2">Email Support</h3>
                     <p className="text-gray-600 mb-4">Send us an email anytime</p>
-                    <p className="font-semibold">support@company.com</p>
+                    <p className="font-semibold">akshatv00001@gmail.com</p>
                     <p className="text-sm text-gray-500">Response within 24 hours</p>
                   </CardContent>
                 </Card>
-                <Card>
+                {/* <Card>
                   <CardContent className="p-6 text-center">
-                    <MessageCircle className="h-12 w-12 text-purple-600 mx-auto mb-4" />
+                    <MessageCircle className="mt-6 h-12 w-12 text-purple-600 mx-auto mb-4" />
                     <h3 className="font-semibold text-lg mb-2">Live Chat</h3>
                     <p className="text-gray-600 mb-4">Chat with our support team</p>
                     <Button className="w-full">Start Chat</Button>
                     <p className="text-sm text-gray-500 mt-2">Available 24/7</p>
                   </CardContent>
-                </Card>
+                </Card> */}
               </div>
             </TabsContent>
           </Tabs>

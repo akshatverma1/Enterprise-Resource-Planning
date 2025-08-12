@@ -315,12 +315,7 @@ export default function InventoryManagementPage() {
 
                     {/* Main Content */}
                     <Tabs defaultValue="inventory" className="space-y-4">
-                        {/* <TabsList>
-                            <TabsTrigger value="inventory">Inventory</TabsTrigger>
-                            <TabsTrigger value="suppliers">Suppliers</TabsTrigger>
-                            <TabsTrigger value="purchases">Purchase History</TabsTrigger>
-                            <TabsTrigger value="alerts">Low Stock Alerts</TabsTrigger>
-                        </TabsList> */}
+                        
 
                         {/* Inventory Tab */}
                         <TabsContent value="inventory" className="space-y-4">
