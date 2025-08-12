@@ -28,20 +28,19 @@ async function connectDB() {
 // ✅ Define Mongoose schema and model in same file
 const productSchema = new mongoose.Schema({
   name: String,
-  category: String,
-  brand: String,
-  SKU: String,
-  quantity: Number,
-  minQuantity: Number,
-  price: Number,
-  costPrice: Number,
-  supplier: String,
-  location: String,
-  partNumber: String,
-  gst: String,
-  coating: String,
-  images: [String]
-});
+    category: String,
+    company: String,
+    supplier: String,
+    location: Number,
+    partNumber:String,
+    price: Number,
+    stock: Number,
+    image: String,
+    designImage :String,
+    designDXF :String,
+    gst:String,
+    coating:String
+}, { timestamps: true });
 
 // Prevent OverwriteModelError on re-deploy
 const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
