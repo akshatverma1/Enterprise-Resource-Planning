@@ -12,7 +12,10 @@ import SupportPage from './Components/SupportPage.jsx';
 import DevicesPage from './Components/Despage.jsx';
 import InventoryManagementPage from './Components/Inventory_management.jsx';
 import AttendancePage from './Components/Attendance.jsx';
-
+import EmployeeDetails from './Components/Employee_Details.jsx';
+import Toolmanagement from './Components/Tool-management.jsx';
+import Gauge from './Components/Gauge.jsx';
+import CertificatesPage from './Components/Certificate.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
@@ -28,6 +31,10 @@ createRoot(document.getElementById('root')).render(
         <Route path="/inventory" element={<InventoryManagementPage />} />
         <Route path="/attendance" element={<AttendancePage />} />
         {/* Add more routes as needed */}
+        <Route path="/employee-details" element={<EmployeeDetails />} />
+        <Route path="/toolmanagement" element={<Toolmanagement />} />
+        <Route path="/gauge" element={<Gauge />} />
+        <Route path="/certificates" element={<CertificatesPage />} />
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </BrowserRouter>

@@ -16,7 +16,11 @@ import {
   Building,
   Wrench,
   Headset,
-  CalendarCheck
+  CalendarCheck,
+  UserCircle,
+  Hammer,
+  Award,
+  Wrench as WrenchIcon
 } from "lucide-react"
 import { Card, CardContent } from "./ui/card"
 import { Link } from "react-router-dom"
@@ -77,6 +81,33 @@ export function FeatureGrid() {
       description: "",
       href: "/devices",
     },
+    {
+      icon: <UserCircle className="h-8 w-8" />,
+      title: "Employees",
+      description: "",
+      href: "/employee-details",
+    },
+    {
+      icon: <Wrench className="h-8 w-8" />,
+      title: "Tool Management",
+      description: "",
+      href: "toolmanagement",
+    }
+    , {
+      icon: <Hammer className="h-8 w-8" />,
+      title: "Gauge Management",
+      description: "",
+      href: "/gauge",
+    },
+    {
+  icon: <Award className="h-8 w-8" />,
+  title: "Certificates",
+  description: "",
+  href: "/certificates",
+}
+
+
+
   ]
 
   return (
@@ -85,7 +116,7 @@ export function FeatureGrid() {
         <Link to={feature.href} key={index}>
           <Card className="h-full transition-all hover:bg-muted/50">
             <CardContent className="flex flex-col items-center justify-center p-6 text-center">
-              <div style={{marginTop:"2rem"}} className="m-4 rounded-full bg-blue-100 p-3 text-blue-600">{feature.icon}</div>
+              <div style={{ marginTop: "2rem" }} className="m-4 rounded-full bg-blue-100 p-3 text-blue-600">{feature.icon}</div>
               <h3 className="mb-1 font-medium">{feature.title}</h3>
               <p className="text-xs text-muted-foreground">{feature.description}</p>
             </CardContent>

@@ -11,7 +11,13 @@ import {
   Info,
   Image as ImageIcon,
   Package,
-  X
+  X,
+  Calendar,
+  MapPin,
+  Building,
+  Truck,
+  Percent,
+  Layers
 } from "lucide-react"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
@@ -62,6 +68,7 @@ export default function ProductsPage() {
   const [sortBy, setSortBy] = useState("name")
   const [isDownloading, setIsDownloading] = useState(null)
   const [showAddProductForm, setShowAddProductForm] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState(null)
   const [newProduct, setNewProduct] = useState({
     name: "",
     partNumber: "",
@@ -77,7 +84,7 @@ export default function ProductsPage() {
   })
 
   const [mockProducts, setMockProducts] = useState([])
-  const [loading, setLoading] = useState(true) // Add loading state
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetchAndFormatProducts();
@@ -85,7 +92,7 @@ export default function ProductsPage() {
 
   async function fetchAndFormatProducts() {
     try {
-      setLoading(true) // Start loading
+      setLoading(true)
       const data = await getAutomobileData();
 
       const mock = data.map((product, index) => ({
@@ -93,7 +100,9 @@ export default function ProductsPage() {
         name: product.name,
         partNumber: product.partNumber,
         category: product.category,
-        brand: product.brand,
+        company: product.company || "Ashirwad Enterprises",
+        supplier: product.supplier || "Primary Supplier",
+        location: product.location || "Main Warehouse",
         price: product.price,
         originalPrice: product.originalPrice,
         stock: product.stock,
@@ -102,22 +111,25 @@ export default function ProductsPage() {
         rating: product.rating,
         reviews: product.reviews,
         image: product.image || "/placeholder.svg?height=300&width=300&text=Product+Image",
+        designImage: product.designImage || "https://i.pinimg.com/736x/e2/cb/c3/e2cbc38520ec8bade8951665ae70baa8.jpg",
+        designDXF: product.designDXF || "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing",
+        gst: product.gst || "18%",
+        coating: product.coating || "Standard",
         description: product.description || "No description available",
         specifications: product.specifications || ["No specifications available"],
-        dxfDesignUrl: "https://drive.google.com/file/d/1joQuYYJtDDKNbmxnlSd9F_aY09dtDPv_/view?usp=sharing",
-        imageDetailsUrl: "https://i.pinimg.com/736x/e2/cb/c3/e2cbc38520ec8bade8951665ae70baa8.jpg"
+        createdAt: product.createdAt || new Date().toISOString(),
+        updatedAt: product.updatedAt || new Date().toISOString()
       }));
 
       setMockProducts(mock);
     } catch (error) {
       console.error("Error fetching products:", error)
     } finally {
-      setLoading(false) // End loading regardless of success/error
+      setLoading(false)
     }
   }
 
   const filteredProducts = mockProducts.filter((product) => {
-    // Add null checks for searchable fields
     const name = product.name || "";
     const partNumber = product.partNumber || "";
     const brand = product.brand || "";
@@ -146,7 +158,7 @@ export default function ProductsPage() {
     setIsDownloading(product.id)
 
     try {
-      const response = await fetch(product.dxfDesignUrl)
+      const response = await fetch(product.designDXF)
       if (!response.ok) throw new Error("Failed to fetch DXF file")
 
       const blob = await response.blob()
@@ -159,7 +171,7 @@ export default function ProductsPage() {
       a.click()
 
       if (actionType === 'partDetails') {
-        window.open(product.imageDetailsUrl, '_blank')
+        window.open(product.designImage, '_blank')
       }
 
       window.URL.revokeObjectURL(url)
@@ -174,12 +186,11 @@ export default function ProductsPage() {
   }
 
   const handleViewImageDetails = (product) => {
-    window.open(product.imageDetailsUrl, '_blank')
+    window.open(product.designImage, '_blank')
   }
 
   const handleAddProduct = () => {
     console.log("Adding new product:", newProduct)
-    // Reset form and close panel
     setNewProduct({
       name: "",
       partNumber: "",
@@ -203,6 +214,15 @@ export default function ProductsPage() {
       ...prev,
       [name]: value
     }))
+  }
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-IN', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    });
   }
 
   return (
@@ -268,68 +288,10 @@ export default function ProductsPage() {
                     ))}
                   </SelectContent>
                 </Select>
-
-                {/* Brand Filter */}
-                {/* <Select value={selectedBrand} onValueChange={setSelectedBrand}>
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Select brand" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {brands.map((brand) => (
-                      <SelectItem key={brand} value={brand}>
-                        {brand}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select> */}
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                {/* Price Range Filter */}
-                {/* <Select value={selectedPriceRange} onValueChange={setSelectedPriceRange}>
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Price range" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {priceRanges.map((range) => (
-                      <SelectItem key={range.value} value={range.value}>
-                        {range.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select> */}
-
-                {/* Stock Status Filter */}
-                {/* <Select value={selectedStockStatus} onValueChange={setSelectedStockStatus}>
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Stock status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {stockStatuses.map((status) => (
-                      <SelectItem key={status.value} value={status.value}>
-                        {status.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select> */}
-
-                {/* Sort By */}
-                {/* <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Sort by" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="name">Name (A-Z)</SelectItem>
-                    <SelectItem value="priceLow">Price (Low to High)</SelectItem>
-                    <SelectItem value="priceHigh">Price (High to Low)</SelectItem>
-                    <SelectItem value="stock">Stock Level</SelectItem>
-                  </SelectContent>
-                </Select> */}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {loading ? (
-                  // Loading spinner
                   <div className="col-span-full flex flex-col items-center justify-center py-12">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
                     <p className="mt-4 text-gray-500">Loading products...</p>
@@ -378,7 +340,7 @@ export default function ProductsPage() {
                               size="sm"
                               variant="outline"
                               className="w-full bg-transparent"
-                              onClick={() => window.open(product.dxfDesignUrl, '_blank')}
+                              onClick={() => window.open(product.designDXF, '_blank')}
                             >
                               <Eye className="h-4 w-4 mr-2" />
                               View DXF Design
@@ -391,6 +353,15 @@ export default function ProductsPage() {
                             >
                               <ImageIcon className="h-4 w-4 mr-2" />
                               Part Details
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="w-full bg-transparent"
+                              onClick={() => setSelectedProduct(product)}
+                            >
+                              <Info className="h-4 w-4 mr-2" />
+                              More Details
                             </Button>
                           </div>
                         </div>
@@ -584,6 +555,184 @@ export default function ProductsPage() {
                   <Plus className="h-4 w-4 mr-2" />
                   Add Product
                 </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Product Details Modal */}
+      {selectedProduct && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">Product Details</h2>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setSelectedProduct(null)}
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
+                  <img
+                    src={selectedProduct.image}
+                    alt={selectedProduct.name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Button
+                    className="w-full"
+                    onClick={() => window.open(selectedProduct.designDXF, '_blank')}
+                  >
+                    <Eye className="h-4 w-4 mr-2" />
+                    View DXF Design
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => handleViewImageDetails(selectedProduct)}
+                  >
+                    <ImageIcon className="h-4 w-4 mr-2" />
+                    View Design Image
+                  </Button>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-lg font-semibold">{selectedProduct.name}</h3>
+                  <p className="text-gray-500">Part No: {selectedProduct.partNumber}</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-sm text-gray-500 flex items-center">
+                      <Building className="h-4 w-4 mr-1" /> Company
+                    </p>
+                    <p className="font-medium">{selectedProduct.company}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 flex items-center">
+                      <Truck className="h-4 w-4 mr-1" /> Supplier
+                    </p>
+                    <p className="font-medium">{selectedProduct.supplier}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 flex items-center">
+                      <MapPin className="h-4 w-4 mr-1" /> Location
+                    </p>
+                    <p className="font-medium">{selectedProduct.location}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 flex items-center">
+                      <Percent className="h-4 w-4 mr-1" /> GST
+                    </p>
+                    <p className="font-medium">{selectedProduct.gst}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 flex items-center">
+                      <Layers className="h-4 w-4 mr-1" /> Coating
+                    </p>
+                    <p className="font-medium">{selectedProduct.coating}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 flex items-center">
+                      <Calendar className="h-4 w-4 mr-1" /> Created
+                    </p>
+                    <p className="font-medium">{formatDate(selectedProduct.createdAt)}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 flex items-center">
+                      <Calendar className="h-4 w-4 mr-1" /> Updated
+                    </p>
+                    <p className="font-medium">{formatDate(selectedProduct.updatedAt)}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Brand</p>
+                    <p className="font-medium">{selectedProduct.brand}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Category</p>
+                    <p className="font-medium">{selectedProduct.category}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Price</p>
+                    <p className="font-medium text-green-600">₹{selectedProduct.price}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Original Price</p>
+                    <p className="font-medium text-gray-500 line-through">₹{selectedProduct.originalPrice}</p>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-sm text-gray-500">Stock Status</p>
+                  <Badge
+                    className={
+                      selectedProduct.status === "In Stock" ? "bg-green-100 text-green-800" :
+                      selectedProduct.status === "Low Stock" ? "bg-yellow-100 text-yellow-800" :
+                      "bg-red-100 text-red-800"
+                    }
+                  >
+                    {selectedProduct.status}
+                  </Badge>
+                  <p className="mt-1 text-sm">{selectedProduct.stock} units available</p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-gray-500">Description</p>
+                  <p className="text-sm">{selectedProduct.description}</p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-gray-500">Specifications</p>
+                  <ul className="text-sm list-disc pl-5">
+                    {Array.isArray(selectedProduct.specifications) ? (
+                      selectedProduct.specifications.map((spec, index) => (
+                        <li key={index}>{spec}</li>
+                      ))
+                    ) : (
+                      <li>{selectedProduct.specifications}</li>
+                    )}
+                  </ul>
+                </div>
+
+                {selectedProduct.rating && (
+                  <div>
+                    <p className="text-sm text-gray-500">Rating</p>
+                    <div className="flex items-center">
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <svg
+                            key={i}
+                            className={`w-4 h-4 ${i < Math.floor(selectedProduct.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                      <span className="ml-2 text-sm text-gray-500">
+                        {selectedProduct.rating} ({selectedProduct.reviews} reviews)
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                {selectedProduct.sales && (
+                  <div>
+                    <p className="text-sm text-gray-500">Sales</p>
+                    <p className="text-sm">{selectedProduct.sales} units sold</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
